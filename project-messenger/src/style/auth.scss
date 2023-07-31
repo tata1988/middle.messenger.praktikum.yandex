@@ -1,0 +1,20 @@
+.auth {
+
+
+    &__form {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        &-block {
+            margin-bottom: 159px;
+        }
+    }
+
+    &__link {
+        padding-top: 14px;
+    }
+
+}

@@ -1,0 +1,17 @@
+.error {
+    margin: auto;
+
+    &__title {
+        color: #1E1E1E;
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    &__message {
+        color: #1E1E1E;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 69px;
+    }
+}
