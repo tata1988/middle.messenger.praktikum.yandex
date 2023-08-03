@@ -1,0 +1,24 @@
+@mixin outerBlock {
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
+}
+
+@mixin colomn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin wrapperForm {
+    margin: auto;
+    border-radius: 12px;
+    background-color: #FFF;
+    @include colomn;
+}
+
+
+
+
+

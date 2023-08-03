@@ -1,0 +1,22 @@
+{{> htmlBase title="Авторизация"}}
+    
+  <main class="main">
+    <div class="main__wrapper">
+      <form class="main__form form">
+        <div class="main__form-block">
+          {{> title title="Вход"}}
+
+          {{> label for="login" value="Логин" class="form__label label"}}
+          {{> input type="text" name="login" placeholder="ФИО" id="login" class="input"}}
+          {{> line class="line line_blue"}}
+          {{> label for="password" value="Пароль" class="form__label label"}}
+          {{> input type="text" name="password" placeholder="••••••••••••" id="password" class="input"}}
+          {{> line class="line line_blue"}}
+        </div>
+        {{> button label="Вход" class="btn"}}
+      </form>
+
+        {{> link href="../pages/registration.html" label="Нет аккаунта?" class="link"}}
+    </div>
+  </main>
+    

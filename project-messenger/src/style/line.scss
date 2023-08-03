@@ -1,0 +1,15 @@
+.line {
+    max-width: 510px;
+    height: 1px;
+
+    &_gray {
+        background-color:#EAEAEA;
+    }
+
+    &_blue {
+        background-color:#3369F3;
+        margin-bottom: 10px;
+    }
+
+
+}
