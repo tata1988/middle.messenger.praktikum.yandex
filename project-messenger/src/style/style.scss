@@ -59,7 +59,21 @@ p {
   margin: 0;
 }
 
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .hide {
   display: none;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 510px;
 }
 

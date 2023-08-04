@@ -1,0 +1,7 @@
+{{> layouts/htmlBase title="ErrorPage400"}}
+
+{{#> layouts/main/main classOuterBlock='error' classInnerBlock='error__wrapper'}}
+    {{> error/error classError='error__title' title='404' classMessage='error__message' errorMessage='Не туда попали'}}
+
+    {{> link/link href="/pages/chat/chat.html" label="Назад к чатам" class="link"}}
+{{/ layouts/main/main}}
