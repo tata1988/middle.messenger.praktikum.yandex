@@ -18,9 +18,6 @@ export default defineConfig({
         },
         outDir: resolve(__dirname, 'dist')
     },
-    server: {
-        open: 'src/pages/auth/auth.html'
-    },
 
 
     plugins: [handlebars({
