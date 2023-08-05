@@ -4,7 +4,9 @@ import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
     root: resolve(__dirname, 'src'),
+
     build: {
+        outDir: resolve(__dirname, 'dist'),
         rollupOptions: {
             input: {
                 index: resolve(__dirname, 'src/index.html'),
@@ -16,12 +18,7 @@ export default defineConfig({
                 error500: resolve(__dirname, 'src/pages/errorPages/error500.html'),
             }
         },
-        outDir: resolve(__dirname, 'dist')
     },
-    server: {
-        open: 'src/pages/auth/auth.html'
-    },
-
 
     plugins: [handlebars({
         partialDirectory: resolve(__dirname, 'src/partials'),
