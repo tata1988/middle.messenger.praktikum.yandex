@@ -24,3 +24,4 @@ https://steady-creponne-b87a9f.netlify.app
 
 - `npm run dev` — запуск версии для разработчика,
 - `npm run build` — сборка стабильной версии,
+- `npm run start` — сборка продакшн версии и запуск сервера на порту 3000
