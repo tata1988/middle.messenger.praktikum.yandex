@@ -2,7 +2,6 @@
 
 {{#> layouts/main/main classOuterBlock='main' classInnerBlock='main__wrapper'}}
 
-
   <form class="main__form form">
     <div class="main__form-block">
       {{> title/title title="Вход"}}
@@ -14,10 +13,10 @@
       {{> input/input type="text" name="password" placeholder="••••••••••••" id="password" class="input"}}
       {{> line/line class="line line_blue"}}
     </div>
+
     {{> button/button label="Вход" class="btn"}}
   </form>
 
     {{> link/link href="../registration/registration.html" label="Нет аккаунта?" class="link"}}
-
 
 {{/ layouts/main/main}}
