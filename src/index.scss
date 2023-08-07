@@ -1,0 +1,19 @@
+@import './style/normalize.css';
+@import './style/style.scss';
+@import './style/mixins.scss';
+
+@import './partials/button/button.scss';
+@import './partials/label/label.scss';
+@import './partials/input/input.scss';
+@import './partials/link/link.scss';
+@import './partials/title/title.scss';
+@import './partials/line/line.scss';
+@import './partials/layouts/main/main.scss';
+
+@import './pages/errorPages/error.scss';
+@import './pages/settings/settings.scss';
+
+
+@import './style/form.scss';
+@import './style/avatar.scss';
+
