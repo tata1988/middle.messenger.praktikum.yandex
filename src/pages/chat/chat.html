@@ -1,5 +1,187 @@
 {{> layouts/htmlBase title="Список чатов и лента переписки"}}
 
-<div>Список чатов и лента переписки</div>
-{{> link/link href="/pages/settings/settings.html" label="Профиль" class="link"}}
+<div class="chatPage">
+    <section class="chatList">
+        {{> link/link href="/pages/settings/settings.html" label="Профиль" class="link_right"}}
+        <form type="search" class="form__search">
+            {{> input/input type="search" placeholder="Поиск" class="input input__search"}}
+            {{> button/button class="btn__search"}}
+        </form>
+        <ul class="chats">
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat chat_active">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman  начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+            <li class="chat">
+                <div class="chat__img"></div>
+                <div class="chat__block chat__block-message">
+                    <div class="chat__title">Вадим</div>
+                    <div class="chat__wrapper-message">
+                        <p class="chat__name">Вы:</p>
+                        <p class="chat__message">В 2008 году художник Jon Rafman начал собирать...</p>
+                    </div>
+                    
+                </div>
+                <div class="chat__block chat__date">
+                    <div class="chat__date">15:12</div>
+                    <div class="chat__count">2</div>
+                </div>
+            </li>
+           
+        </ul>
+    </section> 
+    
+    <section class="messages">
+        <header class="messages__header">
+            <div class="messages__companion">
+                <div class="messages__avatar"></div>
+                <div class="messages__name">Вадим</div>
+            </div>
+            {{> button/button class="btn__header"}}
+        </header>
+    
+        <main class="messages__main">
+            <div class="messages__wrapper">
+                <div class="messages__date">12 июня</div>
+                <ul class="messages__list">
+                    <li class="message">
+                        <div class="message__wrapper message__companion">
+                            <p class="message__text">Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                            Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
+                            <div class="message__time">11:56</div>
+                        </div>
+                    </li>
+                    <li class="message">
+                        <div class="message__wrapper message__companion">
+                            <img src="../../img/photo.jpg" alt="photo">
+                            <div class="message__time">11:56</div>
+                        </div>
+                    </li>
+                    <li class="message">
+                        <div class="message__wrapper message__own">
+                            <p class="message__text">Привет</p>
+                            <p class="message__time">11:56</p>
+                        </div>
+                    </li>
+                    <li class="message">
+                        <div class="message__wrapper message__own message_active">
+                            <p class="message__text">Круто!</p>
+                            <p class="message__time">11:56</p>
+                        </div>
+                    </li>
+                 </ul>
+            </div>
+           
+        </main>
+    
+        <footer class="messages__footer">
+            <form class="form__message">
+                {{> button/button class="btn__clip"}}
+                {{> input/input type="text" placeholder="Сообщение" class="input input__message"}}
+                {{> button/button class="btn__message"}}
+            </form>
+        </footer>
+    </section>
+</div>
 

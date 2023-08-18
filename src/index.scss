@@ -1,6 +1,8 @@
 @import './style/normalize.css';
 @import './style/style.scss';
 @import './style/mixins.scss';
+@import './style/form.scss';
+@import './style/avatar.scss';
 
 @import './partials/button/button.scss';
 @import './partials/label/label.scss';
@@ -11,9 +13,9 @@
 @import './partials/layouts/main/main.scss';
 
 @import './pages/errorPages/error.scss';
+@import './pages/chat/chat.scss';
 @import './pages/settings/settings.scss';
 
 
-@import './style/form.scss';
-@import './style/avatar.scss';
+
 

@@ -10,4 +10,21 @@
         text-align: left;
         margin: 10px 0;
     }
+
+    &_right {
+        position: relative;
+        display: block;
+        padding-right: 22px;
+        text-align: right;
+        color: $grey2;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 23px;
+
+        &::after {
+            content: '\003E';
+            position: absolute;
+            right: 10px;
+        }
+    }
 }
