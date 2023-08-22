@@ -1,0 +1,16 @@
+<form class="main__form form">
+  <div class="main__form-block">
+    {{{Title title="Вход" className="form__title title"}}}
+
+    {{{ Label for="login" value="Логин" className="form__label label"}}}
+    {{{ Input type="text" name="login" placeholder="ФИО" id="login" className="input" ref="authLogin"
+    onchange=onchangeLogin}}}
+    {{{ Line className="line line_blue"}}}
+
+    {{{ Label for="password" value="Пароль" className="form__label label"}}}
+    {{{ Input type="text" name="password" placeholder="••••••••••••" id="password" className="input" ref="authPassword"
+    onchange=onchangePassword}}}
+    {{{Line className="line line_blue"}}}
+  </div>
+  {{{ ButtonSubmit label="Вход" className="btn" type="submit" onclick=auth}}}
+</form>

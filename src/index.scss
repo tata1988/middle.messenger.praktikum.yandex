@@ -3,16 +3,17 @@
 @import './style/mixins.scss';
 @import './style/form.scss';
 @import './style/avatar.scss';
+@import './style/link.scss';
 
-@import './partials/button/button.scss';
-@import './partials/label/label.scss';
-@import './partials/input/input.scss';
-@import './partials/link/link.scss';
-@import './partials/title/title.scss';
-@import './partials/line/line.scss';
-@import './partials/layouts/main/main.scss';
+@import './components/button/button.scss';
+@import './components/label/label.scss';
+@import './components/input/input.scss';
 
-@import './pages/errorPages/error.scss';
+@import './components/title/title.scss';
+@import './components/line/line.scss';
+@import './components/layouts/main/main.scss';
+
+@import './pages/errorPage404/errorPage.scss';
 @import './pages/chat/chat.scss';
 @import './pages/settings/settings.scss';
 
