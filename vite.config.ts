@@ -15,10 +15,10 @@ export default defineConfig({
                 chat: resolve(__dirname, 'src/pages/chat/chat.html'),
                 settings: resolve(__dirname, 'src/pages/settings/settings.html'),
                 error404: resolve(__dirname, 'src/pages/errorPages/error404.html'),
-                error500: resolve(__dirname, 'src/pages/errorPages/error500.html'),
+                error500: resolve(__dirname, 'src/pages/errorPages/error500.html'),                     
             }
         },
-    },
+    },                                                                                                                                                                                                          
 
     plugins: [handlebars()],
 });
