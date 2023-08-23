@@ -19,16 +19,12 @@ export class Auth extends Block {
         const password = this.refs.password;
         const loginValue = (this.refs.login as Input).value();
         const passwordValue = (this.refs.password as Input).value();
-
-        if (!loginValue || !passwordValue) {
-          alert('Пожалуйста, заполните все поля');
-          return;
-        } 
-
-        if (validation(login, loginValue) && validation(password, passwordValue)) {
+        
+        if (validation(login, loginValue) && 
+            validation(password, passwordValue)) {
             console.log({login: loginValue,
-                        password: passwordValue
-            });
+                        password: passwordValue});
+            
         } else {
           alert('Пожалуйста, правильно заполните все поля');
           return;
@@ -36,7 +32,7 @@ export class Auth extends Block {
       },
       
       link: () => {
-        render('error404');
+        render('registration');
       }
     });
   }

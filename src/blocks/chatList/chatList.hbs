@@ -1,0 +1,14 @@
+<section class="chatList">
+    {{{Button type='button' label="Профиль" className="link_right" onClick=link}}}
+
+    <form type="search" class="form__search">
+        {{{ Input type="search" placeholder="Поиск" className="input input__search" ref="search" pattern=pattern.message}}}
+        {{{Button type='submit' className="btn__search" onClick=search}}}
+    </form>
+    <ul class="chats">         
+        {{#each chats}}
+        {{{ChatItem avatar=avatar title=title message=message time=time count=count }}}
+        {{/each}}
+    </ul>
+</section> 
+
