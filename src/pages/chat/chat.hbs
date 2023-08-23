@@ -1,15 +1,8 @@
 <div class="chatPage">
-    {{{chatList chats=chats}}}
+    {{{ChatList chats=chats}}}
     
     <section class="messages">
-        <header class="messages__header">
-            <div class="messages__companion">
-                <div class="messages__avatar"></div>
-                <div class="messages__name">Вадим</div>
-            </div>
-            {{> button/button class="btn__header"}}
-        </header>
-    
+        {{{MessagesHeader avatar=avatar name=name}}}
         <main class="messages__main">
             <div class="messages__wrapper">
                 <div class="messages__date">12 июня</div>
@@ -43,14 +36,7 @@
             </div>
            
         </main>
-    
-        <footer class="messages__footer">
-            <form class="form__message">
-                {{> button/button class="btn__clip"}}
-                {{> input/input type="text" placeholder="Сообщение" name="message" class="input input__message"}}
-                {{> button/button class="btn__message"}}
-            </form>
-        </footer>
+        {{{MessagesFooter}}}
     </section>
 </div>
 

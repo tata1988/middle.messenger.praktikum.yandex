@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './button.hbs';
 
 interface ButtonProps {
-  label: string;
+  label: any;
   type?: 'submit' | 'button';
   className: string;
   onClick?: () => void;

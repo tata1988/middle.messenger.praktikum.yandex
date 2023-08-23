@@ -8,7 +8,7 @@ export class ErrorPage404 extends Block {
       type: 'button',
       class: 'className',
       onClick: () => {
-        render('auth');
+        render('chat');
       }
     });
   }

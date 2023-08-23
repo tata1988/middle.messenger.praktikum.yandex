@@ -2,7 +2,6 @@ import { Input } from '../../components/input';
 import Block from '../../utils/Block';
 import { render } from '../../utils/render';
 import { validation } from '../../utils/validation';
-
 import template from './auth.hbs';
 
 export class Auth extends Block {
@@ -20,15 +19,15 @@ export class Auth extends Block {
         const loginValue = (this.refs.login as Input).value();
         const passwordValue = (this.refs.password as Input).value();
         
-        if (validation(login, loginValue) && 
-            validation(password, passwordValue)) {
-            console.log({login: loginValue,
-                        password: passwordValue});
-            
-        } else {
+        if (!validation(login, loginValue) && !validation(password, passwordValue)) {
           alert('Пожалуйста, правильно заполните все поля');
           return;
+        } else {
+          console.log({login: loginValue,
+          password: passwordValue});
+          render('chat');
         }
+        
       },
       
       link: () => {

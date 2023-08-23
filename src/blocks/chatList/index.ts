@@ -18,32 +18,36 @@ export class ChatList extends Block {
   constructor(props: ChatItemProps[]) {
     super({
       ...props,
-      chats: [{ avatar: 'ghbbb',
+      chats: [{
+        avatar: '',
         title: 'Вадим',
         message: 'В 2008 году художник Jon Rafman  начал собирать...',
-        time: 'string',
-        count: 'string'},
-        { avatar: 'ghbbb',
+        time: '11:33',
+        count: '3'
+      },
+      {
+        avatar: '',
         title: 'Вадим',
         message: 'В 2008 году художник Jon Rafman  начал собирать...',
-        time: 'string',
-        count: 'string',
-        active: true}],
+        time: '12:45',
+        count: '3',
+        active: true
+      }],
       search: (e: Event) => {
         e.preventDefault();
-        //const login = this.refs.login;
-        const searchValue = (this.refs.search as Input).value();
-        
+        const search = this.refs.search;
+        const searchValue = (search as Input).value();
+
         if (!searchValue) {
-            console.log({search: searchValue});
-        } else {
           alert('Пожалуйста, введите запрос');
           return;
+        } else {
+          console.log({ search: searchValue });
         }
       },
-      
+
       link: () => {
-        render('registration');
+        render('profile');
       }
     });
   }

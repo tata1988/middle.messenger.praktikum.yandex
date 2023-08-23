@@ -4,6 +4,7 @@
 @import './style/form.scss';
 @import './style/avatar.scss';
 @import './style/link.scss';
+@import './style/main.scss';
 
 @import './components/button/button.scss';
 @import './components/label/label.scss';
@@ -11,11 +12,10 @@
 
 @import './components/title/title.scss';
 @import './components/line/line.scss';
-@import './components/layouts/main/main.scss';
 
 @import './pages/errorPage404/errorPage.scss';
 @import './pages/chat/chat.scss';
-@import './pages/settings/settings.scss';
+@import './pages/profile/profile.scss';
 
 
 

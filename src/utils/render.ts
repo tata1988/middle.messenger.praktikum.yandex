@@ -2,10 +2,14 @@ import { Auth } from "../pages/auth";
 import { Registration } from "../pages/registration";
 import {ErrorPage404} from "../pages/errorPage404";
 import { ErrorPage500 } from "../pages/errorPage500";
+import { Chat } from "../pages/chat";
+import { Profile } from "../pages/profile";
 
 const ROUTES = {
   'auth': Auth,
   'registration': Registration,
+  'chat': Chat,
+  'profile': Profile,
   'error404': ErrorPage404,
   'error500': ErrorPage500,
 }
