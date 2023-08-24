@@ -2,13 +2,13 @@ export function validation(elem: any, value: string) {
 
     let reg = ''
     const pattern = {
-        login: '[a-zA-Z0-9-_]{3,20}',
-        password: '(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*',
-        name: '/^[A-ZА-Я-][a-zа-яё-]',
+        login: '/[a-zA-Z0-9-_]{3,20}',
+        password: '/(?=.*[0-9])(?=.*[A-Z|А-Я])(?=^.{8,40}$)/g',
+        name: '/^[A-Z|А-Я][a-zа-яё-]',
         email: '[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+',
-        phone: '/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/gi'
+        phone: '/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$'
     }
-
+    
     switch (elem.props.pattern) {
         case 'login':
             reg = pattern.login
@@ -28,10 +28,10 @@ export function validation(elem: any, value: string) {
     }
 
     const re = new RegExp(reg);
-    if (re.test(value)) {
-        return true;
-    } else {
-        return false;
-    }
+    console.log(reg);
+    
+    const result = re.test(value);
+    
+    return result;
 
 }

@@ -21,22 +21,23 @@ export class Profile extends Block {
       },
       edit: false,
       isData: true,
+      btnState: true,
       changeData: () => {
         this.setProps({edit: true, isData: true})
         },
       changePassword: () => {
-      this.setProps({edit: true, isData: false})
+      this.setProps({edit: true, isData: false, btnState: false})
       },
-      onClick: (e: Event) => {
+      onClickData: (e: Event) => {
         e.preventDefault();
+        console.log('onClickData');
+        
         const login = this.refs.login;
         const email = this.refs.email;
         const firstName = this.refs.first_name;
         const secondName = this.refs.second_name;
         const displayName = this.refs.display_name;
         const phone = this.refs.phone;
-        const password = this.refs.password;
-        const passwordAgain = this.refs.password_again;
 
         const loginValue = (login as Input).value();
         const emailValue = (email as Input).value();
@@ -44,21 +45,15 @@ export class Profile extends Block {
         const secondNameValue = (secondName as Input).value();
         const displayNameValue = (displayName as Input).value();
         const phoneValue = (phone as Input).value();
-        const passwordValue = (password as Input).value();
-        const passwordAgainValue = (passwordAgain as Input).value();
 
         if (validation(login, loginValue) &&
-            validation(password, passwordValue) &&
             validation(email, emailValue) &&
             validation(firstName, firstNameValue) &&
             validation(displayName, displayNameValue) &&
             validation(secondName, secondNameValue) &&
-            validation(phone, phoneValue) &&
-            validation(passwordAgain, passwordAgainValue) &&
-            passwordValue === passwordAgainValue) {
+            validation(phone, phoneValue)) {
             console.log({
                 login: loginValue,
-                password: passwordValue,
                 email: emailValue,
                 firstName: firstNameValue,
                 secondName: secondNameValue,
@@ -66,6 +61,30 @@ export class Profile extends Block {
             });
         } else {
             alert('Пожалуйста, правильно заполните все поля');
+            return;
+        }
+      },
+      onClickPassword: (e: Event) => {
+        e.preventDefault();
+        console.log('onClickPassword');
+        
+        const oldPassword = this.refs.oldPassword;
+        const newPassword = this.refs.newPassword;
+        const newPasswordRepeat = this.refs.newPasswordRepeat;
+        const oldPasswordValue = (oldPassword as Input).value();
+        const newPasswordValue = (newPassword as Input).value();
+        const newPasswordRepeatValue = (newPasswordRepeat as Input).value();
+
+        if (validation(oldPassword, oldPasswordValue) &&
+            validation(newPassword, newPasswordValue) &&
+            validation(newPasswordRepeat, newPasswordRepeatValue) &&
+            newPasswordValue == newPasswordRepeatValue) {
+            console.log({
+              password: newPasswordValue,
+            });
+        } else {
+          console.log('oldPasswordValue', oldPasswordValue, 'newPassword', newPasswordValue, 'newPasswordRepeatValue', newPasswordRepeatValue);
+          alert('Пожалуйста, правильно заполните все поля');
             return;
         }
       },
