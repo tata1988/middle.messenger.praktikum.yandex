@@ -20,7 +20,9 @@ export class Auth extends Block {
         const passwordValue = (this.refs.password as Input).value();
         
         if (!validation(login, loginValue) && !validation(password, passwordValue)) {
+          
           alert('Пожалуйста, правильно заполните все поля');
+          this.refs.error.getContent()!.style.display = 'block';
           return;
         } else {
           console.log({login: loginValue,

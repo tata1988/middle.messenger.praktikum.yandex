@@ -4,8 +4,8 @@ export function validation(elem: any, value: string) {
     const pattern = {
         login: '[a-zA-Z0-9-_]{3,20}',
         password: '(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*',
-        name: '/^[A-ZА-Я-][a-zа-я-]+/gi',
-        email: '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi',
+        name: '/^[A-ZА-Я-][a-zа-яё-]',
+        email: '[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+',
         phone: '/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/gi'
     }
 

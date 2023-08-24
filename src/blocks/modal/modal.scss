@@ -1,0 +1,22 @@
+.modal {
+    display: none;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;    
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &__block {
+        border-radius: 12px;
+        background-color: $color_white;
+        margin: auto;
+        width: 340px;
+        padding: 40px 30px;
+    }
+
+}
+
+

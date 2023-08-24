@@ -7,11 +7,11 @@
         {{{ Label for="login" value="Логин" className="form__label label"}}}
         {{{ Input type="text" name="login" placeholder="ФИО" id="login" className="input" ref="login" pattern=pattern.login title=titleLogin}}}
         {{{ Line className="line line_blue"}}}
-        {{{ Error }}}
         {{{ Label for="password" value="Пароль" className="form__label label"}}}
         {{{ Input type="text" name="password" placeholder="••••••••••••" id="password" className="input"
         ref="password" pattern=pattern.password title=titlePassword}}}
         {{{Line className="line line_blue"}}}
+        {{{ Error message="Неверный логин или пароль" className="error" ref='error'}}}
       </div>
       {{{Button type='submit' label="Вход" className="btn" onClick=login}}}
     </form>

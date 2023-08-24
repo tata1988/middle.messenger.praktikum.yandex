@@ -1,20 +1,23 @@
 <main class="profile">
   <div class="profile__wrapper">
     <form class="profile__form form">
-
       {{{AvatarChange}}}
+      {{#if isData}}
+          {{{DataChange}}}
+      {{else}}
+          {{{PasswordChange}}}
+      {{/if}}
 
-      {{{DataChange}}}
-
-      {{{PasswordChange}}}
-
-      {{{Button type='submit' label="Сохранить" className="btn" onClick=onClick}}}
+      {{#if edit}}
+         {{{Button type='submit' label="Сохранить" className="btn" onClick=onClick}}}
+      {{else}}
     </form>
-
-    {{{Button type='button' label="Изменить данные" className="link link_left" onClick=changeData}}}
-    {{{Line className="line line_gray"}}}
-    {{{Button type='button' label="Изменить пароль" className="link link_left" onClick=changePassword}}}
-    {{{Line className="line line_gray"}}}
-    {{{Button type='button' label="Выйти" className="link link_left" onClick=link}}}
+        {{{Button type='button' label="Изменить данные" className="link link_left" onClick=changeData}}}
+        {{{Line className="line line_gray"}}}
+        {{{Button type='button' label="Изменить пароль" className="link link_left" onClick=changePassword}}}
+        {{{Line className="line line_gray"}}}
+        {{{Button type='button' label="Выйти" className="link link_left" onClick=link}}}
+      {{/if}}
+   
   </div>
 </main>

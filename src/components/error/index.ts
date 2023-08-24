@@ -1,14 +1,17 @@
 import Block from '../../utils/Block';
-import template from './line.hbs';
+import template from './error.hbs';
 
-interface LineProps {
+interface ErrorProps {
   className: string;
+  message: string;
+  ref: string;
 }
 
-export class Line extends Block {
-  constructor(props: LineProps) {
+export class Error extends Block {
+  constructor(props: ErrorProps) {
     super({
       ...props,
+      
     });
   }
 

@@ -1,5 +1,6 @@
 import Block from '../../../utils/Block';
-import template from './MessagesHeader.hbs';
+
+import template from './messagesHeader.hbs';
 
 interface MessagesHeaderProps {
   avatar: string;
@@ -13,7 +14,12 @@ export class MessagesHeader extends Block {
       avatar: '',
       name: 'Вадим',
       menu: () => {
-        console.log('Сделать меню')
+        const menu = this.refs.menu;
+        if (menu.getContent()!.style.display == '') {
+          menu.getContent()!.style.display = 'flex'
+        } else {
+          menu.getContent()!.style.display = '';
+        }
       },
     });
   }
