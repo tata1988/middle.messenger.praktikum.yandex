@@ -23,7 +23,7 @@ function queryStringify(data: any) {
     }
 };
 
-class HTTPTransport {
+export class HTTPTransport {
 
     get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
         const api: string = queryStringify(options.data);

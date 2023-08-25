@@ -33,7 +33,7 @@ export class Input extends Block {
     })
   }
   public value() {
-    return this.element!.value;
+    return (this._element as HTMLInputElement).value;
   }
   render() {
     return this.compile(template, this.props);

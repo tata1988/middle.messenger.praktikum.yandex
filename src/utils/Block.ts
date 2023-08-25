@@ -15,8 +15,8 @@ class Block {
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
-  private _element: HTMLElement | null = null;
-  private _meta: { props: any; };
+  protected _element: HTMLElement | null = null;
+  protected _meta: { props: any };
 
   /** JSDoc
    * @param {string} tagName
