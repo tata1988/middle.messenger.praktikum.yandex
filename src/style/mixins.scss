@@ -14,11 +14,6 @@
 @mixin wrapperForm {
     margin: auto;
     border-radius: 12px;
-    background-color: #FFF;
+    background-color: $color_white;
     @include colomn;
 }
-
-
-
-
-
