@@ -7,42 +7,42 @@
             <div class="row row_margin">
               {{{ Label for="email" value="Почта" className="label__profile"}}}
               {{{ Input type="text" name="email" placeholder="pochta@yandex.ru" id="email" className="input
-              input_rigth" ref="email" pattern=pattern.email}}}
+              input_rigth" ref="email" pattern=pattern.email onBlur=blurEmail title=title.email}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="login" value="Логин" className="label__profile"}}}
               {{{ Input type="text" name="login" placeholder="ivanivanov" id="login" className="input
-              input_rigth" ref="login" pattern=pattern.login}}}
+              input_rigth" ref="login" pattern=pattern.login onBlur=blurLogin title=title.login}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="first_name" value="Имя" className="label__profile"}}}
               {{{ Input type="text" name="first_name" placeholder="Иван" id="first_name" className="input
-              input_rigth" ref="first_name" pattern=pattern.name}}}
+              input_rigth" ref="first_name" pattern=pattern.name onBlur=blurFirstName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="second_name" value="Фамилия" className="label__profile"}}}
               {{{ Input type="text" name="second_name" placeholder="Иванов" id="second_name" className="input
-              input_rigth" ref="second_name" pattern=pattern.name}}}
+              input_rigth" ref="second_name" pattern=pattern.name onBlur=blurSecondName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="display_name" value="Имя в чате" className="label__profile"}}}
               {{{ Input type="text" name="display_name" placeholder="Иван" id="display_name" className="input
-              input_rigth" ref="display_name" pattern=pattern.name}}}
+              input_rigth" ref="display_name" pattern=pattern.name onBlur=blurDisplayName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="phone" value="Телефон" className="label__profile"}}}
-              {{{ Input type="tel" name="phone" placeholder="+7 (909) 967 30 30" id="phone" className="input
-              input_rigth" ref="phone" pattern=pattern.phone}}}
+              {{{ Input type="tel" name="phone" placeholder="+79099673030" id="phone" className="input
+              input_rigth" ref="phone" pattern=pattern.phone onBlur=blurTel title=title.tel}}}
             </div>
           </fieldset>
       {{else}}
@@ -50,21 +50,21 @@
             <div class="row row_margin">
               {{{ Label for="oldPassword" value="Старый пароль" className="label__profile"}}}
               {{{ Input type="text" name="oldPassword" placeholder="••••••••••••" id="oldPassword" className="input
-              input_rigth" ref="oldPassword" pattern=pattern.password}}}
+              input_rigth" ref="oldPassword" pattern=pattern.password onBlur=blurOldPassword title=title.password}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="newPassword" value="Новый пароль" className="label__profile"}}}
               {{{ Input type="text" name="newPassword" placeholder="••••••••••••" id="newPassword" className="input
-              input_rigth" ref="newPassword" pattern=pattern.password}}}
+              input_rigth" ref="newPassword" pattern=pattern.password onBlur=blurNewPassword title=title.password}}}
             </div>
             {{{ Line className="line line_gray"}}}
 
             <div class="row row_margin">
               {{{ Label for="newPasswordRepeat" value="Повторите новый пароль" className="label__profile"}}}
               {{{ Input type="text" name="newPassword" placeholder="••••••••••••" id="newPasswordRepeat" className="input
-              input_rigth" ref="newPasswordRepeat" pattern=pattern.password}}}
+              input_rigth" ref="newPasswordRepeat" pattern=pattern.password onBlur=blurNewPasswordRepeat title=title.password }}}
             </div>
             {{{ Line className="line line_gray"}}}
           </fieldset>

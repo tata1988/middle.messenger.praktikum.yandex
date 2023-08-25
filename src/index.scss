@@ -5,6 +5,7 @@
 @import './style/avatar.scss';
 @import './style/link.scss';
 @import './style/main.scss';
+@import './style/modal.scss';
 
 @import './components/button/button.scss';
 @import './components/label/label.scss';
@@ -16,13 +17,9 @@
 
 @import './blocks/chatList/chatList.scss';
 @import './blocks/messageFeed/messages.scss';
-@import './blocks/menu/menu.scss';
-@import './blocks/modal/modal.scss';
+@import './blocks/messageFeed/messagesHeader/menu.scss';
+
 
 @import './pages/errorPage404/errorPage.scss';
 @import './pages/chat/chat.scss';
 @import './pages/profile/profile.scss';
-
-
-
-
