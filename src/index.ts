@@ -29,5 +29,5 @@ registerComponent('MessagesFooter', MessagesFooter);
 registerComponent('AvatarChange', AvatarChange);
 
 window.addEventListener('DOMContentLoaded', () => {
-   render('auth')
+   render('homePage')
 });
