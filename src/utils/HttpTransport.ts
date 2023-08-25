@@ -60,7 +60,7 @@ class HTTPTransport {
             if (method === METHODS.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                xhr.send(queryStringify(data));
             }
         });
     };
