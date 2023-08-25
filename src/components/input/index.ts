@@ -26,11 +26,9 @@ export class Input extends Block {
     super({
       ...props,
       events: {
-        input: {
-          input: props.onChange,
-          blur: props.onBlur,
-          focus: props.onFocus,
-        }
+        input: props.onChange,
+        blur: props.onBlur,
+        focus: props.onFocus,
       },
     })
   }

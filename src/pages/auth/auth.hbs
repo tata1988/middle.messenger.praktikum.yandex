@@ -5,13 +5,13 @@
         {{{Title title="Вход" className="form__title title"}}}
 
         {{{ Label for="login" value="Логин" className="form__label label"}}}
-        {{{ Input type="text" name="login" placeholder="ФИО" id="login" className="input" ref="login" pattern=pattern.login title=titleLogin}}}
+        {{{ Input type="text" name="login" placeholder="ФИО" id="login" className="input" ref="login" pattern=pattern.login title="от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов,допустимы - и _" onBlur=onBlurLogin}}}
         {{{ Line className="line line_blue"}}}
         {{{ Label for="password" value="Пароль" className="form__label label"}}}
         {{{ Input type="text" name="password" placeholder="••••••••••••" id="password" className="input"
-        ref="password" pattern=pattern.password title=titlePassword}}}
+        ref="password" pattern=pattern.password title='от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.' onBlur=onBlurPassword}}}
         {{{Line className="line line_blue"}}}
-        {{{ Error message="Неверный логин или пароль" className="error" ref='error'}}}
+        {{{ Error message="НЕ правильный логин или пароль" className="error" ref='error'}}}
       </div>
       {{{Button type='submit' label="Вход" className="btn" onClick=login}}}
     </form>

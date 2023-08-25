@@ -11,28 +11,44 @@ export class Auth extends Block {
       login: 'login',
       password: 'password',
     },
-      titleLogin: 'Ошибка',
+
+      onBlurLogin: (e: Event) => {
+        e.preventDefault();
+        const login = this.refs.login;
+        const loginValue = (this.refs.login as Input).value();
+        if (validation(login, loginValue)) {
+          console.log({login: loginValue});
+        } else {
+          this.refs.error.getContent()!.style.display = 'block';
+        }
+      },
+
+      onBlurPassword: (e: Event) => {
+        e.preventDefault();
+        const password = this.refs.password;
+        const passwordValue = (this.refs.password as Input).value();
+        if (validation(password, passwordValue)) {
+          console.log({password: passwordValue});
+        } else {
+          this.refs.error.getContent()!.style.display = 'block';
+        }
+      },
+
       login: (e: Event) => {
         e.preventDefault();
         const login = this.refs.login;
-        const password = this.refs.password;
-        const loginValue = (this.refs.login as Input).value();
+        const loginValue = (login as Input).value();
+        const password = this.refs.login;
         const passwordValue = (this.refs.password as Input).value();
-        
-        const valLogin = validation(login, loginValue);
-        const valPas = validation(password, passwordValue);
-        console.log('валидация пароля', valPas);
-        console.log(passwordValue);
-        
-        if (valLogin && valPas) {
+
+        if (validation(login, loginValue) && validation(password, passwordValue)) {
               console.log({login: loginValue,
               password: passwordValue});
               render('chat');
-          } else {
-            alert('Пожалуйста, правильно заполните все поля');
+          } else { 
             this.refs.error.getContent()!.style.display = 'block';
-            return;
-          }
+            return; 
+            }
        
       },
       
