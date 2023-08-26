@@ -1,5 +1,6 @@
 .profile {
-   @include outerBlock;
+   @include outer-block;
+   
    padding: 60px 0;
 
    &__wrapper {

@@ -1,5 +1,5 @@
 .error-page {
-    @include outerBlock;
+    @include outer-block;
 
     &__wrapper {
         margin: auto;

@@ -1,4 +1,4 @@
-@mixin outerBlock {
+@mixin outer-block {
     display: flex;
     min-height: 100vh;
     height: 100%;
@@ -11,9 +11,10 @@
     align-items: center;
 }
 
-@mixin wrapperForm {
+@mixin wrapper-form {
     margin: auto;
     border-radius: 12px;
     background-color: $color_white;
+
     @include colomn;
 }

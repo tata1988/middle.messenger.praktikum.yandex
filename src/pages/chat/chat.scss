@@ -27,6 +27,7 @@
 
     &__block {
         @include colomn;
+        
         align-items: flex-start;
 
         &-message {
