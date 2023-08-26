@@ -14,17 +14,7 @@ export class ChatItem extends Block {
   constructor(props: ChatItemProps) {
     super({
       ...props,
-      chats: [{ avatar: 'ghbbb',
-        title: 'Вадим',
-        message: 'В 2008 году художник Jon Rafman  начал собирать...',
-        time: 'string',
-        count: 'string'},
-        { avatar: 'ghbbb',
-        title: 'Вадим',
-        message: 'В 2008 году художник Jon Rafman  начал собирать...',
-        time: 'string',
-        count: 'string',
-        active: true}]
+
     });
   }
 

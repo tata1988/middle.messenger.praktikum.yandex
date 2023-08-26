@@ -13,7 +13,6 @@ interface ChatItemProps {
   active?: boolean;
 }
 
-
 export class ChatList extends Block {
   constructor(props: ChatItemProps[]) {
     super({

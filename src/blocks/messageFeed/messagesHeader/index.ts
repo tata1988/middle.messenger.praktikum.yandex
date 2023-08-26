@@ -1,21 +1,13 @@
 import { Input } from '../../../components/input';
 import Block from '../../../utils/Block';
 import { validation } from '../../../utils/validation';
-
+import cross from '../../../img/cross.svg';
 import template from './messagesHeader.hbs';
 
-interface MessagesHeaderProps {
-  avatar: string;
-  name: string;
-  isMenu: boolean;
-  isStateAddUser: boolean;
-  isStateDeleteUser: boolean;
-}
-
 export class MessagesHeader extends Block {
-  constructor(props: MessagesHeaderProps) {
+  constructor() {
     super({
-      ...props,
+      image: cross,
       avatar: '',
       name: 'Вадим',
       isMenu: false,
