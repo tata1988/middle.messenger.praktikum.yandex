@@ -1,6 +1,5 @@
-import Block from '../../../../utils/Block';
-
-import template from './message.hbs';
+import Block from "../../../../utils/Block";
+import template from "./message.hbs";
 
 interface MessageProps {
   text?: string;
@@ -8,14 +7,13 @@ interface MessageProps {
   time: string;
   companion: boolean;
   active: boolean;
-  isStateText: boolean,
+  isStateText: boolean;
 }
 
 export class Message extends Block {
   constructor(props: MessageProps) {
     super({
       ...props,
-
     });
   }
 

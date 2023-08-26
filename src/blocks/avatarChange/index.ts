@@ -1,6 +1,6 @@
-import Block from '../../utils/Block';
-import template from './avatarChange.hbs';
-import avatar from '../../img/union.svg';
+import Block from "../../utils/Block";
+import template from "./avatarChange.hbs";
+import avatar from "../../img/union.svg";
 
 interface avatarChangeProps {
   name: string;
@@ -11,10 +11,10 @@ export class AvatarChange extends Block {
     super({
       ...props,
       avatar,
-      name: 'Виталий',
+      name: "Виталий",
       changeAvatar: (e: Event) => {
         e.preventDefault();
-        console.log('Avatar');
+        console.log("Avatar");
       },
     });
   }

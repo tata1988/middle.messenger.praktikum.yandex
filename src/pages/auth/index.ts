@@ -1,15 +1,15 @@
-import { Input } from '../../components/input';
-import Block from '../../utils/Block';
-import { render } from '../../utils/render';
-import { validation } from '../../utils/validation';
-import template from './auth.hbs';
+import { Input } from "../../components/input";
+import Block from "../../utils/Block";
+import { render } from "../../utils/render";
+import { validation } from "../../utils/validation";
+import template from "./auth.hbs";
 
 export class Auth extends Block {
   constructor() {
     super({
       pattern: {
-        login: 'login',
-        password: 'password',
+        login: "login",
+        password: "password",
       },
 
       onBlurLogin: (e: Event) => {
@@ -19,7 +19,7 @@ export class Auth extends Block {
         if (validation(login, loginValue)) {
           console.log({ login: loginValue });
         } else {
-          this.refs.error.getContent()!.style.display = 'block';
+          this.refs.error.getContent()!.style.display = "block";
         }
       },
 
@@ -30,7 +30,7 @@ export class Auth extends Block {
         if (validation(password, passwordValue)) {
           console.log({ password: passwordValue });
         } else {
-          this.refs.error.getContent()!.style.display = 'block';
+          this.refs.error.getContent()!.style.display = "block";
         }
       },
 
@@ -41,19 +41,22 @@ export class Auth extends Block {
         const password = this.refs.login;
         const passwordValue = (this.refs.password as Input).value();
 
-        if (validation(login, loginValue) && validation(password, passwordValue)) {
+        if (
+          validation(login, loginValue) &&
+          validation(password, passwordValue)
+        ) {
           console.log({
             login: loginValue,
             password: passwordValue,
           });
-          render('chat');
+          render("chat");
         } else {
-            this.refs.error.getContent()!.style.display = 'block';
+          this.refs.error.getContent()!.style.display = "block";
         }
       },
 
       link: () => {
-        render('registration');
+        render("registration");
       },
     });
   }

@@ -1,17 +1,17 @@
-import { Input } from '../../../components/input';
-import Block from '../../../utils/Block';
-import { validation } from '../../../utils/validation';
-import cross from '../../../img/cross.svg';
-import menuImg from '../../../img/btn.svg';
-import template from './messagesHeader.hbs';
+import { Input } from "../../../components/input";
+import Block from "../../../utils/Block";
+import { validation } from "../../../utils/validation";
+import cross from "../../../img/cross.svg";
+import menuImg from "../../../img/btn.svg";
+import template from "./messagesHeader.hbs";
 
 export class MessagesHeader extends Block {
   constructor() {
     super({
       image: cross,
       menuImg,
-      avatar: '',
-      name: 'Вадим',
+      avatar: "",
+      name: "Вадим",
       isMenu: false,
       isStateAddUser: false,
       isStateDeleteUser: false,
@@ -31,7 +31,7 @@ export class MessagesHeader extends Block {
         const newLoginValue = (newLogin as Input).value();
 
         if (!validation(newLogin, newLoginValue)) {
-          alert('Пожалуйста, правильно заполните поле');
+          alert("Пожалуйста, правильно заполните поле");
         } else {
           console.log({ login: newLoginValue });
           this.setProps({ isStateAddUser: false, isMenu: false });
@@ -39,10 +39,9 @@ export class MessagesHeader extends Block {
       },
       deleteUser: (e: Event) => {
         e.preventDefault();
-        console.log('Пользователь удален');
+        console.log("Пользователь удален");
         this.setProps({ isStateDeleteUser: false, isMenu: false });
       },
-
     });
   }
 

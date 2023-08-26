@@ -1,29 +1,28 @@
-import Block from '../../utils/Block';
-import template from './siteMap.hbs';
-import { render } from '../../utils/render';
+import Block from "../../utils/Block";
+import template from "./siteMap.hbs";
+import { render } from "../../utils/render";
 
 export class SiteMap extends Block {
   constructor() {
     super({
       linkAuth: () => {
-        render('auth');
+        render("auth");
       },
       linkRegistration: () => {
-        render('registration');
+        render("registration");
       },
       linkChat: () => {
-        render('chat');
+        render("chat");
       },
       linkProfile: () => {
-        render('profile');
+        render("profile");
       },
       linkError404: () => {
-        render('error404');
+        render("error404");
       },
       linkError500: () => {
-        render('error500');
+        render("error500");
       },
-
     });
   }
 

@@ -1,5 +1,5 @@
-import Block from '../../utils/Block';
-import template from './label.hbs';
+import Block from "../../utils/Block";
+import template from "./label.hbs";
 
 interface LabelProps {
   label: string;

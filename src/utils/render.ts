@@ -1,10 +1,10 @@
-import { Auth } from '../pages/auth';
-import { Registration } from '../pages/registration';
-import { ErrorPage404 } from '../pages/errorPage404';
-import { ErrorPage500 } from '../pages/errorPage500';
-import { Chat } from '../pages/chat';
-import { Profile } from '../pages/profile';
-import { SiteMap } from '../pages/siteMap';
+import { Auth } from "../pages/auth";
+import { Registration } from "../pages/registration";
+import { ErrorPage404 } from "../pages/errorPage404";
+import { ErrorPage500 } from "../pages/errorPage500";
+import { Chat } from "../pages/chat";
+import { Profile } from "../pages/profile";
+import { SiteMap } from "../pages/siteMap";
 
 const ROUTES = {
   homePage: SiteMap,
@@ -17,9 +17,9 @@ const ROUTES = {
 };
 
 export function render(name: keyof typeof ROUTES) {
-  const root = document.querySelector('#app')!;
+  const root = document.querySelector("#app")!;
 
-  root.innerHTML = '';
+  root.innerHTML = "";
 
   const Page = ROUTES[name];
 

@@ -1,8 +1,8 @@
-import { Input } from '../../../components/input';
-import Block from '../../../utils/Block';
-import template from './messagesFooter.hbs';
-import clip from '../../../img/clip.svg';
-import arrow from '../../../img/right-arrow.svg';
+import { Input } from "../../../components/input";
+import Block from "../../../utils/Block";
+import template from "./messagesFooter.hbs";
+import clip from "../../../img/clip.svg";
+import arrow from "../../../img/right-arrow.svg";
 
 export class MessagesFooter extends Block {
   constructor() {
@@ -15,7 +15,7 @@ export class MessagesFooter extends Block {
         const messageValue = (message as Input).value();
 
         if (!messageValue) {
-          alert('Пожалуйста, введите значение');
+          alert("Пожалуйста, введите значение");
         } else {
           console.log({ message: messageValue });
         }

@@ -1,5 +1,5 @@
-import Block from '../../utils/Block';
-import template from './line.hbs';
+import Block from "../../utils/Block";
+import template from "./line.hbs";
 
 interface LineProps {
   className: string;

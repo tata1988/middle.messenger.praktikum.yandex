@@ -1,6 +1,5 @@
-import Block from '../../../utils/Block';
-
-import template from './chatItem.hbs';
+import Block from "../../../utils/Block";
+import template from "./chatItem.hbs";
 
 interface ChatItemProps {
   avatar: string;
@@ -14,7 +13,6 @@ export class ChatItem extends Block {
   constructor(props: ChatItemProps) {
     super({
       ...props,
-
     });
   }
 

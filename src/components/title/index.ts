@@ -1,5 +1,5 @@
-import Block from '../../utils/Block';
-import template from './title.hbs';
+import Block from "../../utils/Block";
+import template from "./title.hbs";
 
 interface TitleProps {
   title: string;

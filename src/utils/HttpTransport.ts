@@ -1,41 +1,59 @@
 enum METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    PATCH = 'PATCH',
-    DELETE = 'DELETE'
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  PATCH = "PATCH",
+  DELETE = "DELETE",
 }
 
 type Options = {
-    method: METHODS;
-    data?: any;
+  method: METHODS;
+  data?: any;
 };
 
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+type OptionsWithoutMethod = Omit<Options, "method">;
 
 function queryStringify(data: any) {
   if (data === undefined) {
-    return '';
+    return "";
   }
   return Object.entries(data).reduce(
-    (acc, e, i) => `${acc}${i > 0 ? '&' : '?'}${e[0]}=${e[1]}`,
-    '',
+    (acc, e, i) => `${acc}${i > 0 ? "&" : "?"}${e[0]}=${e[1]}`,
+    "",
   );
 }
 
 export class HTTPTransport {
-  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+  get(
+    url: string,
+    options: OptionsWithoutMethod = {},
+  ): Promise<XMLHttpRequest> {
     const api: string = queryStringify(options.data);
     return this.request(`${url}${api}`, { ...options, method: METHODS.GET });
   }
 
-  put = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.PUT });
+  put = (
+    url: string,
+    options: OptionsWithoutMethod = {},
+  ): Promise<XMLHttpRequest> =>
+    this.request(url, { ...options, method: METHODS.PUT });
 
-  post = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.POST });
+  post = (
+    url: string,
+    options: OptionsWithoutMethod = {},
+  ): Promise<XMLHttpRequest> =>
+    this.request(url, { ...options, method: METHODS.POST });
 
-  delete = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => this.request(url, { ...options, method: METHODS.DELETE });
+  delete = (
+    url: string,
+    options: OptionsWithoutMethod = {},
+  ): Promise<XMLHttpRequest> =>
+    this.request(url, { ...options, method: METHODS.DELETE });
 
-  request(url: string, options: Options = { method: METHODS.GET }): Promise<XMLHttpRequest> {
+  request(
+    url: string,
+    options: Options = { method: METHODS.GET },
+  ): Promise<XMLHttpRequest> {
     const { method, data } = options;
 
     return new Promise((resolve, reject) => {
