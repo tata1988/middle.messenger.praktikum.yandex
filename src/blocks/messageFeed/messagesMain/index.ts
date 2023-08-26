@@ -1,5 +1,5 @@
 import Block from '../../../utils/Block';
-//import photo from '../../../img/photo.svg';
+import photo from '../../../img/photo.jpg';
 import template from './messagesMain.hbs';
 
 export class MessagesMain extends Block {
@@ -17,17 +17,17 @@ export class MessagesMain extends Block {
           companion: true,
           active: false,
           isStateText: false,
-          //image: photo,
+          image: photo,
           time: '11:56',
         },
-        { 
+        {
           companion: false,
           active: true,
           isStateText: true,
           text: 'Круто',
           time: '11:56',
         }
-      ] 
+      ]
 
     });
   }

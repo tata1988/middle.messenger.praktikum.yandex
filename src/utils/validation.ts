@@ -31,7 +31,4 @@ export function validation(elem: any, value: string) {
         const result = re.test(value);
         console.log(result);
         return result;
-
-    
-
 }

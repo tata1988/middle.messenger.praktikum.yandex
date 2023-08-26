@@ -2,12 +2,14 @@ import { Input } from '../../../components/input';
 import Block from '../../../utils/Block';
 import { validation } from '../../../utils/validation';
 import cross from '../../../img/cross.svg';
+import menuImg from '../../../img/btn.svg';
 import template from './messagesHeader.hbs';
 
 export class MessagesHeader extends Block {
   constructor() {
     super({
       image: cross,
+      menuImg: menuImg,
       avatar: '',
       name: 'Вадим',
       isMenu: false,
