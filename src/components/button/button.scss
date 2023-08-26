@@ -8,22 +8,19 @@
 }
 
 .btn__search {
-    position: relative;
+    display: flex;
     background-color: $color_grey;
     width: 20%;
     height: 32px;
     border-radius: 5px;
+}
 
-    &::after {
-        content: '';
-        position: absolute;
-        background-image: url('../../img/search.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-    }
+.btn__img {
+    margin: auto;
+}
+
+.btn__img_transform {
+    transform: rotate(-45deg);
 }
 
 .btn__header {
@@ -32,33 +29,12 @@
     height: 15px;
     margin-right: 10px;
 
-    &::after {
-        content: '';
-        position: absolute;
-        background-image: url('../../img/btn.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-    }
 }
 
 .btn__clip {
     position: relative;
     width: 32px;
     height: 32px;
-
-    &::after {
-        content: '';
-        position: absolute;
-        background-image: url('../../img/clip.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-    }
 }
 
 .btn__message {
@@ -67,18 +43,6 @@
     width: 31px;
     height: 28px;
     border-radius: 50%;
-
-    &::after {
-        content: '';
-        position: absolute;
-        background-image: url('../../img/right-arrow.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        width: 100%;
-        height: 100%;
-    }
 }
 
 .btn__circle {

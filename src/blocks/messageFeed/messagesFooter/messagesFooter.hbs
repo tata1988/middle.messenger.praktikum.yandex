@@ -1,8 +1,12 @@
 <footer class="messages__footer">
     <form class="form__message">
-        {{{ Button type='button' className="btn__clip" onClick=onClick}}}
-        {{{ Input type="text" name="message" placeholder="Сообщение" id="login" className="input input__message" ref="message"}}}
-        {{{ Button type='button' className="btn__message" onClick=sendMessage}}}
+        {{#Button type='button' className="btn__clip" onClick=onClick}}
+            <img class="btn__img" src={{clip}} alt="button">
+        {{/Button}}
+        {{{ Input type="text" name="message" placeholder="Сообщение" id="login" className="input input__message"
+        ref="message"}}}
+        {{#Button type='button' className="btn__message" onClick=sendMessage}}
+            <img class="btn__img" src={{arrow}} alt="button">
+        {{/Button}}
     </form>
 </footer>
-

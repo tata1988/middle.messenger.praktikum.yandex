@@ -11,9 +11,15 @@ import { Line } from './components/line';
 import { ChatItem } from './blocks/chatList/chatItem';
 import { ChatList } from './blocks/chatList';
 import { MessagesHeader } from './blocks/messageFeed/messagesHeader';
+import { Message } from './blocks/messageFeed/messagesMain/message';
+import { MessagesMain } from './blocks/messageFeed/messagesMain';
 import { MessagesFooter } from './blocks/messageFeed/messagesFooter';
 import { AvatarChange } from './blocks/avatarChange';
 import { Error } from './components/error';
+
+
+
+
 
 registerComponent('Button', Button);
 registerComponent('ButtonSubmit', Button);
@@ -25,6 +31,8 @@ registerComponent('Error', Error);
 registerComponent('ChatItem', ChatItem);
 registerComponent('ChatList', ChatList);
 registerComponent('MessagesHeader', MessagesHeader);
+registerComponent('Message', Message);
+registerComponent('MessagesMain', MessagesMain);
 registerComponent('MessagesFooter', MessagesFooter);
 registerComponent('AvatarChange', AvatarChange);
 
