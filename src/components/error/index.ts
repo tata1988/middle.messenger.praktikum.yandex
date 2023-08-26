@@ -11,7 +11,7 @@ export class Error extends Block {
   constructor(props: ErrorProps) {
     super({
       ...props,
-      
+
     });
   }
 

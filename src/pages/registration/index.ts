@@ -25,8 +25,8 @@ export class Registration extends Block {
       },
 
       blurEmail: (e: Event) => {
-        e.preventDefault(); 
-        const email = this.refs.email;
+        e.preventDefault();
+        const { email } = this.refs;
         const emailValue = (email as Input).value();
         if (!validation(email, emailValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -34,19 +34,19 @@ export class Registration extends Block {
       },
       blurLogin: (e: Event) => {
         e.preventDefault();
-        const login = this.refs.login;
+        const { login } = this.refs;
         const loginValue = (login as Input).value();
         if (!validation(login, loginValue)) {
           console.log('Пожалуйста, правильно заполните поле');
-        }     
+        }
       },
       blurFirstName: (e: Event) => {
         e.preventDefault();
         const firstName = this.refs.first_name;
-        const firstNameValue = (firstName as Input).value(); 
+        const firstNameValue = (firstName as Input).value();
         if (!validation(firstName, firstNameValue)) {
           console.log('Пожалуйста, правильно заполните поле');
-        }    
+        }
       },
       blurSecondName: (e: Event) => {
         e.preventDefault();
@@ -54,79 +54,76 @@ export class Registration extends Block {
         const secondNameValue = (secondName as Input).value();
         if (!validation(secondName, secondNameValue)) {
           console.log('Пожалуйста, правильно заполните поле');
-        }      
+        }
       },
       blurTel: (e: Event) => {
         e.preventDefault();
-        const phone = this.refs.phone;
-        const phoneValue = (phone as Input).value();  
+        const { phone } = this.refs;
+        const phoneValue = (phone as Input).value();
         if (!validation(phone, phoneValue)) {
           console.log('Пожалуйста, правильно заполните поле');
-        }   
+        }
       },
       blurPassword: (e: Event) => {
-          e.preventDefault();  
-          const password = this.refs.password;
-          const passwordValue = (this.refs.password as Input).value();
-          if (!validation(password, passwordValue)) {
-            console.log('Пожалуйста, правильно заполните поле');
-          } 
-               
+        e.preventDefault();
+        const { password } = this.refs;
+        const passwordValue = (this.refs.password as Input).value();
+        if (!validation(password, passwordValue)) {
+          console.log('Пожалуйста, правильно заполните поле');
+        }
       },
       blurPasswordAgain: (e: Event) => {
-          e.preventDefault();    
-          const passwordAgain = this.refs.password_again;
-          const passwordAgainValue = (passwordAgain as Input).value(); 
-          if (!validation(passwordAgain, passwordAgainValue)) {
-            console.log('Пожалуйста, правильно заполните поле');
-          }
-      },
-        
-
-        registration: (e: Event) => {
-            e.preventDefault();
-            const login = this.refs.login;
-            const email = this.refs.email;
-            const firstName = this.refs.first_name;
-            const secondName = this.refs.second_name;
-            const phone = this.refs.phone;
-            const password = this.refs.password;
-            const passwordAgain = this.refs.password_again;
-
-            const loginValue = (login as Input).value();
-            const emailValue = (email as Input).value();
-            const firstNameValue = (firstName as Input).value();
-            const secondNameValue = (secondName as Input).value();
-            const phoneValue = (phone as Input).value();
-            const passwordValue = (password as Input).value();
-            const passwordAgainValue = (passwordAgain as Input).value();
-
-            if (validation(login, loginValue) &&
-                validation(password, passwordValue) &&
-                validation(email, emailValue) &&
-                validation(firstName, firstNameValue) &&
-                validation(secondName, secondNameValue) &&
-                validation(phone, phoneValue) &&
-                validation(passwordAgain, passwordAgainValue) &&
-                passwordValue === passwordAgainValue) {
-                console.log({
-                    login: loginValue,
-                    password: passwordValue,
-                    email: emailValue,
-                    firstName: firstNameValue,
-                    secondName: secondNameValue,
-                    phone: phoneValue
-                });
-                render('chat');
-            } else {
-                alert('Пожалуйста, правильно заполните все поля');
-                return;
-            }
-        },
-
-        link: () => {
-            render('auth');
+        e.preventDefault();
+        const passwordAgain = this.refs.password_again;
+        const passwordAgainValue = (passwordAgain as Input).value();
+        if (!validation(passwordAgain, passwordAgainValue)) {
+          console.log('Пожалуйста, правильно заполните поле');
         }
+      },
+
+      registration: (e: Event) => {
+        e.preventDefault();
+        const { login } = this.refs;
+        const { email } = this.refs;
+        const firstName = this.refs.first_name;
+        const secondName = this.refs.second_name;
+        const { phone } = this.refs;
+        const { password } = this.refs;
+        const passwordAgain = this.refs.password_again;
+
+        const loginValue = (login as Input).value();
+        const emailValue = (email as Input).value();
+        const firstNameValue = (firstName as Input).value();
+        const secondNameValue = (secondName as Input).value();
+        const phoneValue = (phone as Input).value();
+        const passwordValue = (password as Input).value();
+        const passwordAgainValue = (passwordAgain as Input).value();
+
+        if (validation(login, loginValue)
+                && validation(password, passwordValue)
+                && validation(email, emailValue)
+                && validation(firstName, firstNameValue)
+                && validation(secondName, secondNameValue)
+                && validation(phone, phoneValue)
+                && validation(passwordAgain, passwordAgainValue)
+                && passwordValue === passwordAgainValue) {
+          console.log({
+            login: loginValue,
+            password: passwordValue,
+            email: emailValue,
+            firstName: firstNameValue,
+            secondName: secondNameValue,
+            phone: phoneValue,
+          });
+          render('chat');
+        } else {
+          alert('Пожалуйста, правильно заполните все поля');
+        }
+      },
+
+      link: () => {
+        render('auth');
+      },
     });
   }
 
@@ -134,4 +131,3 @@ export class Registration extends Block {
     return this.compile(template, this.props);
   }
 }
-

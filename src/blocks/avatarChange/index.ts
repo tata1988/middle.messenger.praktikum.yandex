@@ -10,12 +10,12 @@ export class AvatarChange extends Block {
   constructor(props: avatarChangeProps) {
     super({
       ...props,
-      avatar: avatar,
+      avatar,
       name: 'Виталий',
       changeAvatar: (e: Event) => {
         e.preventDefault();
-        console.log('Avatar')
-      }
+        console.log('Avatar');
+      },
     });
   }
 

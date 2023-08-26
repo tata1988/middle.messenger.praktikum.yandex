@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
-import template from "./siteMap.hbs";
-import { render } from "../../utils/render";
+import Block from '../../utils/Block';
+import template from './siteMap.hbs';
+import { render } from '../../utils/render';
 
 export class SiteMap extends Block {
   constructor() {

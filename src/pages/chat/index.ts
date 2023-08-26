@@ -4,7 +4,7 @@ import template from './chat.hbs';
 export class Chat extends Block {
   constructor() {
     super({
-      
+
     });
   }
 

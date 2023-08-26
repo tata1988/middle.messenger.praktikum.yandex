@@ -30,11 +30,13 @@ export class Input extends Block {
         blur: props.onBlur,
         focus: props.onFocus,
       },
-    })
+    });
   }
+
   public value() {
     return (this._element as HTMLInputElement).value;
   }
+
   render() {
     return this.compile(template, this.props);
   }

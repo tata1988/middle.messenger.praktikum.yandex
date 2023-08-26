@@ -22,7 +22,7 @@ export class ChatList extends Block {
         title: 'Вадим',
         message: 'В 2008 году художник Jon Rafman  начал собирать...',
         time: '11:33',
-        count: '3'
+        count: '3',
       },
       {
         avatar: '',
@@ -30,16 +30,15 @@ export class ChatList extends Block {
         message: 'В 2008 году художник Jon Rafman  начал собирать...',
         time: '12:45',
         count: '3',
-        active: true
+        active: true,
       }],
       search: (e: Event) => {
         e.preventDefault();
-        const search = this.refs.search;
+        const { search } = this.refs;
         const searchValue = (search as Input).value();
 
         if (!searchValue) {
           alert('Пожалуйста, введите запрос');
-          return;
         } else {
           console.log({ search: searchValue });
         }
@@ -47,7 +46,7 @@ export class ChatList extends Block {
 
       link: () => {
         render('profile');
-      }
+      },
     });
   }
 

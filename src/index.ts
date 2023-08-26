@@ -17,10 +17,6 @@ import { MessagesFooter } from './blocks/messageFeed/messagesFooter';
 import { AvatarChange } from './blocks/avatarChange';
 import { Error } from './components/error';
 
-
-
-
-
 registerComponent('Button', Button);
 registerComponent('ButtonSubmit', Button);
 registerComponent('Input', Input);
@@ -37,5 +33,5 @@ registerComponent('MessagesFooter', MessagesFooter);
 registerComponent('AvatarChange', AvatarChange);
 
 window.addEventListener('DOMContentLoaded', () => {
-   render('homePage')
+  render('homePage');
 });

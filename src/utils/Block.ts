@@ -1,21 +1,27 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { EventBus } from "./EventBas";
+import { EventBus } from './EventBas';
 
 class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
   public id = uuidv4();
+
   protected props: any;
+
   protected refs: Record<string, Block> = {};
+
   public children: Record<string, Block>;
+
   private eventBus: () => EventBus;
+
   protected _element: HTMLElement | null = null;
+
   protected _meta: { props: any };
 
   /** JSDoc
@@ -30,7 +36,7 @@ class Block {
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this._meta = {
-      props
+      props,
     };
 
     this.children = children;
@@ -61,7 +67,7 @@ class Block {
   _addEvents() {
     const { events = {} } = this.props as { events: Record<string, () => void> };
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
   }
@@ -91,7 +97,7 @@ class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -161,10 +167,10 @@ class Block {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = { ...target }
+        const oldTarget = { ...target };
 
         target[prop] = value;
 
@@ -174,8 +180,8 @@ class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
@@ -185,11 +191,11 @@ class Block {
   }
 
   show() {
-    this.getContent()!.style.display = "flex";
+    this.getContent()!.style.display = 'flex';
   }
 
   hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 }
 

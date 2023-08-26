@@ -14,9 +14,9 @@ interface MessageProps {
 export class Message extends Block {
   constructor(props: MessageProps) {
     super({
-     ...props,
+      ...props,
 
-  });
+    });
   }
 
   render() {

@@ -26,15 +26,15 @@ export class Profile extends Block {
       btnState: true,
 
       changeData: () => {
-        this.setProps({ edit: true, isData: true })
+        this.setProps({ edit: true, isData: true });
       },
       changePassword: () => {
-        this.setProps({ edit: true, isData: false, btnState: false })
+        this.setProps({ edit: true, isData: false, btnState: false });
       },
 
       blurEmail: (e: Event) => {
         e.preventDefault();
-        const email = this.refs.email;
+        const { email } = this.refs;
         const emailValue = (email as Input).value();
         if (!validation(email, emailValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -42,7 +42,7 @@ export class Profile extends Block {
       },
       blurLogin: (e: Event) => {
         e.preventDefault();
-        const login = this.refs.login;
+        const { login } = this.refs;
         const loginValue = (login as Input).value();
         if (!validation(login, loginValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -74,7 +74,7 @@ export class Profile extends Block {
       },
       blurTel: (e: Event) => {
         e.preventDefault();
-        const phone = this.refs.phone;
+        const { phone } = this.refs;
         const phoneValue = (phone as Input).value();
         if (!validation(phone, phoneValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -82,16 +82,15 @@ export class Profile extends Block {
       },
       blurOldPassword: (e: Event) => {
         e.preventDefault();
-        const oldPassword = this.refs.oldPassword;
+        const { oldPassword } = this.refs;
         const oldPasswordValue = (oldPassword as Input).value();
         if (!validation(oldPassword, oldPasswordValue)) {
           console.log('Пожалуйста, правильно заполните поле');
         }
-
       },
       blurNewPassword: (e: Event) => {
         e.preventDefault();
-        const newPassword = this.refs.newPassword;
+        const { newPassword } = this.refs;
         const newPasswordValue = (newPassword as Input).value();
         if (!validation(newPassword, newPasswordValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -99,7 +98,7 @@ export class Profile extends Block {
       },
       blurNewPasswordRepeat: (e: Event) => {
         e.preventDefault();
-        const newPasswordRepeat = this.refs.newPasswordRepeat;
+        const { newPasswordRepeat } = this.refs;
         const newPasswordRepeatValue = (newPasswordRepeat as Input).value();
         if (!validation(newPasswordRepeat, newPasswordRepeatValue)) {
           console.log('Пожалуйста, правильно заполните поле');
@@ -108,12 +107,12 @@ export class Profile extends Block {
       onClickData: (e: Event) => {
         e.preventDefault();
 
-        const login = this.refs.login;
-        const email = this.refs.email;
+        const { login } = this.refs;
+        const { email } = this.refs;
         const firstName = this.refs.first_name;
         const secondName = this.refs.second_name;
         const displayName = this.refs.display_name;
-        const phone = this.refs.phone;
+        const { phone } = this.refs;
 
         const loginValue = (login as Input).value();
         const emailValue = (email as Input).value();
@@ -122,39 +121,38 @@ export class Profile extends Block {
         const displayNameValue = (displayName as Input).value();
         const phoneValue = (phone as Input).value();
 
-        if (validation(login, loginValue) &&
-          validation(email, emailValue) &&
-          validation(firstName, firstNameValue) &&
-          validation(displayName, displayNameValue) &&
-          validation(secondName, secondNameValue) &&
-          validation(phone, phoneValue)) {
+        if (validation(login, loginValue)
+          && validation(email, emailValue)
+          && validation(firstName, firstNameValue)
+          && validation(displayName, displayNameValue)
+          && validation(secondName, secondNameValue)
+          && validation(phone, phoneValue)) {
           console.log({
             login: loginValue,
             email: emailValue,
             firstName: firstNameValue,
             secondName: secondNameValue,
-            phone: phoneValue
+            phone: phoneValue,
           });
           this.setProps({ edit: false, isData: true });
         } else {
           alert('Пожалуйста, правильно заполните все поля');
-          return;
         }
       },
       onClickPassword: (e: Event) => {
         e.preventDefault();
 
-        const oldPassword = this.refs.oldPassword;
-        const newPassword = this.refs.newPassword;
-        const newPasswordRepeat = this.refs.newPasswordRepeat;
+        const { oldPassword } = this.refs;
+        const { newPassword } = this.refs;
+        const { newPasswordRepeat } = this.refs;
         const oldPasswordValue = (oldPassword as Input).value();
         const newPasswordValue = (newPassword as Input).value();
         const newPasswordRepeatValue = (newPasswordRepeat as Input).value();
 
-        if (validation(oldPassword, oldPasswordValue) &&
-          validation(newPassword, newPasswordValue) &&
-          validation(newPasswordRepeat, newPasswordRepeatValue) &&
-          newPasswordValue === newPasswordRepeatValue) {
+        if (validation(oldPassword, oldPasswordValue)
+          && validation(newPassword, newPasswordValue)
+          && validation(newPasswordRepeat, newPasswordRepeatValue)
+          && newPasswordValue === newPasswordRepeatValue) {
           console.log({
             password: newPasswordValue,
           });
@@ -162,12 +160,11 @@ export class Profile extends Block {
         } else {
           console.log('oldPasswordValue', oldPasswordValue, 'newPassword', newPasswordValue, 'newPasswordRepeatValue', newPasswordRepeatValue);
           alert('Пожалуйста, правильно заполните все поля');
-          return;
         }
       },
       link: () => {
         render('chat');
-      }
+      },
     });
   }
 

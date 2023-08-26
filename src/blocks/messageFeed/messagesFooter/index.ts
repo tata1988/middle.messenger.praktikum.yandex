@@ -7,18 +7,17 @@ import arrow from '../../../img/right-arrow.svg';
 export class MessagesFooter extends Block {
   constructor() {
     super({
-      clip: clip,
-      arrow: arrow,
+      clip,
+      arrow,
       sendMessage: (e: Event) => {
         e.preventDefault();
-        const message = this.refs.message;
+        const { message } = this.refs;
         const messageValue = (message as Input).value();
-        
+
         if (!messageValue) {
           alert('Пожалуйста, введите значение');
-          return;
         } else {
-          console.log({message: messageValue});
+          console.log({ message: messageValue });
         }
       },
     });

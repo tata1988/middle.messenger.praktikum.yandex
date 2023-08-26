@@ -9,7 +9,7 @@ export class MessagesHeader extends Block {
   constructor() {
     super({
       image: cross,
-      menuImg: menuImg,
+      menuImg,
       avatar: '',
       name: 'Вадим',
       isMenu: false,
@@ -17,23 +17,21 @@ export class MessagesHeader extends Block {
       isStateDeleteUser: false,
 
       menu: () => {
-        this.setProps({ isMenu: true })
+        this.setProps({ isMenu: true });
       },
       setModalUser: () => {
         this.setProps({ isStateAddUser: true });
       },
       setModalDeleteUser: () => {
         this.setProps({ isStateDeleteUser: true });
-
       },
       addUser: (e: Event) => {
         e.preventDefault();
-        const newLogin = this.refs.newLogin;
+        const { newLogin } = this.refs;
         const newLoginValue = (newLogin as Input).value();
 
         if (!validation(newLogin, newLoginValue)) {
           alert('Пожалуйста, правильно заполните поле');
-          return;
         } else {
           console.log({ login: newLoginValue });
           this.setProps({ isStateAddUser: false, isMenu: false });
@@ -41,9 +39,9 @@ export class MessagesHeader extends Block {
       },
       deleteUser: (e: Event) => {
         e.preventDefault();
-        console.log("Пользователь удален");
+        console.log('Пользователь удален');
         this.setProps({ isStateDeleteUser: false, isMenu: false });
-      }
+      },
 
     });
   }

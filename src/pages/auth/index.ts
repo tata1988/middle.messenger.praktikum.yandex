@@ -7,17 +7,17 @@ import template from './auth.hbs';
 export class Auth extends Block {
   constructor() {
     super({
-    pattern: {
-      login: 'login',
-      password: 'password',
-    },
+      pattern: {
+        login: 'login',
+        password: 'password',
+      },
 
       onBlurLogin: (e: Event) => {
         e.preventDefault();
-        const login = this.refs.login;
+        const { login } = this.refs;
         const loginValue = (this.refs.login as Input).value();
         if (validation(login, loginValue)) {
-          console.log({login: loginValue});
+          console.log({ login: loginValue });
         } else {
           this.refs.error.getContent()!.style.display = 'block';
         }
@@ -25,10 +25,10 @@ export class Auth extends Block {
 
       onBlurPassword: (e: Event) => {
         e.preventDefault();
-        const password = this.refs.password;
+        const { password } = this.refs;
         const passwordValue = (this.refs.password as Input).value();
         if (validation(password, passwordValue)) {
-          console.log({password: passwordValue});
+          console.log({ password: passwordValue });
         } else {
           this.refs.error.getContent()!.style.display = 'block';
         }
@@ -36,25 +36,25 @@ export class Auth extends Block {
 
       login: (e: Event) => {
         e.preventDefault();
-        const login = this.refs.login;
+        const { login } = this.refs;
         const loginValue = (login as Input).value();
         const password = this.refs.login;
         const passwordValue = (this.refs.password as Input).value();
 
         if (validation(login, loginValue) && validation(password, passwordValue)) {
-              console.log({login: loginValue,
-              password: passwordValue});
-              render('chat');
-          } else { 
+          console.log({
+            login: loginValue,
+            password: passwordValue,
+          });
+          render('chat');
+        } else {
             this.refs.error.getContent()!.style.display = 'block';
-            return; 
-            }
-       
+        }
       },
-      
+
       link: () => {
         render('registration');
-      }
+      },
     });
   }
 
