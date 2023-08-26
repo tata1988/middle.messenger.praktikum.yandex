@@ -1,12 +1,12 @@
 import Block from "../../utils/Block";
 import template from "./line.hbs";
 
-interface LineProps {
+interface ILineProps {
   className: string;
 }
 
 export class Line extends Block {
-  constructor(props: LineProps) {
+  constructor(props: ILineProps) {
     super({
       ...props,
     });

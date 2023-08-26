@@ -1,14 +1,14 @@
 import Block from "../../utils/Block";
 import template from "./error.hbs";
 
-interface ErrorProps {
+interface IErrorProps {
   className: string;
   message: string;
   ref: string;
 }
 
 export class Error extends Block {
-  constructor(props: ErrorProps) {
+  constructor(props: IErrorProps) {
     super({
       ...props,
     });

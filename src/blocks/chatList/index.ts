@@ -3,7 +3,7 @@ import Block from "../../utils/Block";
 import { render } from "../../utils/render";
 import template from "./chatList.hbs";
 
-interface ChatItemProps {
+interface IChatItemProps {
   avatar: string;
   title: string;
   message: string;
@@ -13,7 +13,7 @@ interface ChatItemProps {
 }
 
 export class ChatList extends Block {
-  constructor(props: ChatItemProps[]) {
+  constructor(props: IChatItemProps[]) {
     super({
       ...props,
       chats: [

@@ -1,7 +1,7 @@
 import Block from "../../../utils/Block";
 import template from "./chatItem.hbs";
 
-interface ChatItemProps {
+interface IChatItemProps {
   avatar: string;
   title: string;
   message: string;
@@ -10,7 +10,7 @@ interface ChatItemProps {
   active?: boolean;
 }
 export class ChatItem extends Block {
-  constructor(props: ChatItemProps) {
+  constructor(props: IChatItemProps) {
     super({
       ...props,
     });

@@ -24,10 +24,12 @@ export function validation(elem: any, value: string) {
     case "phone":
       reg = pattern.phone;
       break;
+
+    // no default
   }
 
   const re = new RegExp(reg);
   const result = re.test(value);
-  console.log(result);
+
   return result;
 }

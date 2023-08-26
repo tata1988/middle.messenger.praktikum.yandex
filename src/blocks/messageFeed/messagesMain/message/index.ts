@@ -1,7 +1,7 @@
 import Block from "../../../../utils/Block";
 import template from "./message.hbs";
 
-interface MessageProps {
+interface IMessageProps {
   text?: string;
   image?: string;
   time: string;
@@ -11,7 +11,7 @@ interface MessageProps {
 }
 
 export class Message extends Block {
-  constructor(props: MessageProps) {
+  constructor(props: IMessageProps) {
     super({
       ...props,
     });

@@ -1,14 +1,14 @@
 import Block from "../../utils/Block";
 import template from "./label.hbs";
 
-interface LabelProps {
+interface ILabelProps {
   label: string;
   for: string;
   className: string;
 }
 
 export class Label extends Block {
-  constructor(props: LabelProps) {
+  constructor(props: ILabelProps) {
     super({
       ...props,
     });

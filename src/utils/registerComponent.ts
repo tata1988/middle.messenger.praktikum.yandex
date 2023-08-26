@@ -4,7 +4,8 @@ import Block from "./Block";
 
 export function registerComponent(name: string, Component: typeof Block) {
   if (name in Handlebars.helpers) {
-    throw `The ${name} component is already registered!`;
+    throw new Error("error");
+    // throw `The ${name} component is already registered!`;
   }
 
   Handlebars.registerHelper(

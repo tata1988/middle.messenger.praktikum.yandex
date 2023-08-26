@@ -1,13 +1,13 @@
 import Block from "../../utils/Block";
 import template from "./title.hbs";
 
-interface TitleProps {
+interface ITitleProps {
   title: string;
   className: string;
 }
 
 export class Title extends Block {
-  constructor(props: TitleProps) {
+  constructor(props: ITitleProps) {
     super({
       ...props,
     });
