@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import { EventBus } from "./EventBas";
 
+type Props = Record<string, any>;
+
 class Block {
   static EVENTS = {
     INIT: "init",
@@ -12,7 +14,7 @@ class Block {
 
   public id = uuidv4();
 
-  protected props: any;
+  protected props: Props;
 
   protected refs: Record<string, Block> = {};
 
@@ -22,7 +24,7 @@ class Block {
 
   protected _element: HTMLElement | null = null;
 
-  protected _meta: { props: any };
+  protected _meta: { props: Props };
 
   /** JSDoc
    * @param {string} tagName
@@ -49,8 +51,8 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {};
+  _getChildrenAndProps(childrenAndProps: Props) {
+    const props: Props = {};
     const children: Record<string, Block> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -71,6 +73,16 @@ class Block {
 
     Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
+    });
+  }
+
+  _removeEvents() {
+    const { events = {} } = this.props as {
+      events: Record<string, () => void>;
+    };
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName]);
     });
   }
 
@@ -102,17 +114,17 @@ class Block {
     );
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(_oldProps: any, _newProps: any) {
+  protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -125,7 +137,10 @@ class Block {
   }
 
   private _render() {
+    
     const fragment = this.render();
+
+    this._removeEvents();
 
     const newElement = fragment.firstElementChild as HTMLElement;
 
@@ -159,25 +174,22 @@ class Block {
   }
 
   getContent() {
-    return this.element;
+    return this._element;
   }
 
-  _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
+  _makePropsProxy(props: Props) {
     const self = this;
-
+    
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: string) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target, prop: string, value) {
         const oldTarget = { ...target };
 
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -188,12 +200,12 @@ class Block {
   }
 
   _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
+
     return document.createElement(tagName);
   }
 
   show() {
-    this.getContent()!.style.display = "flex";
+    this.getContent()!.style.display = "block";
   }
 
   hide() {

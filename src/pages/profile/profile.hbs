@@ -10,6 +10,7 @@
               input_rigth" ref="email" pattern=pattern.email onBlur=blurEmail title=title.email}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.email className="error" ref='error_email'}}}
 
             <div class="row row_margin">
               {{{ Label for="login" value="Логин" className="label__profile"}}}
@@ -17,6 +18,7 @@
               input_rigth" ref="login" pattern=pattern.login onBlur=blurLogin title=title.login}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.login className="error" ref='error_login'}}}
 
             <div class="row row_margin">
               {{{ Label for="first_name" value="Имя" className="label__profile"}}}
@@ -24,6 +26,7 @@
               input_rigth" ref="first_name" pattern=pattern.name onBlur=blurFirstName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.name className="error" ref='error_first_name'}}}
 
             <div class="row row_margin">
               {{{ Label for="second_name" value="Фамилия" className="label__profile"}}}
@@ -31,6 +34,7 @@
               input_rigth" ref="second_name" pattern=pattern.name onBlur=blurSecondName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.name className="error" ref='error_second_name'}}}
 
             <div class="row row_margin">
               {{{ Label for="display_name" value="Имя в чате" className="label__profile"}}}
@@ -38,12 +42,14 @@
               input_rigth" ref="display_name" pattern=pattern.name onBlur=blurDisplayName title=title.name}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.name className="error" ref='error_display_name'}}}
 
             <div class="row row_margin">
               {{{ Label for="phone" value="Телефон" className="label__profile"}}}
-              {{{ Input type="tel" name="phone" placeholder="+79099673030" id="phone" className="input
+              {{{ Input type="text" name="phone" placeholder="+79099673030" id="phone" className="input
               input_rigth" ref="phone" pattern=pattern.phone onBlur=blurTel title=title.tel}}}
             </div>
+            {{{ Error message=title.tel className="error" ref='error_phone'}}}
           </fieldset>
       {{else}}
           <fieldset class="form__wrapper">
@@ -53,6 +59,7 @@
               input_rigth" ref="oldPassword" pattern=pattern.password onBlur=blurOldPassword title=title.password}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.password className="error" ref='error_old_password'}}}
 
             <div class="row row_margin">
               {{{ Label for="newPassword" value="Новый пароль" className="label__profile"}}}
@@ -60,6 +67,7 @@
               input_rigth" ref="newPassword" pattern=pattern.password onBlur=blurNewPassword title=title.password}}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.password className="error" ref='error_new_password'}}}
 
             <div class="row row_margin">
               {{{ Label for="newPasswordRepeat" value="Повторите новый пароль" className="label__profile"}}}
@@ -67,6 +75,7 @@
               input_rigth" ref="newPasswordRepeat" pattern=pattern.password onBlur=blurNewPasswordRepeat title=title.password }}}
             </div>
             {{{ Line className="line line_gray"}}}
+            {{{ Error message=title.password className="error" ref='error_new_password_repeat'}}}
           </fieldset>
       {{/if}}
 

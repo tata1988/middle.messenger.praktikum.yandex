@@ -8,30 +8,37 @@
         {{{ Label for="email" value="Почта" className="form__label label"}}}
         {{{ Input type="email" name="email" placeholder="pochta@yandex.ru" id="email" className="input" ref="email" pattern=pattern.email title=title.email onBlur=blurEmail}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.email className="error" ref="error_email"}}}
 
         {{{ Label for="login" value="Логин" className="form__label label"}}}
         {{{ Input type="text" name="login" placeholder="ivanivanov" id="login" className="input" ref="login" pattern=pattern.login title=title.login onBlur=blurLogin}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.login className="error" ref="error_login"}}}
 
         {{{ Label for="first_name" value="Имя" className="form__label label"}}}
         {{{ Input type="text" name="first_name" placeholder="Иван" id="first_name" className="input" ref="first_name" pattern=pattern.name title=title.name onBlur=blurFirstName}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.name className="error" ref="error_first_name"}}}
 
         {{{ Label for="second_name" value="Фамилия" className="form__label label"}}}
         {{{ Input type="text" name="second_name" placeholder="Иванов" id="second_name" className="input" ref="second_name" pattern=pattern.name title=title.name onBlur=blurSecondName}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.name className="error" ref='error_second_name'}}}
 
         {{{ Label for="phone" value="Телефон" className="form__label label"}}}
         {{{ Input type="phone" name="phone" placeholder="+79099673030" id="phone" className="input" ref="phone" pattern=pattern.phone title=title.tel onBlur=blurTel}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.tel className="error" ref='error_phone'}}}
 
         {{{ Label for="password" value="Пароль" className="form__label label"}}}
         {{{ Input type="text" name="password" placeholder="••••••••••••" id="password" className="input" ref="password" pattern=pattern.password title=title.password onBlur=blurPassword}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.password className="error" ref='error_password'}}}
 
         {{{ Label for="password_again" value="Пароль (ещё раз)" className="form__label label"}}}
         {{{ Input type="text" name="password" placeholder="••••••••••••" id="password_again" className="input" ref="password_again" pattern=pattern.password title=title.password onBlur=blurPasswordAgain}}}
         {{{ Line className="line line_blue"}}}
+        {{{ Error message=title.password className="error" ref='error_password_again'}}}
 
       </div>
        {{{Button type='submit' label="Зарегистрировать" className="btn" onClick=registration}}}

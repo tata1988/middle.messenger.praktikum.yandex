@@ -31,7 +31,9 @@ export class Registration extends Block {
         const { email } = this.refs;
         const emailValue = (email as Input).value();
         if (!validation(email, emailValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_email.show();
+        } else {
+          this.refs.error_email.hide();
         }
       },
       blurLogin: (e: Event) => {
@@ -39,7 +41,9 @@ export class Registration extends Block {
         const { login } = this.refs;
         const loginValue = (login as Input).value();
         if (!validation(login, loginValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_login.show();
+        } else {
+          this.refs.error_login.hide();
         }
       },
       blurFirstName: (e: Event) => {
@@ -47,7 +51,9 @@ export class Registration extends Block {
         const firstName = this.refs.first_name;
         const firstNameValue = (firstName as Input).value();
         if (!validation(firstName, firstNameValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_first_name.show();
+        } else {
+          this.refs.error_first_name.hide();
         }
       },
       blurSecondName: (e: Event) => {
@@ -55,7 +61,9 @@ export class Registration extends Block {
         const secondName = this.refs.second_name;
         const secondNameValue = (secondName as Input).value();
         if (!validation(secondName, secondNameValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_second_name.show();
+        } else {
+          this.refs.error_second_name.hide();
         }
       },
       blurTel: (e: Event) => {
@@ -63,7 +71,9 @@ export class Registration extends Block {
         const { phone } = this.refs;
         const phoneValue = (phone as Input).value();
         if (!validation(phone, phoneValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_phone.show();
+        } else {
+          this.refs.error_phone.hide();
         }
       },
       blurPassword: (e: Event) => {
@@ -71,7 +81,9 @@ export class Registration extends Block {
         const { password } = this.refs;
         const passwordValue = (this.refs.password as Input).value();
         if (!validation(password, passwordValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_password.show();
+        } else {
+          this.refs.error_password.hide();
         }
       },
       blurPasswordAgain: (e: Event) => {
@@ -79,7 +91,9 @@ export class Registration extends Block {
         const passwordAgain = this.refs.password_again;
         const passwordAgainValue = (passwordAgain as Input).value();
         if (!validation(passwordAgain, passwordAgainValue)) {
-          console.log("Пожалуйста, правильно заполните поле");
+          this.refs.error_password_again.show();
+        } else {
+          this.refs.error_password_again.hide();
         }
       },
 
