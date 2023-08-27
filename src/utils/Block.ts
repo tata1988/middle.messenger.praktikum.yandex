@@ -137,7 +137,6 @@ class Block {
   }
 
   private _render() {
-    
     const fragment = this.render();
 
     this._removeEvents();
@@ -179,7 +178,7 @@ class Block {
 
   _makePropsProxy(props: Props) {
     const self = this;
-    
+
     return new Proxy(props, {
       get(target, prop: string) {
         const value = target[prop];
@@ -200,7 +199,6 @@ class Block {
   }
 
   _createDocumentElement(tagName: string) {
-
     return document.createElement(tagName);
   }
 

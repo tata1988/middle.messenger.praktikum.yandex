@@ -97,7 +97,7 @@ export class Profile extends Block {
       },
       blurOldPassword: (e: Event) => {
         e.preventDefault();
-        const oldPassword = this.refs.oldPassword;
+        const { oldPassword } = this.refs;
         const oldPasswordValue = (oldPassword as Input).value();
         if (!validation(oldPassword, oldPasswordValue)) {
           this.refs.error_old_password.show();
@@ -107,7 +107,7 @@ export class Profile extends Block {
       },
       blurNewPassword: (e: Event) => {
         e.preventDefault();
-        const newPassword  = this.refs.newPassword;
+        const { newPassword } = this.refs;
         const newPasswordValue = (newPassword as Input).value();
         if (!validation(newPassword, newPasswordValue)) {
           this.refs.error_new_password.show();
@@ -117,7 +117,7 @@ export class Profile extends Block {
       },
       blurNewPasswordRepeat: (e: Event) => {
         e.preventDefault();
-        const newPasswordRepeat = this.refs.newPasswordRepeat;
+        const { newPasswordRepeat } = this.refs;
         const newPasswordRepeatValue = (newPasswordRepeat as Input).value();
         if (!validation(newPasswordRepeat, newPasswordRepeatValue)) {
           this.refs.error_new_password_repeat.show();
@@ -128,12 +128,12 @@ export class Profile extends Block {
       onClickData: (e: Event) => {
         e.preventDefault();
 
-        const login  = this.refs.login;
-        const email = this.refs.email;
+        const { login } = this.refs;
+        const { email } = this.refs;
         const firstName = this.refs.first_name;
         const secondName = this.refs.second_name;
         const displayName = this.refs.display_name;
-        const phone  = this.refs.phone;
+        const { phone } = this.refs;
 
         const loginValue = (login as Input).value();
         const emailValue = (email as Input).value();
