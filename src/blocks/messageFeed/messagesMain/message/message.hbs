@@ -1,0 +1,13 @@
+<li class="message">
+    <div class="message__wrapper{{#if companion}} message__companion{{else}} message__own{{/if}}{{#if active}} message_active{{/if}}">
+        <div class="message__content">
+            {{#if isStateText}}
+                <p class="message__text">{{text}}</p>
+            {{else}}
+                <img src={{image}} alt="photo">
+            {{/if}}
+        </div>
+        <div class="message__time">{{time}}</div>
+    </div>
+</li>
+            

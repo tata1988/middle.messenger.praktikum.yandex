@@ -1,0 +1,26 @@
+.main {
+    @include outer-block;
+
+    &__wrapper {
+        padding: 50px 30px 30px;
+        min-width: 340px;
+        min-height: 390px;
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 14%);
+
+        @include wrapper-form;
+    }
+
+    &__form {
+        margin-bottom: 14px;
+
+        &-block {
+            max-width: 280px;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+    }
+
+    &__link {
+        padding-top: 14px;
+    }
+}

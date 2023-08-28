@@ -1,0 +1,56 @@
+<header class="messages__header">
+    <div class="messages__companion">
+        <div class="messages__avatar">{{avatar}}</div>
+        <div class="messages__name">{{name}}</div>
+    </div>
+    {{#Button type='button' className="btn__header" onClick=menu}}
+        <img class="btn__img" src={{menuImg}} alt="иконка">
+    {{/Button}}
+
+    {{#if isMenu}}
+    <div class="menu">
+        <div class="menu__item">
+            {{#Button type='button' className="btn__circle" onClick=setModalUser}}
+            <img class="btn__img" src={{image}} alt="иконка">
+            {{/Button}}
+            <p class="menu_link">Добавить пользователя</p>
+        </div>
+        <div class="menu__item">
+            {{#Button type='button' className="btn__circle" onClick=setModalDeleteUser}}
+                <img class="btn__img btn__img_transform" src={{image}} alt="иконка">
+            {{/Button}}
+            <p class="menu_link">Удалить пользователя</p>
+        </div>
+
+        {{#if isStateAddUser}}
+        <div class="modal">
+            <div class="modal__block">
+                <form class="form">
+                    {{{Title title='Добавить пользователя' className="form__title title"}}}
+                    {{{ Label for="user" value="Логин" className="form__label label"}}}
+                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="newLogin"
+                    pattern='login'}}}
+                    {{{ Line className="line line_blue line_mb"}}}
+                    {{{Button type='submit' label='Добавить' className="btn" onClick=addUser}}}
+                </form>
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if isStateDeleteUser}}
+        <div class="modal" ref="delete">
+            <div class="modal__block">
+                <form class="form">
+                    {{{Title title='Удалить пользователя' className="form__title title"}}}
+                    {{{ Label for="user" value="Логин" className="form__label label"}}}
+                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="newLogin"
+                    pattern='login'}}}
+                    {{{ Line className="line line_blue line_mb"}}}
+                    {{{Button type='submit' label='Удалить' className="btn" onClick=deleteUser}}}
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    {{/if}}
+</header>

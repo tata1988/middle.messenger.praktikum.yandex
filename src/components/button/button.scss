@@ -1,0 +1,54 @@
+.btn {
+    display: block;
+    width: 280px;
+    border-radius: 8px;
+    background: $color_blue;
+    color: #FFF;
+    padding: 12px 0;
+}
+
+.btn__search {
+    display: flex;
+    background-color: $color_grey;
+    width: 20%;
+    height: 32px;
+    border-radius: 5px;
+}
+
+.btn__img {
+    margin: auto;
+}
+
+.btn__img_transform {
+    transform: rotate(-45deg);
+}
+
+.btn__header {
+    position: relative;
+    width: 3px;
+    height: 15px;
+    margin-right: 10px;
+
+}
+
+.btn__clip {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.btn__message {
+    background-color: $color_blue;
+    position: relative;
+    width: 31px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.btn__circle {
+    display: flex;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid $color_blue;
+}

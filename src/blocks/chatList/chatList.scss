@@ -1,0 +1,8 @@
+.chatList {
+    display: flex;
+    flex-direction: column;
+    padding: 21px 10px 0;
+    width: 310px;
+    height: 100vh;
+    background-color: $bg_chatlist;
+}

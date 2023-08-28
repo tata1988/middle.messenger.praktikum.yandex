@@ -1,7 +1,12 @@
 $color_black: #1E1E1E;
 $color_blue: #3369F3;
 $color_grey: #EFEFEF;
+$bg_chatlist: #FBFBFB;
+$bg_active: #E4EDFD;
 $color_white: #fff;
+$grey2: #999;
+$grey3: #EAEAEA;
+$red: #FF2F2F;
 
 html {
   box-sizing: border-box;
@@ -14,7 +19,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 500;
   min-height: 100vh;
   color: $color_black;
