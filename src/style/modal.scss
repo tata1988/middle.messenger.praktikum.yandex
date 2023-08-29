@@ -10,10 +10,12 @@
     background-color: rgba(0, 0, 0, 40%);
 
     &__block {
+        @include colomn;
         border-radius: 12px;
         background-color: $color_white;
         margin: auto;
         width: 340px;
+        min-height: 260px;
         padding: 40px 30px;
     }
 }

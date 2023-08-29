@@ -3,6 +3,7 @@ import Block from "../../utils/Block";
 import { render } from "../../utils/render";
 import { validation } from "../../utils/validation";
 import template from "./profile.hbs";
+import arrow from "../../img/right-arrow.svg";
 
 export class Profile extends Block {
   constructor() {
@@ -27,6 +28,7 @@ export class Profile extends Block {
       edit: false,
       isData: true,
       btnState: true,
+      arrow: arrow,
 
       changeData: () => {
         this.setProps({ edit: true, isData: true });
