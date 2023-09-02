@@ -1,4 +1,6 @@
+import { SignupData } from "../../api/AuthAPI";
 import { Input } from "../../components/input";
+import AuthController from "../../controllers/AuthController";
 import Block from "../../utils/Block";
 import { render } from "../../utils/render";
 import { validation } from "../../utils/validation";
@@ -125,15 +127,16 @@ export class Registration extends Block {
           validation(passwordAgain, passwordAgainValue) &&
           passwordValue === passwordAgainValue
         ) {
-          console.log({
+          const data = {
             login: loginValue,
             password: passwordValue,
             email: emailValue,
-            firstName: firstNameValue,
-            secondName: secondNameValue,
+            first_name: firstNameValue,
+            second_name: secondNameValue,
             phone: phoneValue,
-          });
-          render("chat");
+          }
+          //console.log(data);
+          AuthController.signup(data as SignupData);
         } else {
           alert("Пожалуйста, правильно заполните все поля");
         }
