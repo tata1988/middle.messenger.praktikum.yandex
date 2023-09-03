@@ -1,11 +1,12 @@
 import { Input } from "../../components/input";
-import Block from "../../utils/Block";
-import { render } from "../../utils/render";
+import Block from "../../utils/Block";;
 import { validation } from "../../utils/validation";
 import template from "./profile.hbs";
 import arrow from "../../img/right-arrow.svg";
+import { withStore } from "../../utils/Store";
+import AuthController from "../../controllers/AuthController";
 
-export class Profile extends Block {
+export class ProfileSettings extends Block {
   constructor() {
     super({
       pattern: {
@@ -152,13 +153,16 @@ export class Profile extends Block {
           validation(secondName, secondNameValue) &&
           validation(phone, phoneValue)
         ) {
-          console.log({
+          const data = {
             login: loginValue,
             email: emailValue,
+            displayName: displayNameValue,
             firstName: firstNameValue,
             secondName: secondNameValue,
             phone: phoneValue,
-          });
+          }
+          console.log(data);
+
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -189,7 +193,7 @@ export class Profile extends Block {
         }
       },
       link: () => {
-        render("chat");
+        AuthController.logout();
       },
     });
   }
@@ -198,3 +202,8 @@ export class Profile extends Block {
     return this.compile(template, this.props);
   }
 }
+
+
+const withUser = withStore((state) => ({ ...state.user }))
+
+export const ProfileSettingsPage = withUser(ProfileSettings);

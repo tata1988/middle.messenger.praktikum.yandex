@@ -135,7 +135,6 @@ export class Registration extends Block {
             second_name: secondNameValue,
             phone: phoneValue,
           }
-          //console.log(data);
           AuthController.signup(data as SignupData);
         } else {
           alert("Пожалуйста, правильно заполните все поля");

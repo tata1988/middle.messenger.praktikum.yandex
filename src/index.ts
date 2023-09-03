@@ -20,7 +20,7 @@ import AuthController from "./controllers/AuthController";
 import Router from "./utils/Router";
 import { Auth } from "./pages/auth";
 import { Registration } from "./pages/registration";
-import { Profile } from "./pages/profile";
+import { ProfilePage } from "./pages/profileSettings";
 import { Chat } from "./pages/chat";
 
 registerComponent("Button", Button);
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   Router
     .use(Routes.Index, Auth)
     .use(Routes.Register, Registration)
-    .use(Routes.Profile, Profile)
+    .use(Routes.Profile, ProfilePage)
     .use(Routes.Messenger, Chat)
 
   let isProtectedRoute = true;

@@ -3,7 +3,7 @@ import { Registration } from "../pages/registration";
 import { ErrorPage404 } from "../pages/errorPage404";
 import { ErrorPage500 } from "../pages/errorPage500";
 import { Chat } from "../pages/chat";
-import { Profile } from "../pages/profile";
+import { Profile } from "../pages/profileSettings";
 import { SiteMap } from "../pages/siteMap";
 
 const ROUTES = {

@@ -1,4 +1,4 @@
-import { isEqual, set } from './helpers';
+import isEqual, {set } from './helpers';
 import Block from './Block';
 import { EventBus } from './EventBas';
 import { User } from '../api/AuthAPI';
@@ -66,8 +66,6 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
       componentWillUnmount() {
         store.off(StoreEvents.Updated, this.onStoreUpdate);
       }
-
-
     }
 
   }

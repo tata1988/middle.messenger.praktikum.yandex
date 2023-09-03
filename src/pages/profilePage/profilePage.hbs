@@ -1,0 +1,33 @@
+<div class="profile-page">
+  <div class="profile-page__link">
+    {{#Button type='button' className="btn__circle btn__back" onClick=goBack}}
+    <img class="btn__img btn__img_left" src={{arrow}} alt="button">
+    {{/Button}}
+  </div>
+
+  <main class="profile">
+    <div class="profile__wrapper">
+
+      <div class="profile__form form">
+        <div class="form__avatar avatar">
+          <div class="avatar__wrapper">
+           <img class="avatar__img" src={{avatar}} alt="иконка">
+        </div>
+        <span class="avatar__name">{{name}}</span>
+        </div>
+        <div class="form__wrapper">
+          {{#each fields}}
+            {{{profileField name=this.name value=this.value }}}
+          {{/each}}
+        </div>
+      </div>
+
+      {{{Button type='button' label="Изменить данные" className="link link_left" onClick=changeData}}}
+      {{{Line className="line line_gray"}}}
+      {{{Button type='button' label="Изменить пароль" className="link link_left" onClick=changePassword}}}
+      {{{Line className="line line_gray"}}}
+      {{{Button type='button' label="Выйти" className="link link_left" onClick=link}}}
+
+    </div>
+  </main>
+</div>

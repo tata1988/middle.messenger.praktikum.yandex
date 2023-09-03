@@ -3,7 +3,7 @@ import store from '../utils/Store';
 import router from '../utils/Router';
 import MessagesController from './MessagesController';
 
-export class AuthController {
+export class UserController {
   private readonly api: AuthAPI;
 
   constructor() {
@@ -31,8 +31,8 @@ export class AuthController {
   }
 
   async fetchUser() {
-    const user = await this.api.read();
-    store.set('user', user);
+    store.getState()
+    
   }
 
   async logout() {
@@ -48,4 +48,4 @@ export class AuthController {
   }
 }
 
-export default new AuthController();
+export default new UserController();
