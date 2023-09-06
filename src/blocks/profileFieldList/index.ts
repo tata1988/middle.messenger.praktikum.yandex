@@ -23,8 +23,6 @@ export class FieldsList extends Block {
   }
 
   render() {
-    console.log(this.props);
-    
     return this.compile(template, this.props);
   }
 }
@@ -39,7 +37,7 @@ const withUser = withStore((state) => ({
   {name: 'Имя в чате', value: state.user.display_name},
   {name: 'Телефон', value: state.user.phone},
   ],
-  avatar: state.user.avatar}))
+  avatar: `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}`}))
 export const ProfileFieldsList = withUser(FieldsList);
 
 

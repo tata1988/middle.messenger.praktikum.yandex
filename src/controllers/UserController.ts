@@ -1,8 +1,5 @@
-import ResourcesAPI from '../api/ResourcesAPI';
 import API, { UserAPI, UserPassword, UserProfile } from '../api/UserAPI';
 import AuthController from './AuthController';
-import ResourcesController from './ResourcesController';
-
 
 export class UserController {
   private readonly api: UserAPI;
@@ -33,15 +30,12 @@ export class UserController {
   async changeAvatar(avatar: FormData) {
     try {
       await this.api.changeAvatar(avatar);
-      ResourcesController.getAvatar()
       AuthController.fetchUser();
-    
+
     } catch (e: any) {
       console.error(e);
     }
   }
-
-
 }
 
 export default new UserController();

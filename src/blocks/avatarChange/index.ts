@@ -38,7 +38,6 @@ export class AvatarChange extends Block {
         const avatarValue = (avatar as Input).value();
         const files: FileList | null = (avatar as Input).files();
         const file = files ? files[0] : 'nofile';
-        console.log(file);
           
         const formData: FormData = new FormData();
         formData.append('avatar', file);
@@ -48,6 +47,7 @@ export class AvatarChange extends Block {
         } else {
           this.refs.error_avatar.hide();
           UserController.changeAvatar(formData);
+
           this.setProps({isChangeAvatar: false});
         }
         

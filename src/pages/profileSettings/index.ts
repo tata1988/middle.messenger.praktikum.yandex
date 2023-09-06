@@ -6,6 +6,7 @@ import arrow from "../../img/right-arrow.svg";
 import { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
 import UserController from "../../controllers/UserController";
+import ResourcesController from "../../controllers/ResourcesController";
 
 export class ProfileSettings extends Block {
   constructor(props: any) {
@@ -202,8 +203,7 @@ export class ProfileSettings extends Block {
   }
 
   render() {
-    console.log(this.props);
-    
+   
     return this.compile(template, this.props);
   }
 }
