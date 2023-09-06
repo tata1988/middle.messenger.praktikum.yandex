@@ -1,43 +1,46 @@
-import { UserProfile } from "../../api/UserAPI";
-import Block from "../../utils/Block";
-import template from "./chatList.hbs";
-import { ProfileField } from "./profileField";
+import Block from "../../utils/Block";;
+import template from "./profileFieldsList.hbs";
+import { withStore } from "../../utils/Store";
+import AuthController from "../../controllers/AuthController";
+import { User } from "../../api/AuthAPI";
 
-interface IProfileFieldsListProps extends UserProfile {}
+interface IProfileProps extends User {}
 
-const userFields = ['id', 'first_name', 'second_name', 'display_name', 'login', 'avatar', 'email', 'phone'] as Array<keyof IProfileFieldsListProps>;
-
-export class ProfileFieldsList extends Block {
-  constructor(props: IProfileFieldsListProps) {
+export class FieldsList extends Block {
+  constructor(props: IProfileProps) {
     super({
       ...props,
-      fields: [
-        
-      ]
-     
+      changeData: () => {
+        this.setProps({ edit: true, isData: true });
+      },
+      changePassword: () => {
+        this.setProps({ edit: true, isData: false, btnState: false });
+      },
+      link: () => {
+        AuthController.logout();
+      },
     });
   }
 
-  protected componentDidUpdate(oldProps: IProfileFieldsListProps, newProps: IProfileFieldsListProps): boolean {
-
-    (fields as ProfileField[]).forEach((field, i) => {
-      field.setProps({  value: newProps[userFields[i]] });
-    });
-
-    /**
-     * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
-     *
-     * this.children.fields = userFields.map(name => {
-     *   return new ProfileField({ name, value: newProps[name] });
-     * });
-     */
-
-    /**
-     * Так как мы обновили детей, этот компонент не обязательно рендерить
-     */
-    return false;
-  }
   render() {
+    console.log(this.props);
+    
     return this.compile(template, this.props);
   }
 }
+
+
+const withUser = withStore((state) => ({ 
+  fields: [
+  {name: 'Почта', value: state.user.email},
+  {name: 'Логин', value: state.user.login},
+  {name: 'Имя', value: state.user.first_name},
+  {name: 'Фамилия', value: state.user.second_name},
+  {name: 'Имя в чате', value: state.user.display_name},
+  {name: 'Телефон', value: state.user.phone},
+  ],
+  avatar: state.user.avatar}))
+export const ProfileFieldsList = withUser(FieldsList);
+
+
+

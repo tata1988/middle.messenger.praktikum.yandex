@@ -7,7 +7,6 @@
 
   <main class="profile">
     <div class="profile__wrapper">
-
       <div class="profile__form form">
         <div class="form__avatar avatar">
           <div class="avatar__wrapper">
@@ -17,7 +16,7 @@
         </div>
         <div class="form__wrapper">
           {{#each fields}}
-            {{{profileField name=this.name value=this.value }}}
+            {{{ProfileField name=this.name value=this.value }}}
           {{/each}}
         </div>
       </div>

@@ -2,6 +2,7 @@ import Block from "../../utils/Block";
 import template from "./avatarChange.hbs";
 import avatar from "../../img/union.svg";
 import { Input } from "../../components/input";
+import UserController from "../../controllers/UserController";
 
 export class AvatarChange extends Block {
   constructor() {
@@ -35,11 +36,18 @@ export class AvatarChange extends Block {
         e.preventDefault();
         const { avatar } = this.refs;
         const avatarValue = (avatar as Input).value();
+        const files: FileList | null = (avatar as Input).files();
+        const file = files ? files[0] : 'nofile';
+        console.log(file);
+          
+        const formData: FormData = new FormData();
+        formData.append('avatar', file);
 
         if (!avatarValue) {
           this.refs.error_avatar.show();
         } else {
           this.refs.error_avatar.hide();
+          UserController.changeAvatar(formData);
           this.setProps({isChangeAvatar: false});
         }
         

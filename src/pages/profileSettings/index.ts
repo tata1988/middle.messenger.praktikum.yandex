@@ -5,10 +5,12 @@ import template from "./profile.hbs";
 import arrow from "../../img/right-arrow.svg";
 import { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
+import UserController from "../../controllers/UserController";
 
 export class ProfileSettings extends Block {
-  constructor() {
+  constructor(props: any) {
     super({
+      ...props,
       pattern: {
         login: "login",
         password: "password",
@@ -156,13 +158,12 @@ export class ProfileSettings extends Block {
           const data = {
             login: loginValue,
             email: emailValue,
-            displayName: displayNameValue,
-            firstName: firstNameValue,
-            secondName: secondNameValue,
+            display_name: displayNameValue,
+            first_name: firstNameValue,
+            second_name: secondNameValue,
             phone: phoneValue,
           }
-          console.log(data);
-
+          UserController.changeProfile(data);
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -184,9 +185,11 @@ export class ProfileSettings extends Block {
           validation(newPasswordRepeat, newPasswordRepeatValue) &&
           newPasswordValue === newPasswordRepeatValue
         ) {
-          console.log({
-            password: newPasswordValue,
-          });
+          const password = {
+            oldPassword: oldPasswordValue,
+            newPassword: newPasswordValue,
+          }
+          UserController.changePassword(password)
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -199,10 +202,11 @@ export class ProfileSettings extends Block {
   }
 
   render() {
+    console.log(this.props);
+    
     return this.compile(template, this.props);
   }
 }
-
 
 const withUser = withStore((state) => ({ ...state.user }))
 

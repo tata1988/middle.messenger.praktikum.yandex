@@ -1,19 +1,17 @@
+import { ChatInfo } from "../../api/ChatsAPI";
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
+import { withStore } from "../../utils/Store";
 import { render } from "../../utils/render";
 import template from "./chatList.hbs";
 
-interface IChatItemProps {
-  avatar: string;
-  title: string;
-  message: string;
-  time: string;
-  count: string;
-  active?: boolean;
+interface ChatsListProps {
+  chats: ChatInfo[];
+  isLoaded: boolean;
 }
 
-export class ChatList extends Block {
-  constructor(props: IChatItemProps[]) {
+export class ChatsListBase extends Block {
+  constructor(props: ChatsListProps) {
     super({
       ...props,
       chats: [
@@ -22,14 +20,14 @@ export class ChatList extends Block {
           title: "Вадим",
           message: "В 2008 году художник Jon Rafman начал собирать...",
           time: "11:33",
-          count: "3",
+          unread_count: "3",
         },
         {
           avatar: "",
           title: "Вадим",
           message: "В 2008 году художник Jon Rafman начал собирать...",
           time: "12:45",
-          count: "3",
+          unread_count: "3",
           active: true,
         },
       ],
@@ -55,3 +53,7 @@ export class ChatList extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const withChats = withStore((state) => ({chats: [...(state.chats || [])]}));
+
+export const ChatsList = withChats(ChatsListBase);

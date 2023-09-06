@@ -1,51 +1,47 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
-import store from '../utils/Store';
-import router from '../utils/Router';
-import MessagesController from './MessagesController';
+import ResourcesAPI from '../api/ResourcesAPI';
+import API, { UserAPI, UserPassword, UserProfile } from '../api/UserAPI';
+import AuthController from './AuthController';
+import ResourcesController from './ResourcesController';
+
 
 export class UserController {
-  private readonly api: AuthAPI;
+  private readonly api: UserAPI;
 
   constructor() {
     this.api = API;
   }
 
-  async signin(data: SigninData) {
+  async changeProfile(data: UserProfile) {
     try {
-      await this.api.signin(data);
-      await this.fetchUser();
-      router.go('/settings');
+      await this.api.changeProfile(data);
+      AuthController.fetchUser();
     } catch (e: any) {
       console.error(e);
     }
   }
 
-  async signup(data: SignupData) {
+  async changePassword(password: UserPassword) {
     try {
-      await this.api.signup(data);
-      await this.fetchUser();
-      router.go('/settings');
-    } catch (e: any) {
-      console.error(e.message);
-    }
-  }
-
-  async fetchUser() {
-    store.getState()
+      await this.api.changePassword(password);
+      AuthController.fetchUser();
     
-  }
-
-  async logout() {
-    try {
-      MessagesController.closeAll();
-
-      await this.api.logout();
-
-      router.go('/');
     } catch (e: any) {
-      console.error(e.message);
+      console.error(e);
     }
   }
+
+  async changeAvatar(avatar: FormData) {
+    try {
+      await this.api.changeAvatar(avatar);
+      ResourcesController.getAvatar()
+      AuthController.fetchUser();
+    
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
+
+
 }
 
 export default new UserController();

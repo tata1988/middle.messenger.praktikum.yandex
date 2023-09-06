@@ -8,7 +8,7 @@ import { Title } from "./components/title";
 import { Label } from "./components/label";
 import { Line } from "./components/line";
 import { ChatItem } from "./blocks/chatList/chatItem";
-import { ChatList } from "./blocks/chatList";
+
 import { MessagesHeader } from "./blocks/messageFeed/messagesHeader";
 import { Message } from "./blocks/messageFeed/messagesMain/message";
 import { MessagesMain } from "./blocks/messageFeed/messagesMain";
@@ -20,8 +20,13 @@ import AuthController from "./controllers/AuthController";
 import Router from "./utils/Router";
 import { Auth } from "./pages/auth";
 import { Registration } from "./pages/registration";
-import { ProfilePage } from "./pages/profileSettings";
+
 import { Chat } from "./pages/chat";
+
+import { ChatsList } from "./blocks/chatList";
+import { ProfileField } from "./blocks/profileFieldList/profileField";
+import { ProfileFieldsList } from "./blocks/profileFieldList";
+import { ProfileSettingsPage } from "./pages/profileSettings";
 
 registerComponent("Button", Button);
 registerComponent("ButtonSubmit", Button);
@@ -31,13 +36,16 @@ registerComponent("Label", Label);
 registerComponent("Line", Line);
 registerComponent("Error", Error);
 registerComponent("ChatItem", ChatItem);
-registerComponent("ChatList", ChatList);
+registerComponent("ChatList", ChatsList);
 registerComponent("MessagesHeader", MessagesHeader);
 registerComponent("Message", Message);
 registerComponent("MessagesMain", MessagesMain);
 registerComponent("MessagesFooter", MessagesFooter);
 registerComponent("Avatar", Avatar);
 registerComponent("AvatarChange", AvatarChange);
+registerComponent("ProfileField", ProfileField);
+registerComponent("ProfileFieldsList", ProfileFieldsList);
+
 
 enum Routes {
   Index = '/',
@@ -50,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   Router
     .use(Routes.Index, Auth)
     .use(Routes.Register, Registration)
-    .use(Routes.Profile, ProfilePage)
+    .use(Routes.Profile, ProfileSettingsPage)
     .use(Routes.Messenger, Chat)
 
   let isProtectedRoute = true;

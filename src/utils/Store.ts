@@ -1,9 +1,10 @@
-import isEqual, {set } from './helpers';
+import isEqual, { set } from './helpers';
+
 import Block from './Block';
-import { EventBus } from './EventBas';
 import { User } from '../api/AuthAPI';
 import { ChatInfo } from '../api/ChatsAPI';
 import { Message } from '../controllers/MessagesController';
+import { EventBus } from './EventBas';
 
 export enum StoreEvents {
   Updated = 'updated'
@@ -16,8 +17,9 @@ interface State {
   selectedChat?: number;
 }
 
+
 export class Store extends EventBus {
-  private state: State = {} as State;
+  private state: any = {};
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
@@ -61,6 +63,7 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
         };
 
         store.on(StoreEvents.Updated, this.onStoreUpdate);
+
       }
 
       componentWillUnmount() {

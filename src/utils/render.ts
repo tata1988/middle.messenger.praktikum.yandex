@@ -1,17 +1,17 @@
 import { Auth } from "../pages/auth";
-import { Registration } from "../pages/registration";
+//import { Registration } from "../pages/registration";
 import { ErrorPage404 } from "../pages/errorPage404";
 import { ErrorPage500 } from "../pages/errorPage500";
 import { Chat } from "../pages/chat";
-import { Profile } from "../pages/profileSettings";
+import { ProfileSettings } from "../pages/profileSettings";
 import { SiteMap } from "../pages/siteMap";
 
 const ROUTES = {
   homePage: SiteMap,
   auth: Auth,
-  registration: Registration,
+  //registration: Registration,
   chat: Chat,
-  profile: Profile,
+  profile: ProfileSettings,
   error404: ErrorPage404,
   error500: ErrorPage500,
 };

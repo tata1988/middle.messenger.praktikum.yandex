@@ -1,14 +1,13 @@
+import { User } from './AuthAPI';
 import BaseAPI from './BaseAPI';
 
 export interface UserProfile {
-  id: number;
   first_name: string;
   second_name: string;
   display_name: string;
   login: string;
   email: string;
   phone: string;
-  avatar: string;
 }
 
 export interface UserPassword {
@@ -21,11 +20,11 @@ export class UserAPI extends BaseAPI {
     super('/user');
   }
 
-  changeProfile(data: UserProfile): Promise<unknown> {
+  changeProfile(data: UserProfile) {
     return this.http.put('/profile', data);
   }
 
-  changeAvatar(avatar: string): Promise<unknown> {
+  changeAvatar(avatar: FormData) {
     return this.http.put('/profile/avatar', avatar);
   }
 
@@ -33,7 +32,7 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/password', password);
   }
 
-  read(id: number): Promise<UserProfile> {
+  read(id: number): Promise<User> {
     return this.http.get(`/${id}`);
   }
 
