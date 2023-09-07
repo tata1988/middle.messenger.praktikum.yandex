@@ -2,8 +2,8 @@ import { ChatInfo } from "../../api/ChatsAPI";
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
 import { withStore } from "../../utils/Store";
-import { render } from "../../utils/render";
 import template from "./chatList.hbs";
+import Router from "../../utils/Router";
 
 interface ChatsListProps {
   chats: ChatInfo[];
@@ -44,10 +44,11 @@ export class ChatsListBase extends Block {
       },
 
       link: () => {
-        render("profile");
+        Router.go('profile');
       },
     });
   }
+  
 
   render() {
     return this.compile(template, this.props);

@@ -32,7 +32,6 @@
     width: 3px;
     height: 15px;
     margin-right: 10px;
-
 }
 
 .btn__clip {
@@ -60,4 +59,16 @@
 .btn__back {
     margin: auto;
     background-color: $color_blue;
+}
+
+.btn__chat {
+    color: $grey2;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 23px;
+
+    &:hover {
+    color: $color_black;
+    
+    }
 }

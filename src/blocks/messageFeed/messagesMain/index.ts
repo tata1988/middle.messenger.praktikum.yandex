@@ -1,6 +1,7 @@
 import Block from "../../../utils/Block";
 import photo from "../../../img/photo.jpg";
 import template from "./messagesMain.hbs";
+import { withStore } from "../../../utils/Store";
 
 export class MessagesMain extends Block {
   constructor() {
@@ -35,3 +36,23 @@ export class MessagesMain extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const withSelectedChatMessages = withStore(state => {
+  const selectedChatId = state.selectedChat;
+
+  if (!selectedChatId) {
+    return {
+      messages: [],
+      selectedChat: undefined,
+      userId: state.user.id
+    };
+  }
+
+  return {
+    messages: (state.messages || {})[selectedChatId] || [],
+    selectedChat: state.selectedChat,
+    userId: state.user.id
+  };
+});
+
+export const Messenger = withSelectedChatMessages(MessagesMain);

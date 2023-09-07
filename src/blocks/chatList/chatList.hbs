@@ -1,6 +1,9 @@
 <section class="chatList">
-    {{{Button type='button' label="Профиль" className="link_right" onClick=link}}}
-
+    <div class="chatList__btn-wrapper">
+        {{{Button type='button' label="Добавить чат" className="btn__chat" onClick=addChat}}}
+        {{{Button type='button' label="Удалить чат" className="btn__chat" onClick=deleteChat}}}
+        {{{Button type='button' label="Профиль" className="link_right" onClick=link}}}
+    </div>
     <form type="search" class="form__search">
         {{{ Input type="search" placeholder="Поиск" className="input input__search" ref="search"
         pattern=pattern.message}}}
@@ -12,9 +15,10 @@
         </svg>
         {{/Button}}
     </form>
+
     <ul class="chats">
         {{#each chats}}
-        {{{ChatItem avatar=avatar title=title message=message time=time count=count }}}
+            {{{ChatItem avatar=avatar title=title message=message time=time count=count }}}
         {{/each}}
     </ul>
 </section>

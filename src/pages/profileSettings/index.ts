@@ -6,7 +6,7 @@ import arrow from "../../img/right-arrow.svg";
 import { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
 import UserController from "../../controllers/UserController";
-import ResourcesController from "../../controllers/ResourcesController";
+import Router from "../../utils/Router";
 
 export class ProfileSettings extends Block {
   constructor(props: any) {
@@ -33,7 +33,9 @@ export class ProfileSettings extends Block {
       isData: true,
       btnState: true,
       arrow: arrow,
-
+      goBack: () => {
+        Router.back();
+      },
       changeData: () => {
         this.setProps({ edit: true, isData: true });
       },
@@ -203,7 +205,7 @@ export class ProfileSettings extends Block {
   }
 
   render() {
-   
+
     return this.compile(template, this.props);
   }
 }
