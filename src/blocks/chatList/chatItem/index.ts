@@ -24,7 +24,7 @@ export class ChatItemBase extends Block {
   }
 
   render() {
-    console.log('ChatItem', this.props);
+    //console.log('ChatItem', this.props);
     return this.compile(template, {...this.props, isSelected: this.props.id === this.props.selectedChat?.id});
   }
 }
@@ -33,5 +33,3 @@ export const withSelectedChat = withStore(state => ({
   selectedChat: (state.chats || []).find(({id}) => id === state.selectedChat)}));
 
 export const ChatItem = withSelectedChat(ChatItemBase);
-
-//withSelectedChat(Chat);

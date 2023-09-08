@@ -23,7 +23,7 @@
 
     <ul class="chats">
         {{#each chats}}
-            {{{ChatItem id=this.id avatar=this.avatar title=this.title last_message=this.last_message time=this.time unread_count=this.unread_count}}}
+            {{{ChatItem id=this.id avatar=this.avatar title=this.title last_message=this.last_message.content time=this.time unread_count=this.unread_count}}}
         {{/each}}
     </ul>
 </section>

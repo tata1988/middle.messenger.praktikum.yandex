@@ -16,7 +16,7 @@ export class ChatsListBase extends Block {
   constructor(props: ChatsListProps) {
     super({
       ...props,
-    
+
       addChat: (e: Event) => {
         e.preventDefault();
         const addChat = this.refs.addChat;
@@ -39,7 +39,7 @@ export class ChatsListBase extends Block {
         }
       },
       link: () => {
-        Router.go('profile');
+        Router.go('/settings');
       },
     });
   }
@@ -50,8 +50,9 @@ export class ChatsListBase extends Block {
   }
 }
 
-const withChats = withStore((state) => ({ 
-  chats: [...(state.chats || [])] }));
+const withChats = withStore((state) => ({
+  chats: [...(state.chats || [])]
+}));
 
 export const ChatsList = withChats(ChatsListBase);
 withChats(ChatItem);

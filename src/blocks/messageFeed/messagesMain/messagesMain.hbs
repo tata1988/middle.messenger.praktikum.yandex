@@ -4,7 +4,7 @@
         <ul class="messages__list">
             {{#if selectedChat}}
             {{#each messages}}
-                {{{Message isStateText=isStateText text=text image=image time=time companion=companion active=active }}}
+                {{{Message content=this.content}}}
             {{/each}}
             {{else}}
             <span>Выберите чат</span>

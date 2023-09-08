@@ -4,11 +4,13 @@ import { validation } from "../../../utils/validation";
 import cross from "../../../img/cross.svg";
 import menuImg from "../../../img/btn.svg";
 import template from "./messagesHeader.hbs";
-//import ChatsController from '../../../controllers/ChatsController';
+import store from "../../../utils/Store";
+import ChatsController from '../../../controllers/ChatsController';
 
 export class MessagesHeader extends Block {
-  constructor() {
+  constructor(props: any) {
     super({
+      ...props,
       image: cross,
       menuImg,
       avatar: "",
@@ -35,7 +37,8 @@ export class MessagesHeader extends Block {
           alert("Пожалуйста, правильно заполните поле");
         } else {
           console.log({ login: newLoginValue });
-          //ChatsController.addUserToChat();
+          const selectedChat = store.getState().selectedChat;
+          ChatsController.addUserToChat(selectedChat, +newLoginValue);
           this.setProps({ isStateAddUser: false, isMenu: false });
         }
       },
@@ -48,6 +51,9 @@ export class MessagesHeader extends Block {
   }
 
   render() {
+
     return this.compile(template, this.props);
   }
 }
+
+
