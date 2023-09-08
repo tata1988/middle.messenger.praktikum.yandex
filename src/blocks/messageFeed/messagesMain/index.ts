@@ -6,7 +6,7 @@ import { withStore } from "../../../utils/Store";
 export class MessagesMain extends Block {
   constructor() {
     super({
-      messages: [
+/*       messages: [
         {
           companion: true,
           active: false,
@@ -28,11 +28,13 @@ export class MessagesMain extends Block {
           text: "Круто",
           time: "11:56",
         },
-      ],
+      ], */
     });
   }
 
   render() {
+    //console.log('messages', this.props);
+    
     return this.compile(template, this.props);
   }
 }

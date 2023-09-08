@@ -72,3 +72,18 @@
     
     }
 }
+
+.btn__send-chat {
+    color: $grey2;
+    padding: 0 10px;
+    font-size: 10px;
+    line-height: 32px;
+    background-color: $color_grey;
+    width: 25%;
+    height: 32px;
+    border-radius: 5px;
+
+    &:hover {
+        color: $color_black;
+        }
+}

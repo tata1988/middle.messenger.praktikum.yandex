@@ -1,30 +1,37 @@
+import { ChatInfo } from "../../../api/ChatsAPI";
+//import { Chat } from "../../../pages/chat";
 import Block from "../../../utils/Block";
+import { withStore } from "../../../utils/Store";
 import template from "./chatItem.hbs";
-//import ChatsController from '../../controllers/ChatsController';
+import ChatsController from '../../../controllers/ChatsController';
+
 interface IChatItemProps {
-  avatar: string;
+  id: number;
   title: string;
-  message: string;
-  time: string;
-  count: string;
-  active?: boolean;
+  unread_count: number;
+  selectedChat: ChatInfo;
   events: {
     click: () => void;
   }
 }
-export class ChatItem extends Block {
+
+export class ChatItemBase extends Block {
   constructor(props: IChatItemProps) {
     super({
       ...props,
-      onClick: () => {
-        console.log('ghbdtn');
-        
-        //ChatsController.selectChat(id);
-      }
+      events: { click: () => ChatsController.selectChat(props.id) } 
     });
   }
 
   render() {
-    return this.compile(template, this.props);
+    console.log('ChatItem', this.props);
+    return this.compile(template, {...this.props, isSelected: this.props.id === this.props.selectedChat?.id});
   }
 }
+
+export const withSelectedChat = withStore(state => ({
+  selectedChat: (state.chats || []).find(({id}) => id === state.selectedChat)}));
+
+export const ChatItem = withSelectedChat(ChatItemBase);
+
+//withSelectedChat(Chat);
