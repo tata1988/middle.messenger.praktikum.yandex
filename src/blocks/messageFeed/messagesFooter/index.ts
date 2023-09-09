@@ -22,8 +22,8 @@ export class MessagesFooter extends Block {
         } else {
           console.log({ message: messageValue });
 
-          const idChat = store.getState().selectedChat;
-          MessagesController.sendMessage(idChat, messageValue);
+          const selectedChat = store.getState().selectedChat;
+          MessagesController.sendMessage(selectedChat, messageValue);
         }
       },
     });

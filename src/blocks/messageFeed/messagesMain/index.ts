@@ -1,7 +1,8 @@
 import Block from "../../../utils/Block";
 import template from "./messagesMain.hbs";
-import { withStore } from "../../../utils/Store";
+
 import { Message } from "../../../controllers/MessagesController";
+import { withStore } from "../../../utils/Store";
 
 interface IMessagesMain {
   selectedChat: number | undefined;
@@ -24,7 +25,9 @@ export class MessagesMain extends Block {
 
 const withSelectedChatMessages = withStore(state => {
   const selectedChatId = state.selectedChat;
+
   if (!selectedChatId) {
+    
     return {
       messages: [],
       selectedChat: undefined,
@@ -40,3 +43,4 @@ const withSelectedChatMessages = withStore(state => {
 });
 
 export const MessengerPage = withSelectedChatMessages(MessagesMain);
+
