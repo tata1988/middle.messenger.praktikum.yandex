@@ -1,4 +1,5 @@
 import Block from "../../../../utils/Block";
+import { withStore } from "../../../../utils/Store";
 import template from "./message.hbs";
 
 /* interface IMessageProps {
@@ -13,10 +14,10 @@ import template from "./message.hbs";
 interface IMessageProps {
   content: string;
   time: string;
-  isMine: boolean;
+
 }
 
-export class Message extends Block {
+export class MessageBase extends Block {
   constructor(props: IMessageProps) {
     super({
       ...props,
@@ -24,7 +25,16 @@ export class Message extends Block {
   }
 
   render() {
-  
-    return this.compile(template, this.props);
+    console.log('Message', this.props);
+    
+    return this.compile(template, {...this.props, isMine: this.props.userId === this.props.userIdChat});
   }
 }
+
+
+export const withSelectedChatMessage = withStore(state => {
+  return {userId: state.user.id};
+
+})
+
+export const Message = withSelectedChatMessage(MessageBase);

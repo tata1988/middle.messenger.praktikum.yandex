@@ -6,7 +6,7 @@
         <div class="messages__name">{{title}}</div>
     </div>
     {{#Button type='button' className="btn__header" onClick=menu}}
-        <img class="btn__img" src={{menuImg}} alt="иконка">
+    <img class="btn__img" src={{menuImg}} alt="иконка">
     {{/Button}}
 
     {{#if isMenu}}
@@ -19,7 +19,7 @@
         </div>
         <div class="menu__item">
             {{#Button type='button' className="btn__circle" onClick=setModalDeleteUser}}
-                <img class="btn__img btn__img_transform" src={{image}} alt="иконка">
+            <img class="btn__img btn__img_transform" src={{image}} alt="иконка">
             {{/Button}}
             <p class="menu_link">Удалить пользователя</p>
         </div>
@@ -30,8 +30,7 @@
                 <form class="form">
                     {{{Title title='Добавить пользователя' className="form__title title"}}}
                     {{{ Label for="user" value="Логин" className="form__label label"}}}
-                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="newLogin"
-                    pattern='login'}}}
+                    {{{ Input type="text" name="login" placeholder="Логин" id="user" className="input" ref="newLogin"}}}
                     {{{ Line className="line line_blue line_mb"}}}
                     {{{Button type='submit' label='Добавить' className="btn" onClick=addUser}}}
                 </form>
@@ -45,8 +44,8 @@
                 <form class="form">
                     {{{Title title='Удалить пользователя' className="form__title title"}}}
                     {{{ Label for="user" value="Логин" className="form__label label"}}}
-                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="deleteLogin"
-                    pattern='login'}}}
+                    {{{ Input type="text" name="login" placeholder="Логин" id="user" className="input"
+                    ref="deleteLogin"}}}
                     {{{ Line className="line line_blue line_mb"}}}
                     {{{Button type='submit' label='Удалить' className="btn" onClick=deleteUser}}}
                 </form>

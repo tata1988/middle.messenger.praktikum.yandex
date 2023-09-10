@@ -18,6 +18,8 @@ export class MessagesMainBase extends Block {
   }
 
   render() {
+    console.log(this.props);
+    
     return this.compile(template, this.props);
   }
 }
@@ -30,7 +32,8 @@ const withSelectedChatMessages = withStore(state => {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state.user.id
+      userId: state.user.id,
+      
     };
   }
 
