@@ -5,6 +5,7 @@ import { User } from '../api/AuthAPI';
 import { ChatInfo } from '../api/ChatsAPI';
 import { Message } from '../controllers/MessagesController';
 import { EventBus } from './EventBas';
+import { UserSearch } from '../api/UserAPI';
 
 export enum StoreEvents {
   Updated = 'updated'
@@ -15,6 +16,7 @@ interface State {
   chats: ChatInfo[];
   messages: Record<number, Message[]>;
   selectedChat?: number;
+  searchUsers?: UserSearch[];
 }
 
 

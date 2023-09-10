@@ -1,6 +1,8 @@
 <header class="messages__header">
     <div class="messages__companion">
-        <div class="messages__avatar">{{avatar}}</div>
+        <div class="messages__avatar">
+            <img src={{avatar}} alt="аватар">
+        </div>
         <div class="messages__name">{{title}}</div>
     </div>
     {{#Button type='button' className="btn__header" onClick=menu}}
@@ -43,7 +45,7 @@
                 <form class="form">
                     {{{Title title='Удалить пользователя' className="form__title title"}}}
                     {{{ Label for="user" value="Логин" className="form__label label"}}}
-                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="newLogin"
+                    {{{ Input type="text" name="login" placeholder="ФИО" id="user" className="input" ref="deleteLogin"
                     pattern='login'}}}
                     {{{ Line className="line line_blue line_mb"}}}
                     {{{Button type='submit' label='Удалить' className="btn" onClick=deleteUser}}}

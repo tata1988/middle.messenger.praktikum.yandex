@@ -1,6 +1,8 @@
 import API, { ChatsAPI } from '../api/ChatsAPI';
+import { UserSearch } from '../api/UserAPI';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
+import UserController from './UserController';
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -20,15 +22,31 @@ class ChatsController {
 
     chats.map(async (chat) => {
       const token = await this.getToken(chat.id);
-
+      
       await MessagesController.connect(chat.id, token);
     });
 
     store.set('chats', chats);
   }
 
-  addUserToChat(id: number, userId: number) {
-    this.api.addUsers(id, [userId]);
+  async addUserToChat(login: string) {
+    await UserController.searchUser(login);
+    const selectedChat = store.getState().selectedChat;
+    const storeUser = store.getState().searchUsers;
+    const userId = storeUser.map((user: UserSearch) => {
+      return user.id
+    })
+    await this.api.addUsers(selectedChat, userId);
+  }
+
+  async deleteUserToChat(login: string) {
+    await UserController.searchUser(login);
+    const selectedChat = store.getState().selectedChat;
+    const storeUser = store.getState().searchUsers;
+    const userId = storeUser.map((user: UserSearch) => {
+      return user.id
+    })
+    await this.api.deleteUsers(selectedChat, userId);
   }
 
   async delete(id: number) {

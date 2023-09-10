@@ -1,9 +1,10 @@
 import { ChatInfo } from "../../../api/ChatsAPI";
 //import { Chat } from "../../../pages/chat";
 import Block from "../../../utils/Block";
-import { withStore } from "../../../utils/Store";
+import store, { withStore } from "../../../utils/Store";
 import template from "./chatItem.hbs";
 import ChatsController from '../../../controllers/ChatsController';
+import cross from "../../../img/cross.svg";
 
 interface IChatItemProps {
   id: number;
@@ -19,6 +20,14 @@ export class ChatItemBase extends Block {
   constructor(props: IChatItemProps) {
     super({
       ...props,
+      deleteChat: () => {
+        const idChat = store.getState().selectedChat;
+        console.log('idChat', idChat);
+        ChatsController.delete(idChat);
+        
+        
+      },
+      image: cross,
       events: { click: () => ChatsController.selectChat(props.id) } 
     });
   }

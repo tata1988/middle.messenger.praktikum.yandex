@@ -20,9 +20,8 @@ export class MessagesFooter extends Block {
         if (!messageValue) {
           alert("Пожалуйста, введите значение");
         } else {
-          console.log({ message: messageValue });
-
           const selectedChat = store.getState().selectedChat;
+          
           MessagesController.sendMessage(selectedChat, messageValue);
         }
       },

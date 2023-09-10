@@ -10,7 +10,7 @@ interface IMessagesMain {
   userId: number;
 }
 
-export class MessagesMain extends Block {
+export class MessagesMainBase extends Block {
   constructor(props: IMessagesMain) {
     super({
         ...props,
@@ -18,7 +18,6 @@ export class MessagesMain extends Block {
   }
 
   render() {
-    console.log('MessagesMain', this.props);
     return this.compile(template, this.props);
   }
 }
@@ -42,5 +41,5 @@ const withSelectedChatMessages = withStore(state => {
   };
 });
 
-export const MessengerPage = withSelectedChatMessages(MessagesMain);
+export const MessagesMain = withSelectedChatMessages(MessagesMainBase);
 

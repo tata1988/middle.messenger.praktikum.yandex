@@ -26,9 +26,12 @@ export class ChatsAPI extends BaseAPI {
     return this.http.delete('/', { chatId: id });
   }
 
-
   read(): Promise<ChatInfo[]> {
     return this.http.get('/');
+  }
+
+  searchChat(title: string): Promise<ChatInfo[]> {
+    return this.http.get(`/?title=${title}`);
   }
 
   getUsers(id: number): Promise<Array<User & { role: string }>> {
@@ -38,6 +41,11 @@ export class ChatsAPI extends BaseAPI {
   addUsers(id: number, users: number[]): Promise<unknown> {
     return this.http.put('/users', { users, chatId: id });
   }
+
+  deleteUsers(id: number, users: number[]): Promise<unknown> {
+    return this.http.delete('/users', { users, chatId: id });
+  }
+
 
   async getToken(id: number): Promise<string> {
     const response = await this.http.post<{ token: string }>(`/token/${id}`);

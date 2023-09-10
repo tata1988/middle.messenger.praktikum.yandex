@@ -15,6 +15,16 @@ export interface UserPassword {
   newPassword: string;
 }
 
+export interface UserSearch {
+    id: number;
+    first_name: string;
+    second_name: string;
+    display_name?: string,
+    login: string;
+    avatar?: string;
+  }
+
+
 export class UserAPI extends BaseAPI {
   constructor() {
     super('/user');
@@ -36,13 +46,13 @@ export class UserAPI extends BaseAPI {
     return this.http.get(`/${id}`);
   }
 
-  searchUser() {
-    return this.http.post('/search');
+  search(login: string): Promise<Array<UserSearch>> {
+    return this.http.post('/search', { login });
   }
 
   create = undefined;
   update = undefined;
   delete = undefined;
 }
-
+ 
 export default new UserAPI();

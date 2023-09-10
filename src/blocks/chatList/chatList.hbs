@@ -1,14 +1,15 @@
 <section class="chatList">
     <div class="chatList__btn-wrapper">
         {{{Button type='button' label="Добавить чат" className="btn__chat" onClick=showInputAddChat}}}
-        {{{Button type='button' label="Удалить чат" className="btn__chat" onClick=deleteChat}}}
         {{{Button type='button' label="Профиль" className="link_right" onClick=link}}}
     </div>
-
+    {{#if isAddChat}}
     <form class="form__search">
         {{{Input type="text" placeholder="Имя чата" className="input input__search" ref="addChat"}}}
         {{{Button type='submit' className="btn__send-chat" label="добавить" onClick=addChat}}}
     </form>
+    {{/if}}
+
 
     <form type="search" class="form__search">
         {{{ Input type="search" placeholder="Поиск" className="input input__search" ref="search"}}}
@@ -23,8 +24,8 @@
 
     <ul class="chats">
         {{#each chats}}
-            {{{ChatItem id=this.id avatar=this.avatar title=this.title last_message=this.last_message.content time=this.time unread_count=this.unread_count}}}
+        {{{ChatItem id=this.id avatar=this.avatar title=this.title last_message=this.last_message.content time=this.time
+        unread_count=this.unread_count}}}
         {{/each}}
     </ul>
 </section>
-

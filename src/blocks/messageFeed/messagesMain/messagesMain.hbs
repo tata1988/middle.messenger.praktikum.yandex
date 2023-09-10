@@ -1,13 +1,13 @@
 <main class="messages__main">
     <div class="messages__wrapper">
-        <div class="messages__date">12 июня</div>
+        
         <ul class="messages__list">
             {{#if selectedChat}}
             {{#each messages}}
-                {{{Message content=this.content}}}
+                {{{Message content=this.content time=this.time}}}
             {{/each}}
             {{else}}
-            <span>Выберите чат</span>
+            <span>Выберите чат, чтобы отправить сообщение</span>
             {{/if}}
         </ul>
     </div>

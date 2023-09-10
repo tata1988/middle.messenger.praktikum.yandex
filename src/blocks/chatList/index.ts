@@ -16,6 +16,10 @@ export class ChatsListBase extends Block {
   constructor(props: ChatsListProps) {
     super({
       ...props,
+      isAddChat: false,
+      showInputAddChat: () => {
+        this.setProps({ isAddChat: true });
+      },
 
       addChat: (e: Event) => {
         e.preventDefault();
@@ -24,9 +28,11 @@ export class ChatsListBase extends Block {
         if (!addChatValue) {
           alert("Пожалуйста, введите запрос");
         } else {
-          ChatsController.create(addChatValue);
+          this.setProps({ isAddChat: false });
+          ChatsController.create(addChatValue); 
         }
       },
+
       search: (e: Event) => {
         e.preventDefault();
         const { search } = this.refs;
@@ -45,7 +51,6 @@ export class ChatsListBase extends Block {
   }
 
   render() {
-    console.log('chatlist', this.props);
     return this.compile(template, this.props);
   }
 }

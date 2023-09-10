@@ -1,4 +1,5 @@
 import API, { UserAPI, UserPassword, UserProfile } from '../api/UserAPI';
+import store from '../utils/Store';
 import AuthController from './AuthController';
 
 export class UserController {
@@ -36,6 +37,16 @@ export class UserController {
       console.error(e);
     }
   }
+
+  async searchUser(login: string) {
+    try {
+      const users = await this.api.search(login);
+      store.set('searchUsers', users);
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
 }
 
 export default new UserController();
+ 

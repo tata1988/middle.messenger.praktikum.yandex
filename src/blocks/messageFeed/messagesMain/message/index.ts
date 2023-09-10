@@ -12,6 +12,7 @@ import template from "./message.hbs";
 
 interface IMessageProps {
   content: string;
+  time: string;
   isMine: boolean;
 }
 
@@ -23,8 +24,7 @@ export class Message extends Block {
   }
 
   render() {
-    console.log('Message', this.props);
-    
+  
     return this.compile(template, this.props);
   }
 }

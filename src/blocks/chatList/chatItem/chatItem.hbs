@@ -1,4 +1,5 @@
 <li class="chat{{#if isSelected }} chat_active{{/if}}">
+
     <div class="chat__img">
         <img src={{avatar}} alt="avatar">
     </div>
@@ -8,13 +9,17 @@
         <div class="chat__wrapper-message">
             <p class="chat__message">{{last_message}}</p>
         </div>
-        
+
     </div>
+    {{#if isSelected }}
+    {{#Button type='button' className="btn__circle" onClick=deleteChat}}
+        <img class="btn__img btn__img_transform" src={{image}} alt="иконка">
+    {{/Button}}
+    {{/if}}
     <div class="chat__block chat__date">
         <div class="chat__date">{{time}}</div>
         {{#if unread_count }}
-            <div class="chat__count">{{unread_count}}</div>
+        <div class="chat__count">{{unread_count}}</div>
         {{/if}}
     </div>
 </li>
-
