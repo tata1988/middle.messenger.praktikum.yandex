@@ -3,4 +3,21 @@
   <img class="avatar__img" src={{avatar}} alt="иконка">
   {{/Button}}
   <span class="avatar__name">{{name}}</span>
+
+  {{#if isChangeAvatar}}
+    <div class="modal">
+      <div class="modal__block">
+        
+          {{{Title title=title.download className="title" ref="titleAvatar"}}}
+          {{{ Label for="avatar" value="Выбрать файл на компьютере" className="link" ref="labelAvatar"}}}
+          {{{ Input type="file" className="input__file" name="avatar" id="avatar" ref="avatar"
+          pattern='login' onChange=onChange}}}
+          {{{Avatar ref="avatarRes" label=label}}}
+      
+          {{{Button type='submit' label='Поменять' className="btn" onClick=onClick}}}
+          {{{ Error message="Нужно выбрать файл" className="error" ref="error_avatar"}}}
+
+      </div>
+    </div>
+  {{/if}}
 </div>

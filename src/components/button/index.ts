@@ -1,9 +1,9 @@
-import Block from '../../utils/Block';
-import template from './button.hbs';
+import Block from "../../utils/Block";
+import template from "./button.hbs";
 
-interface ButtonProps {
+interface IButtonProps {
   label: any;
-  type?: 'submit' | 'button';
+  type?: "submit" | "button";
   className: string;
   onClick?: () => void;
   events: {
@@ -12,12 +12,12 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
-  constructor(props: ButtonProps) {
+  constructor(props: IButtonProps) {
     super({
       ...props,
       events: {
-        click: props.onClick
-      }
+        click: props.onClick,
+      },
     });
   }
 

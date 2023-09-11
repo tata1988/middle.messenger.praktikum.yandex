@@ -1,10 +1,14 @@
 <main class="messages__main">
     <div class="messages__wrapper">
-        <div class="messages__date">12 июня</div>
+        
         <ul class="messages__list">
+            {{#if selectedChat}}
             {{#each messages}}
-                {{{Message isStateText=isStateText text=text image=image time=time companion=companion active=active }}}
+                {{{Message content=this.content time=this.time userIdChat=this.user_id}}}
             {{/each}}
+            {{else}}
+            <span>Выберите чат, чтобы отправить сообщение</span>
+            {{/if}}
         </ul>
     </div>
 </main>

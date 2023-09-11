@@ -1,5 +1,18 @@
+.profile-page {
+   display: flex;
+
+   &__link {
+      @include outer-block;
+
+      width: 64px;
+      background-color: $bg_chatlist;
+   }
+}
+
 .profile {
-   @include outerBlock;
+   @include outer-block;
+   
+   width: 95%;
    padding: 60px 0;
 
    &__wrapper {

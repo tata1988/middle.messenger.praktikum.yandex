@@ -1,7 +1,7 @@
-import Block from '../../utils/Block';
-import template from './input.hbs';
+import Block from "../../utils/Block";
+import template from "./input.hbs";
 
-interface InputProps {
+interface IInputProps {
   id?: string;
   type?: string;
   placeholder?: string;
@@ -22,7 +22,7 @@ interface InputProps {
 }
 
 export class Input extends Block {
-  constructor(props: InputProps) {
+  constructor(props: IInputProps) {
     super({
       ...props,
       events: {
@@ -30,11 +30,25 @@ export class Input extends Block {
         blur: props.onBlur,
         focus: props.onFocus,
       },
-    })
+    });
   }
+
   public value() {
     return (this._element as HTMLInputElement).value;
   }
+
+  public files() {
+    return (this._element as HTMLInputElement).files;
+  }
+
+  public setValue(value: string) {
+    return ((this.element as HTMLInputElement).value = value);
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
   render() {
     return this.compile(template, this.props);
   }

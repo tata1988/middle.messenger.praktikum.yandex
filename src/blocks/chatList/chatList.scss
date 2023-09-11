@@ -1,9 +1,15 @@
 .chatList {
     display: flex;
     flex-direction: column;
-    padding: 21px 10px 0 10px;
+    padding: 21px 10px 0;
     width: 310px;
     height: 100vh;
-    background-color: $bg_chatList;
+    background-color: $bg_chatlist;
+
+    &__btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 

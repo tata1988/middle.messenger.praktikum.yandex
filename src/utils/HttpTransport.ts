@@ -1,67 +1,101 @@
-enum METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    PATCH = 'PATCH',
-    DELETE = 'DELETE'
-};
+export enum METHOD {
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  PATCH = "PATCH",
+  DELETE = "DELETE",
+}
 
 type Options = {
-    method: METHODS;
-    data?: any;
+  method: METHOD;
+  data?: any;
 };
 
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+export default class HTTPTransport {
+  static API_URL = "https://ya-praktikum.tech/api/v2";
 
-function queryStringify(data: any) {
-    if (data === undefined) {
-        return '';
-    } else {
-        return Object.entries(data).reduce((acc, e, i) =>
-            `${acc}${i > 0 ? '&' : '?'}${e[0]}=${e[1]}`,
-            '');
-    }
-};
+  protected endpoint: string;
 
-export class HTTPTransport {
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+  }
 
-    get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        const api: string = queryStringify(options.data);
-        return this.request(`${url}${api}`, { ...options, method: METHODS.GET });
-    };
+  public get<Response>(path = "/"): Promise<Response> {
+    return this.request<Response>(this.endpoint + path);
+  }
 
-    put = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, { ...options, method: METHODS.PUT });
-    };
+  public post<Response = void>(
+    path: string,
+    data?: unknown,
+  ): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: METHOD.POST,
+      data,
+    });
+  }
 
-    post = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, { ...options, method: METHODS.POST });
-    };
+  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: METHOD.PUT,
+      data,
+    });
+  }
 
-    delete = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, { ...options, method: METHODS.DELETE });
-    };
+  public patch<Response = void>(
+    path: string,
+    data: unknown,
+  ): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: METHOD.PATCH,
+      data,
+    });
+  }
 
-    request(url: string, options: Options = { method: METHODS.GET }): Promise<XMLHttpRequest> {
-        const { method, data } = options;
+  public delete<Response>(path: string, data?: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: METHOD.DELETE,
+      data,
+    });
+  }
 
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, url);
+  private request<Response>(
+    url: string,
+    options: Options = { method: METHOD.GET },
+  ): Promise<Response> {
+    const { method, data } = options;
 
-            xhr.onload = function () {
-                resolve(xhr);
-            };
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
 
-            xhr.onabort = reject;
-            xhr.onerror = reject;
-            xhr.ontimeout = reject;
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
+        }
+      };
 
-            if (method === METHODS.GET || !data) {
-                xhr.send();
-            } else {
-                xhr.send(queryStringify(data));
-            }
-        });
-    };
+      xhr.onabort = () => reject(new Error("abort"));
+      xhr.onerror = () => reject(new Error("network error"));
+      xhr.ontimeout = () => reject(new Error("timeout"));
+
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader("Content-Type", "application/json");
+      }
+
+      xhr.withCredentials = true;
+      xhr.responseType = "json";
+
+      if (method === METHOD.GET || !data) {
+        xhr.send();
+      } else if (data instanceof FormData) {
+        xhr.send(data);
+      } else {
+        xhr.send(JSON.stringify(data));
+      }
+    });
+  }
 }

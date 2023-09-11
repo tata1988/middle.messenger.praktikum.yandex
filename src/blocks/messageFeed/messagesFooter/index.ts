@@ -1,24 +1,27 @@
-import { Input } from '../../../components/input';
-import Block from '../../../utils/Block';
-import template from './messagesFooter.hbs';
-import clip from '../../../img/clip.svg';
-import arrow from '../../../img/right-arrow.svg';
+import { Input } from "../../../components/input";
+import Block from "../../../utils/Block";
+import template from "./messagesFooter.hbs";
+import clip from "../../../img/clip.svg";
+import arrow from "../../../img/right-arrow.svg";
+import MessagesController from "../../../controllers/MessagesController";
+import store from "../../../utils/Store";
 
 export class MessagesFooter extends Block {
   constructor() {
     super({
-      clip: clip,
-      arrow: arrow,
+      clip,
+      arrow,
       sendMessage: (e: Event) => {
         e.preventDefault();
-        const message = this.refs.message;
+        const { message } = this.refs;
         const messageValue = (message as Input).value();
-        
+
         if (!messageValue) {
-          alert('Пожалуйста, введите значение');
-          return;
+          alert("Пожалуйста, введите значение");
         } else {
-          console.log({message: messageValue});
+          const { selectedChat } = store.getState();
+
+          MessagesController.sendMessage(selectedChat, messageValue);
         }
       },
     });
