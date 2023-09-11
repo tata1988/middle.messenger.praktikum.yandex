@@ -25,8 +25,6 @@ export class MessageBase extends Block {
   }
 
   render() {
-    console.log('Message', this.props);
-    
     return this.compile(template, {...this.props, isMine: this.props.userId === this.props.userIdChat});
   }
 }

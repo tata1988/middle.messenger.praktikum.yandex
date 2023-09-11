@@ -1,7 +1,7 @@
-import { User } from './AuthAPI';
+import { IUser } from './AuthAPI';
 import BaseAPI from './BaseAPI';
 
-export interface UserProfile {
+export interface IUserProfile {
   first_name: string;
   second_name: string;
   display_name: string;
@@ -10,12 +10,12 @@ export interface UserProfile {
   phone: string;
 }
 
-export interface UserPassword {
+export interface IUserPassword {
   oldPassword: string;
   newPassword: string;
 }
 
-export interface UserSearch {
+export interface IUserSearch {
     id: number;
     first_name: string;
     second_name: string;
@@ -30,7 +30,7 @@ export class UserAPI extends BaseAPI {
     super('/user');
   }
 
-  changeProfile(data: UserProfile) {
+  changeProfile(data: IUserProfile) {
     return this.http.put('/profile', data);
   }
 
@@ -38,15 +38,15 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/profile/avatar', avatar);
   }
 
-  changePassword(password: UserPassword): Promise<unknown> {
+  changePassword(password: IUserPassword): Promise<unknown> {
     return this.http.put('/password', password);
   }
 
-  read(id: number): Promise<User> {
+  read(id: number): Promise<IUser> {
     return this.http.get(`/${id}`);
   }
 
-  search(login: string): Promise<Array<UserSearch>> {
+  search(login: string): Promise<Array<IUserSearch>> {
     return this.http.post('/search', { login });
   }
 

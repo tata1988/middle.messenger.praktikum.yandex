@@ -1,7 +1,7 @@
 import WSTransport, { WSTransportEvents } from '../utils/WSTransport';
 import store from '../utils/Store';
 
-export interface Message {
+export interface IMessage {
   chat_id: number;
   time: string;
   type: string;
@@ -65,8 +65,8 @@ class MessagesController {
     Array.from(this.sockets.values()).forEach(socket => socket.close());
   }
 
-  private onMessage(id: number, messages: Message | Message[]) {
-    let messagesToAdd: Message[] = [];
+  private onMessage(id: number, messages: IMessage | IMessage[]) {
+    let messagesToAdd: IMessage[] = [];
 
     if (Array.isArray(messages)) {
       messagesToAdd = messages.reverse();

@@ -1,4 +1,4 @@
-import { SigninData } from "../../api/AuthAPI";
+import { ISigninData } from "../../api/AuthAPI";
 import { Input } from "../../components/input";
 import AuthController from "../../controllers/AuthController";
 import Block from "../../utils/Block";
@@ -19,7 +19,7 @@ export class Auth extends Block {
         const { login } = this.refs;
         const loginValue = (this.refs.login as Input).value();
         if (validation(login, loginValue)) {
-          console.log({ login: loginValue });
+          this.refs.error.getContent()!.style.display = "none";
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }
@@ -30,7 +30,7 @@ export class Auth extends Block {
         const { password } = this.refs;
         const passwordValue = (this.refs.password as Input).value();
         if (validation(password, passwordValue)) {
-          console.log({ password: passwordValue });
+          this.refs.error.getContent()!.style.display = "none";
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }
@@ -52,7 +52,7 @@ export class Auth extends Block {
             password: passwordValue,
           }
       
-          AuthController.signin(data as SigninData);
+          AuthController.signin(data as ISigninData);
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }

@@ -1,12 +1,12 @@
 import Block from "../../../utils/Block";
 import template from "./messagesMain.hbs";
 
-import { Message } from "../../../controllers/MessagesController";
+import { IMessage } from "../../../controllers/MessagesController";
 import { withStore } from "../../../utils/Store";
 
 interface IMessagesMain {
   selectedChat: number | undefined;
-  messages: Message[];
+  messages: IMessage[];
   userId: number;
 }
 
@@ -18,8 +18,6 @@ export class MessagesMainBase extends Block {
   }
 
   render() {
-    console.log(this.props);
-    
     return this.compile(template, this.props);
   }
 }

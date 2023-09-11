@@ -58,8 +58,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   Router
     .use(Routes.Index, Auth)
     .use(Routes.Register, Registration)
-    .use(Routes.Profile, ProfileSettingsPage)
     .use(Routes.Messenger, Chat)
+    .use(Routes.Profile, ProfileSettingsPage)
+
 
   let isProtectedRoute = true;
 
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     Router.start();
 
     if (!isProtectedRoute) {
-      Router.go(Routes.Profile);
+      Router.go(Routes.Messenger);
     }
   } catch (e) {
     Router.start();

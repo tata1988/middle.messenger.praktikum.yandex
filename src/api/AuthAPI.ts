@@ -1,11 +1,11 @@
 import BaseAPI from './BaseAPI';
 
-export interface SigninData {
+export interface ISigninData {
   login: string;
   password: string;
 }
 
-export interface SignupData {
+export interface ISignupData {
   first_name: string;
   second_name: string;
   login: string;
@@ -14,7 +14,7 @@ export interface SignupData {
   phone: string;
 }
 
-export interface User {
+export interface IUser {
   id: number;
   first_name: string;
   second_name: string;
@@ -31,16 +31,16 @@ export class AuthAPI extends BaseAPI {
     super('/auth');
   }
 
-  signin(data: SigninData) {
+  signin(data: ISigninData) {
     return this.http.post('/signin', data);
   }
 
 
-  signup(data: SignupData) {
+  signup(data: ISignupData) {
     return this.http.post('/signup', data);
   }
 
-  read(): Promise<User> {
+  read(): Promise<IUser> {
     return this.http.get('/user');
   }
 

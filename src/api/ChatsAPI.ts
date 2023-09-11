@@ -1,13 +1,13 @@
 import BaseAPI from './BaseAPI';
-import { User } from './AuthAPI';
+import { IUser } from './AuthAPI';
 
-export interface ChatInfo {
+export interface IChatInfo {
   id: number;
   title: string;
   avatar: string;
   unread_count: number;
   last_message: {
-    user: User,
+    user: IUser,
     time: string;
     content: string;
   }
@@ -26,15 +26,15 @@ export class ChatsAPI extends BaseAPI {
     return this.http.delete('/', { chatId: id });
   }
 
-  read(): Promise<ChatInfo[]> {
+  read(): Promise<IChatInfo[]> {
     return this.http.get('/');
   }
 
-  searchChat(title: string): Promise<ChatInfo[]> {
+  searchChat(title: string): Promise<IChatInfo[]> {
     return this.http.get(`/?title=${title}`);
   }
 
-  getUsers(id: number): Promise<Array<User & { role: string }>> {
+  getUsers(id: number): Promise<Array<IUser & { role: string }>> {
     return this.http.get(`/${id}/users`)
   }
 

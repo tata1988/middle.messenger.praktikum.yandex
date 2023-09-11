@@ -1,5 +1,5 @@
 import API, { ChatsAPI } from '../api/ChatsAPI';
-import { UserSearch } from '../api/UserAPI';
+import { IUserSearch } from '../api/UserAPI';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
 import UserController from './UserController';
@@ -33,7 +33,7 @@ class ChatsController {
     await UserController.searchUser(login);
     const selectedChat = store.getState().selectedChat;
     const storeUser = store.getState().searchUsers;
-    const userId = storeUser.map((user: UserSearch) => {
+    const userId = storeUser.map((user: IUserSearch) => {
       return user.id
     })
     await this.api.addUsers(selectedChat, userId);
@@ -43,7 +43,7 @@ class ChatsController {
     await UserController.searchUser(login);
     const selectedChat = store.getState().selectedChat;
     const storeUser = store.getState().searchUsers;
-    const userId = storeUser.map((user: UserSearch) => {
+    const userId = storeUser.map((user: IUserSearch) => {
       return user.id
     })
     await this.api.deleteUsers(selectedChat, userId);
