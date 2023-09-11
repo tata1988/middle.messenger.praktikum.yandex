@@ -28,6 +28,8 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "no-continue": "off",
+    "no-prototype-builtins": "off",
     "max-classes-per-file": "off",
     "no-constructor-return": "off",
     "no-restricted-syntax": [
@@ -162,3 +164,4 @@
     }
   }
 }
+

@@ -1,19 +1,25 @@
-type Indexed<T = unknown> = {
+export type Indexed<T = any> = {
   [key in string]: T;
 };
 
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
-  const merged = {
-    ...lhs,
-    ...rhs,
-  };
-  for (const key of Object.keys(merged)) {
-    if (typeof merged[key] === "object" && merged[key] !== null) {
-      merged[key] = merge(lhs[key] as Indexed, rhs[key] as Indexed);
+  for (const p in rhs) {
+    if (!rhs.hasOwnProperty(p)) {
+      continue;
+    }
+
+    try {
+      if (rhs[p].constructor === Object) {
+        rhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);
+      } else {
+        lhs[p] = rhs[p];
+      }
+    } catch (e) {
+      lhs[p] = rhs[p];
     }
   }
 
-  return merged;
+  return lhs;
 }
 
 export function set(

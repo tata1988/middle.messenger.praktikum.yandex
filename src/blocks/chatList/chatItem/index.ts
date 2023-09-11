@@ -1,5 +1,4 @@
 import { IChatInfo } from "../../../api/ChatsAPI";
-// import { Chat } from "../../../pages/chat";
 import Block from "../../../utils/Block";
 import store, { withStore } from "../../../utils/Store";
 import template from "./chatItem.hbs";
@@ -22,7 +21,6 @@ export class ChatItemBase extends Block {
       ...props,
       deleteChat: () => {
         const idChat = store.getState().selectedChat;
-        console.log("idChat", idChat);
         ChatsController.delete(idChat);
       },
       image: cross,
@@ -31,7 +29,6 @@ export class ChatItemBase extends Block {
   }
 
   render() {
-    // console.log('ChatItem', this.props);
     return this.compile(template, {
       ...this.props,
       isSelected: this.props.id === this.props.selectedChat?.id,
