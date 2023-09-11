@@ -1,12 +1,12 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
+import fallback from "express-history-api-fallback";
+import express from "express";
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
-
-import fallback from "express-history-api-fallback";
-import express from "express";
 
 const app = express();
 const root = `${__dirname}/dist`;
