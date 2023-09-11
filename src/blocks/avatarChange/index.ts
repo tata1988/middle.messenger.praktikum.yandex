@@ -13,7 +13,6 @@ export class AvatarChange extends Block {
         loaded: "Файл загружен",
       },
       isChangeAvatar: false,
-      name: "Виталий",
       changeAvatar: (e: Event) => {
         e.preventDefault();
         this.setProps({ isChangeAvatar: true });
