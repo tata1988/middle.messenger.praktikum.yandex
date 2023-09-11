@@ -8,7 +8,6 @@ import { Title } from "./components/title";
 import { Label } from "./components/label";
 import { Line } from "./components/line";
 import { ChatItem } from "./blocks/chatList/chatItem";
-
 import { MessagesHeader } from "./blocks/messageFeed/messagesHeader";
 import { Message } from "./blocks/messageFeed/messagesMain/message";
 import { MessagesMain } from "./blocks/messageFeed/messagesMain";
@@ -20,9 +19,7 @@ import AuthController from "./controllers/AuthController";
 import Router from "./utils/Router";
 import { Auth } from "./pages/auth";
 import { Registration } from "./pages/registration";
-
 import { Chat } from "./pages/chat";
-
 import { ChatsList } from "./blocks/chatList";
 import { ProfileField } from "./blocks/profileFieldList/profileField";
 import { ProfileFieldsList } from "./blocks/profileFieldList";
@@ -46,21 +43,18 @@ registerComponent("AvatarChange", AvatarChange);
 registerComponent("ProfileField", ProfileField);
 registerComponent("ProfileFieldsList", ProfileFieldsList);
 
-
 enum Routes {
-  Index = '/',
-  Register = '/sign-up',
-  Profile = '/settings',
-  Messenger = '/messenger',
+  Index = "/",
+  Register = "/sign-up",
+  Profile = "/settings",
+  Messenger = "/messenger",
 }
 
-window.addEventListener('DOMContentLoaded', async () => {
-  Router
-    .use(Routes.Index, Auth)
+window.addEventListener("DOMContentLoaded", async () => {
+  Router.use(Routes.Index, Auth)
     .use(Routes.Register, Registration)
     .use(Routes.Messenger, Chat)
-    .use(Routes.Profile, ProfileSettingsPage)
-
+    .use(Routes.Profile, ProfileSettingsPage);
 
   let isProtectedRoute = true;
 
@@ -69,6 +63,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     case Routes.Register:
       isProtectedRoute = false;
       break;
+    default:
   }
 
   try {
@@ -86,6 +81,4 @@ window.addEventListener('DOMContentLoaded', async () => {
       Router.go(Routes.Index);
     }
   }
-
 });
-

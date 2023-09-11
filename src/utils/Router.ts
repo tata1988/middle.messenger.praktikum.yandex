@@ -1,7 +1,7 @@
-import Block from './Block';
+import Block from "./Block";
 
 interface BlockConstructable<P = any> {
-  new(props: P): Block;
+  new (props: P): Block;
 }
 
 function isEqual(lhs: string, rhs: string): boolean {
@@ -15,7 +15,7 @@ function render(query: string, block: Block) {
     throw new Error(`root not found by selector "${query}"`);
   }
 
-  root.innerHTML = '';
+  root.innerHTML = "";
 
   root.append(block.getContent()!);
 
@@ -23,16 +23,19 @@ function render(query: string, block: Block) {
 }
 
 class Route {
-  private block: Block | null = null;
+  private _block: Block | null = null;
 
   constructor(
     private pathname: string,
-    private readonly blockClass: BlockConstructable,
-    private readonly query: string) {
+    private readonly _blockClass: BlockConstructable,
+    private readonly query: string,
+  ) {
+    this.pathname = pathname;
+    this._block = null;
   }
 
   leave() {
-    this.block = null;
+    this._block = null;
   }
 
   match(pathname: string) {
@@ -40,29 +43,31 @@ class Route {
   }
 
   render() {
-    if (!this.block) {
-      this.block = new this.blockClass({});
+    if (!this._block) {
+      this._block = new this._blockClass({});
 
-      render(this.query, this.block);
-      return;
+      render(this.query, this._block);
     }
   }
 }
 
 class Router {
-  private static __instance: Router;
+  private static _instance: Router;
+
   private routes: Route[] = [];
+
   private currentRoute: Route | null = null;
+
   private history = window.history;
 
   constructor(private readonly rootQuery: string) {
-    if (Router.__instance) {
-      return Router.__instance;
+    if (Router._instance) {
+      return Router._instance;
     }
 
     this.routes = [];
 
-    Router.__instance = this;
+    Router._instance = this;
   }
 
   public use(pathname: string, block: BlockConstructable) {
@@ -77,7 +82,7 @@ class Router {
       const target = event.currentTarget as Window;
 
       this._onRoute(target.location.pathname);
-    }
+    };
 
     this._onRoute(window.location.pathname);
   }
@@ -99,7 +104,7 @@ class Router {
   }
 
   public go(pathname: string) {
-    this.history.pushState({}, '', pathname);
+    this.history.pushState({}, "", pathname);
 
     this._onRoute(pathname);
   }
@@ -113,8 +118,8 @@ class Router {
   }
 
   private getRoute(pathname: string) {
-    return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname));
   }
 }
 
-export default new Router('#app');
+export default new Router("#app");

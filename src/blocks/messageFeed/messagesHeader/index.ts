@@ -4,8 +4,7 @@ import { validation } from "../../../utils/validation";
 import cross from "../../../img/cross.svg";
 import menuImg from "../../../img/btn.svg";
 import template from "./messagesHeader.hbs";
-import ChatsController from '../../../controllers/ChatsController';
-
+import ChatsController from "../../../controllers/ChatsController";
 
 export class MessagesHeader extends Block {
   constructor() {
@@ -51,5 +50,3 @@ export class MessagesHeader extends Block {
     return this.compile(template, this.props);
   }
 }
-
-

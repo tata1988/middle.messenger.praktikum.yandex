@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";;
+import Block from "../../utils/Block";
 import template from "./profileFieldsList.hbs";
 import { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
@@ -27,18 +27,15 @@ export class FieldsList extends Block {
   }
 }
 
-
-const withUser = withStore((state) => ({ 
+const withUser = withStore((state) => ({
   fields: [
-  {name: 'Почта', value: state.user.email},
-  {name: 'Логин', value: state.user.login},
-  {name: 'Имя', value: state.user.first_name},
-  {name: 'Фамилия', value: state.user.second_name},
-  {name: 'Имя в чате', value: state.user.display_name},
-  {name: 'Телефон', value: state.user.phone},
+    { name: "Почта", value: state.user.email },
+    { name: "Логин", value: state.user.login },
+    { name: "Имя", value: state.user.first_name },
+    { name: "Фамилия", value: state.user.second_name },
+    { name: "Имя в чате", value: state.user.display_name },
+    { name: "Телефон", value: state.user.phone },
   ],
-  avatar: `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}`}))
+  avatar: `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}`,
+}));
 export const ProfileFieldsList = withUser(FieldsList);
-
-
-

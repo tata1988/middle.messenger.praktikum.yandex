@@ -1,9 +1,9 @@
 export enum METHOD {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  PATCH = 'PATCH',
-  DELETE = 'DELETE'
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  PATCH = "PATCH",
+  DELETE = "DELETE",
 }
 
 type Options = {
@@ -12,18 +12,22 @@ type Options = {
 };
 
 export default class HTTPTransport {
-  static API_URL = 'https://ya-praktikum.tech/api/v2';
+  static API_URL = "https://ya-praktikum.tech/api/v2";
+
   protected endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = '/'): Promise<Response> {
+  public get<Response>(path = "/"): Promise<Response> {
     return this.request<Response>(this.endpoint + path);
   }
 
-  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
+  public post<Response = void>(
+    path: string,
+    data?: unknown,
+  ): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: METHOD.POST,
       data,
@@ -37,7 +41,10 @@ export default class HTTPTransport {
     });
   }
 
-  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
+  public patch<Response = void>(
+    path: string,
+    data: unknown,
+  ): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: METHOD.PATCH,
       data,
@@ -47,19 +54,21 @@ export default class HTTPTransport {
   public delete<Response>(path: string, data?: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: METHOD.DELETE,
-      data
+      data,
     });
   }
 
-  private request<Response>(url: string, options: Options = {method: METHOD.GET}): Promise<Response> {
-    const {method, data} = options;
+  private request<Response>(
+    url: string,
+    options: Options = { method: METHOD.GET },
+  ): Promise<Response> {
+    const { method, data } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
       xhr.onreadystatechange = () => {
-
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status < 400) {
             resolve(xhr.response);
@@ -69,17 +78,16 @@ export default class HTTPTransport {
         }
       };
 
-      xhr.onabort = () => reject({reason: 'abort'});
-      xhr.onerror = () => reject({reason: 'network error'});
-      xhr.ontimeout = () => reject({reason: 'timeout'});
+      xhr.onabort = () => reject(new Error("abort"));
+      xhr.onerror = () => reject(new Error("network error"));
+      xhr.ontimeout = () => reject(new Error("timeout"));
 
       if (!(data instanceof FormData)) {
-        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("Content-Type", "application/json");
       }
-      
 
       xhr.withCredentials = true;
-      xhr.responseType = 'json';
+      xhr.responseType = "json";
 
       if (method === METHOD.GET || !data) {
         xhr.send();

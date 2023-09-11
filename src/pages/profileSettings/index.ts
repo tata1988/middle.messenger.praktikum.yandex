@@ -1,5 +1,5 @@
 import { Input } from "../../components/input";
-import Block from "../../utils/Block";;
+import Block from "../../utils/Block";
 import { validation } from "../../utils/validation";
 import template from "./profile.hbs";
 import arrow from "../../img/right-arrow.svg";
@@ -32,7 +32,7 @@ export class ProfileSettings extends Block {
       edit: false,
       isData: true,
       btnState: true,
-      arrow: arrow,
+      arrow,
       goBack: () => {
         Router.back();
       },
@@ -165,7 +165,7 @@ export class ProfileSettings extends Block {
             first_name: firstNameValue,
             second_name: secondNameValue,
             phone: phoneValue,
-          }
+          };
           UserController.changeProfile(data);
           this.setProps({ edit: false, isData: true });
         } else {
@@ -191,8 +191,8 @@ export class ProfileSettings extends Block {
           const password = {
             oldPassword: oldPasswordValue,
             newPassword: newPasswordValue,
-          }
-          UserController.changePassword(password)
+          };
+          UserController.changePassword(password);
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -205,12 +205,10 @@ export class ProfileSettings extends Block {
   }
 
   render() {
-
     return this.compile(template, this.props);
   }
 }
 
-const withUser = withStore((state) => ({ ...state.user }))
+const withUser = withStore((state) => ({ ...state.user }));
 
 export const ProfileSettingsPage = withUser(ProfileSettings);
-

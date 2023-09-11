@@ -1,4 +1,4 @@
-import BaseAPI from './BaseAPI';
+import BaseAPI from "./BaseAPI";
 
 export interface ISigninData {
   login: string;
@@ -28,28 +28,29 @@ export interface IUser {
 
 export class AuthAPI extends BaseAPI {
   constructor() {
-    super('/auth');
+    super("/auth");
   }
 
   signin(data: ISigninData) {
-    return this.http.post('/signin', data);
+    return this.http.post("/signin", data);
   }
 
-
   signup(data: ISignupData) {
-    return this.http.post('/signup', data);
+    return this.http.post("/signup", data);
   }
 
   read(): Promise<IUser> {
-    return this.http.get('/user');
+    return this.http.get("/user");
   }
 
   logout() {
-    return this.http.post('/logout');
+    return this.http.post("/logout");
   }
 
   create = undefined;
+
   update = undefined;
+
   delete = undefined;
 }
 

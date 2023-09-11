@@ -10,25 +10,27 @@ export class AvatarChange extends Block {
       avatar,
       title: {
         download: "Загрузите файл",
-        loaded: "Файл загружен"
-      }, 
+        loaded: "Файл загружен",
+      },
       isChangeAvatar: false,
       name: "Виталий",
       changeAvatar: (e: Event) => {
         e.preventDefault();
-        this.setProps({isChangeAvatar: true})
+        this.setProps({ isChangeAvatar: true });
       },
       onChange: (e: Event) => {
         e.preventDefault();
         const { avatar } = this.refs;
         const avatarValue = (avatar as Input).value();
         if (!avatarValue) {
-          this.refs.titleAvatar.setProps({title: "Ошибка, попробуйте ещё раз"})
+          this.refs.titleAvatar.setProps({
+            title: "Ошибка, попробуйте ещё раз",
+          });
         } else {
           this.refs.labelAvatar.hide();
-          const res = avatarValue?.replace(/\\/g, "/").split('/').pop();
-          this.refs.avatarRes.setProps({label: res})
-          this.refs.titleAvatar.setProps({title: "Файл загружен"});
+          const res = avatarValue?.replace(/\\/g, "/").split("/").pop();
+          this.refs.avatarRes.setProps({ label: res });
+          this.refs.titleAvatar.setProps({ title: "Файл загружен" });
           this.refs.error_avatar.hide();
         }
       },
@@ -37,10 +39,10 @@ export class AvatarChange extends Block {
         const { avatar } = this.refs;
         const avatarValue = (avatar as Input).value();
         const files: FileList | null = (avatar as Input).files();
-        const file = files ? files[0] : 'nofile';
-          
+        const file = files ? files[0] : "nofile";
+
         const formData: FormData = new FormData();
-        formData.append('avatar', file);
+        formData.append("avatar", file);
 
         if (!avatarValue) {
           this.refs.error_avatar.show();
@@ -48,10 +50,9 @@ export class AvatarChange extends Block {
           this.refs.error_avatar.hide();
           UserController.changeAvatar(formData);
 
-          this.setProps({isChangeAvatar: false});
+          this.setProps({ isChangeAvatar: false });
         }
-        
-      }
+      },
     });
   }
 

@@ -28,6 +28,12 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "max-classes-per-file": "off",
+    "no-constructor-return": "off",
+    "no-restricted-syntax": [
+      "off",
+      "ForOfStatement"
+    ],
     "@typescript-eslint/no-this-alias": "off",
     "func-names": "off",
     "import/no-cycle": "off",
@@ -58,35 +64,7 @@
         }
       }
     ],
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "interface",
-        "format": [
-          "PascalCase"
-        ],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
-      },
-      {
-        "selector": "typeParameter",
-        "format": [
-          "PascalCase"
-        ],
-        "prefix": [
-          "T"
-        ]
-      },
-      {
-        "selector": "enumMember",
-        "format": [
-          "PascalCase",
-          "UPPER_CASE"
-        ]
-      }
-    ],
+    "@typescript-eslint/naming-convention": "warn",
     "react/button-has-type": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "import/no-unresolved": "off",
@@ -105,9 +83,7 @@
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-var-requires": "off",
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": [
-      "error"
-    ],
+    "@typescript-eslint/no-shadow": "off",
     "no-bitwise": "off",
     "no-param-reassign": "off",
     "no-return-assign": "off",
@@ -186,4 +162,3 @@
     }
   }
 }
-

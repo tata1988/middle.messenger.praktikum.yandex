@@ -1,8 +1,8 @@
-import API, { ChatsAPI } from '../api/ChatsAPI';
-import { IUserSearch } from '../api/UserAPI';
-import store from '../utils/Store';
-import MessagesController from './MessagesController';
-import UserController from './UserController';
+import API, { ChatsAPI } from "../api/ChatsAPI";
+import { IUserSearch } from "../api/UserAPI";
+import store from "../utils/Store";
+import MessagesController from "./MessagesController";
+import UserController from "./UserController";
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -22,30 +22,30 @@ class ChatsController {
 
     chats.map(async (chat) => {
       const token = await this.getToken(chat.id);
-      
+
       await MessagesController.connect(chat.id, token);
     });
 
-    store.set('chats', chats);
+    store.set("chats", chats);
   }
 
   async addUserToChat(login: string) {
     await UserController.searchUser(login);
-    const selectedChat = store.getState().selectedChat;
+    const { selectedChat } = store.getState();
     const storeUser = store.getState().searchUsers;
     const userId = storeUser.map((user: IUserSearch) => {
-      return user.id
-    })
+      return user.id;
+    });
     await this.api.addUsers(selectedChat, userId);
   }
 
   async deleteUserToChat(login: string) {
     await UserController.searchUser(login);
-    const selectedChat = store.getState().selectedChat;
+    const { selectedChat } = store.getState();
     const storeUser = store.getState().searchUsers;
     const userId = storeUser.map((user: IUserSearch) => {
-      return user.id
-    })
+      return user.id;
+    });
     await this.api.deleteUsers(selectedChat, userId);
   }
 
@@ -60,9 +60,8 @@ class ChatsController {
   }
 
   selectChat(id: number) {
-    store.set('selectedChat', id);
+    store.set("selectedChat", id);
   }
 }
 
 export default new ChatsController();
-

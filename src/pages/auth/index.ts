@@ -50,8 +50,8 @@ export class Auth extends Block {
           const data = {
             login: loginValue,
             password: passwordValue,
-          }
-      
+          };
+
           AuthController.signin(data as ISigninData);
         } else {
           this.refs.error.getContent()!.style.display = "block";
@@ -59,7 +59,7 @@ export class Auth extends Block {
       },
 
       link: () => {
-        Router.go('/sign-up')
+        Router.go("/sign-up");
       },
     });
   }

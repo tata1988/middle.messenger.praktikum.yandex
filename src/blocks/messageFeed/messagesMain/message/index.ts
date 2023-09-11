@@ -14,7 +14,6 @@ import template from "./message.hbs";
 interface IMessageProps {
   content: string;
   time: string;
-
 }
 
 export class MessageBase extends Block {
@@ -25,15 +24,15 @@ export class MessageBase extends Block {
   }
 
   render() {
-    return this.compile(template, {...this.props, isMine: this.props.userId === this.props.userIdChat});
+    return this.compile(template, {
+      ...this.props,
+      isMine: this.props.userId === this.props.userIdChat,
+    });
   }
 }
 
-
-export const withSelectedChatMessage = withStore(state => {
-  return {userId: state.user.id};
-
-})
+export const withSelectedChatMessage = withStore((state) => {
+  return { userId: state.user.id };
+});
 
 export const Message = withSelectedChatMessage(MessageBase);
-

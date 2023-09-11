@@ -4,12 +4,12 @@ import Block from "../../utils/Block";
 import { withStore } from "../../utils/Store";
 import template from "./chatList.hbs";
 import Router from "../../utils/Router";
-import ChatsController from '../../controllers/ChatsController';
+import ChatsController from "../../controllers/ChatsController";
 import { ChatItem } from "./chatItem";
 
 interface IChatsListProps {
   chats: IChatInfo[];
-  //isLoaded: boolean;
+  // isLoaded: boolean;
 }
 
 export class ChatsListBase extends Block {
@@ -23,13 +23,13 @@ export class ChatsListBase extends Block {
 
       addChat: (e: Event) => {
         e.preventDefault();
-        const addChat = this.refs.addChat;
+        const { addChat } = this.refs;
         const addChatValue = (addChat as Input).value();
         if (!addChatValue) {
           alert("Пожалуйста, введите запрос");
         } else {
           this.setProps({ isAddChat: false });
-          ChatsController.create(addChatValue); 
+          ChatsController.create(addChatValue);
         }
       },
 
@@ -45,7 +45,7 @@ export class ChatsListBase extends Block {
         }
       },
       link: () => {
-        Router.go('/settings');
+        Router.go("/settings");
       },
     });
   }
@@ -56,7 +56,7 @@ export class ChatsListBase extends Block {
 }
 
 const withChats = withStore((state) => ({
-  chats: [...(state.chats || [])]
+  chats: [...(state.chats || [])],
 }));
 
 export const ChatsList = withChats(ChatsListBase);

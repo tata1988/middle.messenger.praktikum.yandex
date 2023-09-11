@@ -11,6 +11,7 @@
 
     &__block {
         @include colomn;
+        
         border-radius: 12px;
         background-color: $color_white;
         margin: auto;

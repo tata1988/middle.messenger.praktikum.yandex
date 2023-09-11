@@ -8,7 +8,7 @@ export class ErrorPage500 extends Block {
       type: "button",
       class: "className",
       onClick: () => {
-        Router.go('/messenger');
+        Router.go("/messenger");
       },
     });
   }

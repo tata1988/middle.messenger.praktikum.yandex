@@ -17,4 +17,3 @@ export class ProfileField extends Block {
     return this.compile(template, this.props);
   }
 }
-

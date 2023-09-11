@@ -3,9 +3,7 @@ import template from "./avatar.hbs";
 
 export class Avatar extends Block {
   constructor() {
-    super({
-  
-    });
+    super({});
   }
 
   render() {

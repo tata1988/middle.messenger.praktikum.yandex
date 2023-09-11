@@ -134,7 +134,7 @@ export class Registration extends Block {
             first_name: firstNameValue,
             second_name: secondNameValue,
             phone: phoneValue,
-          }
+          };
           AuthController.signup(data as ISignupData);
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -142,7 +142,7 @@ export class Registration extends Block {
       },
 
       link: () => {
-        Router.go('/');
+        Router.go("/");
       },
     });
   }

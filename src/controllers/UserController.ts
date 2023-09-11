@@ -1,6 +1,6 @@
-import API, { UserAPI, IUserPassword, IUserProfile } from '../api/UserAPI';
-import store from '../utils/Store';
-import AuthController from './AuthController';
+import API, { UserAPI, IUserPassword, IUserProfile } from "../api/UserAPI";
+import store from "../utils/Store";
+import AuthController from "./AuthController";
 
 export class UserController {
   private readonly api: UserAPI;
@@ -22,7 +22,6 @@ export class UserController {
     try {
       await this.api.changePassword(password);
       AuthController.fetchUser();
-    
     } catch (e: any) {
       console.error(e);
     }
@@ -32,7 +31,6 @@ export class UserController {
     try {
       await this.api.changeAvatar(avatar);
       AuthController.fetchUser();
-
     } catch (e: any) {
       console.error(e);
     }
@@ -41,7 +39,7 @@ export class UserController {
   async searchUser(login: string) {
     try {
       const users = await this.api.search(login);
-      store.set('searchUsers', users);
+      store.set("searchUsers", users);
     } catch (e: any) {
       console.error(e);
     }
@@ -49,4 +47,3 @@ export class UserController {
 }
 
 export default new UserController();
- 
