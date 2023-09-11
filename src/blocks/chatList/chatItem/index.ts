@@ -1,4 +1,4 @@
-import { ChatInfo } from "../../../api/ChatsAPI";
+import { IChatInfo } from "../../../api/ChatsAPI";
 //import { Chat } from "../../../pages/chat";
 import Block from "../../../utils/Block";
 import store, { withStore } from "../../../utils/Store";
@@ -10,7 +10,7 @@ interface IChatItemProps {
   id: number;
   title: string;
   unread_count: number;
-  selectedChat: ChatInfo;
+  selectedChat: IChatInfo;
   events: {
     click: () => void;
   }

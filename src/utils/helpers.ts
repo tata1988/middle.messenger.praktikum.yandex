@@ -38,45 +38,37 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result);
 }
 
-type PlainObject<T = any> = {
-  [k in string]: T;
+
+export function isEqual(a: any, b: any): boolean {
+  const isObject = (object: any) => {
+    return object != null && typeof object === "object";
+  }
+  
+  if (a === null && b === null) {
+    return true;
+  }
+  
+  if (a === undefined && b === undefined) {
+    return true;
+  }
+
+  const obj1 = Object.keys(a);
+  const obj2 = Object.keys(b);
+
+  if (obj1.length !== obj2.length) return false;
+
+  for (let key of obj1) {
+    const value1 = a[key];
+    const value2 = b[key];
+
+    const isObjects = isObject(value1) && isObject(value2);
+
+    if ((isObjects && !isEqual(value1, value2)) ||
+      (!isObjects && value1 !== value2)
+    ) {
+      return false;
+    }
+  }
+  return true;
 };
 
-function isPlainObject(value: unknown): value is PlainObject {
-  return typeof value === 'object'
-      && value !== null
-      && value.constructor === Object
-      && Object.prototype.toString.call(value) === '[object Object]';
-}
-
-function isArray(value: unknown): value is [] {
-  return Array.isArray(value);
-}
-
-function isArrayOrObject(value: unknown): value is [] | PlainObject {
-  return isPlainObject(value) || isArray(value);
-}
-
-function isEqual(lhs: PlainObject, rhs: PlainObject) {
-  if (Object.keys(lhs).length !== Object.keys(rhs).length) {
-      return false;
-  }
-
-  for (const [key, value] of Object.entries(lhs)) {
-      const rightValue = rhs[key];
-      if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
-          if (isEqual(value, rightValue)) {
-              continue;
-          }
-          return false;
-      }
-
-      if (value !== rightValue) {
-          return false;
-      }
-  }
-
-  return true;
-}
-
-export default isEqual;

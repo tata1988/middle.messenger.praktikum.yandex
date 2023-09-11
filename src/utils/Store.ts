@@ -1,24 +1,25 @@
-import isEqual, { set } from './helpers';
+import { set, isEqual } from './helpers';
 
 import Block from './Block';
-import { User } from '../api/AuthAPI';
-import { ChatInfo } from '../api/ChatsAPI';
-import { Message } from '../controllers/MessagesController';
+import { IUser } from '../api/AuthAPI';
+import { IChatInfo } from '../api/ChatsAPI';
+import { IMessage } from '../controllers/MessagesController';
 import { EventBus } from './EventBas';
-import { UserSearch } from '../api/UserAPI';
+import { IUserSearch } from '../api/UserAPI';
 
 export enum StoreEvents {
   Updated = 'updated'
 }
 
-interface State {
-  user: User;
-  chats: ChatInfo[];
-  messages: Record<number, Message[]>;
+interface IState {
+  user: IUser;
+  chats: IChatInfo[];
+  messages: Record<number, IMessage[]>;
   selectedChat?: number;
-  searchUsers?: UserSearch[];
+  searchUsers?: IUserSearch[];
 }
 
+type Props = Record<string, any>;
 
 export class Store extends EventBus {
   private state: any = {};
@@ -36,43 +37,28 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-// @ts-ignore
-window.store = store;
 
-export function withStore<SP>(mapStateToProps: (state: State) => SP) {
+export function withStore<SP extends Props>(mapStateToProps: (state: IState) => SP) {
   return function wrap<P>(Component: typeof Block){
-
     return class WithStore extends Component {
 
       private onStoreUpdate: () => void;
 
       constructor(props: Omit<P, keyof SP>) {
-        let previousState = mapStateToProps(store.getState());
-
+        let previousState: any = mapStateToProps(store.getState());
         super({ ...(props as P), ...previousState });
-
         this.onStoreUpdate = () => {
           const stateProps = mapStateToProps(store.getState());
-
-          if(isEqual(previousState, stateProps)) {
-            return;
-          }
-
+          if(isEqual(previousState, stateProps)) { return;}
           previousState = stateProps;
-
           this.setProps({ ...stateProps });
-
         };
-
         store.on(StoreEvents.Updated, this.onStoreUpdate);
-
       }
-
       componentWillUnmount() {
         store.off(StoreEvents.Updated, this.onStoreUpdate);
       }
     }
-
   }
 }
 

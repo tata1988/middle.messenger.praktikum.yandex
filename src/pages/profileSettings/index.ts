@@ -213,3 +213,4 @@ export class ProfileSettings extends Block {
 const withUser = withStore((state) => ({ ...state.user }))
 
 export const ProfileSettingsPage = withUser(ProfileSettings);
+

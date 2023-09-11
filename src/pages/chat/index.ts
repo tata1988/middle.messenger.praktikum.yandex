@@ -3,9 +3,8 @@ import template from "./chat.hbs";
 import ChatsController from '../../controllers/ChatsController';
 
 export class Chat extends Block {
-  constructor(props: any) {
+  constructor() {
     super({
-      ...props
     });
   }
 

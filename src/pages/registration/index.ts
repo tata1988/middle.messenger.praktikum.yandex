@@ -1,8 +1,8 @@
-import { SignupData } from "../../api/AuthAPI";
+import { ISignupData } from "../../api/AuthAPI";
 import { Input } from "../../components/input";
 import AuthController from "../../controllers/AuthController";
 import Block from "../../utils/Block";
-import { render } from "../../utils/render";
+import Router from "../../utils/Router";
 import { validation } from "../../utils/validation";
 import template from "./registration.hbs";
 
@@ -135,14 +135,14 @@ export class Registration extends Block {
             second_name: secondNameValue,
             phone: phoneValue,
           }
-          AuthController.signup(data as SignupData);
+          AuthController.signup(data as ISignupData);
         } else {
           alert("Пожалуйста, правильно заполните все поля");
         }
       },
 
       link: () => {
-        render("auth");
+        Router.go('/');
       },
     });
   }

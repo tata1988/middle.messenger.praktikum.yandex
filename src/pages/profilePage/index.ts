@@ -2,9 +2,9 @@ import Block from "../../utils/Block";;
 import template from "./profilePage.hbs";
 import { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
-import { User } from "../../api/AuthAPI";
+import { IUser } from "../../api/AuthAPI";
 
-interface IProfileProps extends User {}
+interface IProfileProps extends IUser {}
 
 export class Profile extends Block {
   constructor(props: IProfileProps) {

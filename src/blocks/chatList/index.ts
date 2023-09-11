@@ -1,4 +1,4 @@
-import { ChatInfo } from "../../api/ChatsAPI";
+import { IChatInfo } from "../../api/ChatsAPI";
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
 import { withStore } from "../../utils/Store";
@@ -7,13 +7,13 @@ import Router from "../../utils/Router";
 import ChatsController from '../../controllers/ChatsController';
 import { ChatItem } from "./chatItem";
 
-interface ChatsListProps {
-  chats: ChatInfo[];
+interface IChatsListProps {
+  chats: IChatInfo[];
   //isLoaded: boolean;
 }
 
 export class ChatsListBase extends Block {
-  constructor(props: ChatsListProps) {
+  constructor(props: IChatsListProps) {
     super({
       ...props,
       isAddChat: false,

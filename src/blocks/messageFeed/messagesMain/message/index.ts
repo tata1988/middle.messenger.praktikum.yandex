@@ -36,3 +36,4 @@ export const withSelectedChatMessage = withStore(state => {
 })
 
 export const Message = withSelectedChatMessage(MessageBase);
+
