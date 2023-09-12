@@ -3,7 +3,7 @@ import Block from "../../utils/Block";
 import { validation } from "../../utils/validation";
 import template from "./profile.hbs";
 import arrow from "../../img/right-arrow.svg";
-import { withStore } from "../../utils/Store";
+import store, { withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
 import UserController from "../../controllers/UserController";
 import Router from "../../utils/Router";
@@ -38,9 +38,25 @@ export class ProfileSettings extends Block {
       },
       changeData: () => {
         this.setProps({ edit: true, isData: true });
+        const { login } = this.refs;
+        const { email } = this.refs;
+        const firstName = this.refs.first_name;
+        const secondName = this.refs.second_name;
+        const displayName = this.refs.display_name;
+        const { phone } = this.refs;
+
+        const storeUser = store.getState().user;
+
+        (login as Input).setValue(storeUser.login);
+        (email as Input).setValue(storeUser.email);
+        (firstName as Input).setValue(storeUser.first_name);
+        (secondName as Input).setValue(storeUser.second_name);
+        (displayName as Input).setValue(storeUser.display_name);
+        (phone as Input).setValue(storeUser.phone);
       },
       changePassword: () => {
         this.setProps({ edit: true, isData: false, btnState: false });
+
       },
 
       blurEmail: (e: Event) => {
@@ -143,6 +159,11 @@ export class ProfileSettings extends Block {
         const displayName = this.refs.display_name;
         const { phone } = this.refs;
 
+        const storeUser = store.getState().user;
+
+        (login as Input).setValue(storeUser.login);
+        (email as Input).setValue(storeUser.email);
+
         const loginValue = (login as Input).value();
         const emailValue = (email as Input).value();
         const firstNameValue = (firstName as Input).value();
@@ -212,3 +233,4 @@ export class ProfileSettings extends Block {
 const withUser = withStore((state) => ({ ...state.user }));
 
 export const ProfileSettingsPage = withUser(ProfileSettings);
+

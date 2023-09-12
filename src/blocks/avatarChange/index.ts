@@ -1,13 +1,18 @@
 import Block from "../../utils/Block";
 import template from "./avatarChange.hbs";
-import avatar from "../../img/union.svg";
 import { Input } from "../../components/input";
 import UserController from "../../controllers/UserController";
+import { withStore } from "../../utils/Store";
 
-export class AvatarChange extends Block {
-  constructor() {
+interface IAvatar {
+  name: string;
+  avatar: string;
+}
+
+export class AvatarChangeBase extends Block {
+  constructor(props: IAvatar) {
     super({
-      avatar,
+      ...props,
       title: {
         download: "Загрузите файл",
         loaded: "Файл загружен",
@@ -59,3 +64,11 @@ export class AvatarChange extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const withAvatar = withStore((state) => ({
+  avatar: `https://ya-praktikum.tech/api/v2/resources/${state.user.avatar}`,
+  name: state.user.login,
+}));
+
+export const AvatarChange = withAvatar(AvatarChangeBase);
+

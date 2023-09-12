@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const root = `${__dirname}/dist`;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static(root));
 app.use(fallback("index.html", { root }));
