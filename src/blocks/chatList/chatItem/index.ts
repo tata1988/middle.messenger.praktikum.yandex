@@ -32,6 +32,10 @@ export class ChatItemBase extends Block {
     return this.compile(template, {
       ...this.props,
       isSelected: this.props.id === this.props.selectedChat?.id,
+      avatar:
+        this.props.avatar !== null
+          ? `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}`
+          : this.props.avatar,
     });
   }
 }

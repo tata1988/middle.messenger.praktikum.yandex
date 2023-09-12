@@ -11,6 +11,16 @@ type Options = {
   data?: any;
 };
 
+function queryStringify(data: any) {
+  if (data === undefined) {
+    return "";
+  }
+  return Object.entries(data).reduce(
+    (acc, e, i) => `${acc}${i > 0 ? "&" : "?"}${e[0]}=${e[1]}`,
+    "",
+  );
+}
+
 export default class HTTPTransport {
   static API_URL = "https://ya-praktikum.tech/api/v2";
 
@@ -20,8 +30,9 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = "/"): Promise<Response> {
-    return this.request<Response>(this.endpoint + path);
+  public get<Response>(data?: unknown, path = "/"): Promise<Response> {
+    const query: string = queryStringify(data);
+    return this.request<Response>(this.endpoint + path + query);
   }
 
   public post<Response = void>(

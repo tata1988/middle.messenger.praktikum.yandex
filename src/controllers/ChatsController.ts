@@ -12,47 +12,66 @@ class ChatsController {
   }
 
   async create(title: string) {
-    await this.api.create(title);
+    try {
+      await this.api.create(title);
 
-    this.fetchChats();
+      this.fetchChats();
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   async fetchChats() {
-    const chats = await this.api.read();
+    try {
+      const chats = await this.api.read();
 
-    chats.map(async (chat) => {
-      const token = await this.getToken(chat.id);
+      chats.map(async (chat) => {
+        const token = await this.getToken(chat.id);
 
-      await MessagesController.connect(chat.id, token);
-    });
+        await MessagesController.connect(chat.id, token);
+      });
 
-    store.set("chats", chats);
+      store.set("chats", chats);
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   async addUserToChat(login: string) {
-    await UserController.searchUser(login);
-    const { selectedChat } = store.getState();
-    const storeUser = store.getState().searchUsers;
-    const userId = storeUser.map((user: IUserSearch) => {
-      return user.id;
-    });
-    await this.api.addUsers(selectedChat, userId);
+    try {
+      await UserController.searchUser(login);
+      const { selectedChat } = store.getState();
+      const storeUser = store.getState().searchUsers;
+      const userId = storeUser.map((user: IUserSearch) => {
+        return user.id;
+      });
+      await this.api.addUsers(selectedChat, userId);
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   async deleteUserToChat(login: string) {
-    await UserController.searchUser(login);
-    const { selectedChat } = store.getState();
-    const storeUser = store.getState().searchUsers;
-    const userId = storeUser.map((user: IUserSearch) => {
-      return user.id;
-    });
-    await this.api.deleteUsers(selectedChat, userId);
+    try {
+      await UserController.searchUser(login);
+      const { selectedChat } = store.getState();
+      const storeUser = store.getState().searchUsers;
+      const userId = storeUser.map((user: IUserSearch) => {
+        return user.id;
+      });
+      await this.api.deleteUsers(selectedChat, userId);
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   async delete(id: number) {
-    await this.api.delete(id);
-
-    this.fetchChats();
+    try {
+      await this.api.delete(id);
+      this.fetchChats();
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   getToken(id: number) {
