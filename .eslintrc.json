@@ -28,6 +28,7 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "default-param-last": "off",
     "no-continue": "off",
     "no-prototype-builtins": "off",
     "max-classes-per-file": "off",
@@ -164,4 +165,3 @@
     }
   }
 }
-

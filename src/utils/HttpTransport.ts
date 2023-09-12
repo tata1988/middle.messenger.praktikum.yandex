@@ -30,7 +30,7 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(data?: unknown, path = "/"): Promise<Response> {
+  public get<Response>(path = "/", data?: unknown): Promise<Response> {
     const query: string = queryStringify(data);
     return this.request<Response>(this.endpoint + path + query);
   }
