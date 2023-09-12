@@ -56,7 +56,6 @@ export class ProfileSettings extends Block {
       },
       changePassword: () => {
         this.setProps({ edit: true, isData: false, btnState: false });
-
       },
 
       blurEmail: (e: Event) => {
@@ -233,4 +232,3 @@ export class ProfileSettings extends Block {
 const withUser = withStore((state) => ({ ...state.user }));
 
 export const ProfileSettingsPage = withUser(ProfileSettings);
-

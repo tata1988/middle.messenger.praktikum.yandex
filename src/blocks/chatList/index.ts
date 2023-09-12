@@ -51,8 +51,8 @@ export class ChatsListBase extends Block {
   }
 
   render() {
-    console.log('ChatsList', this.props);
-    
+    console.log("ChatsList", this.props);
+
     return this.compile(template, this.props);
   }
 }

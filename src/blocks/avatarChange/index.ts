@@ -71,4 +71,3 @@ const withAvatar = withStore((state) => ({
 }));
 
 export const AvatarChange = withAvatar(AvatarChangeBase);
-

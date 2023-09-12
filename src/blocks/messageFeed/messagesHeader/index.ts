@@ -32,11 +32,15 @@ export class MessagesHeader extends Block {
         if (!validation(newLogin, newLoginValue)) {
           alert("Пожалуйста, правильно заполните поле");
         } else {
-          ChatsController.addUserToChat(newLoginValue).then(() => {
-            alert(`Пользователь ${newLoginValue} добавлен`);
-          }).catch(() => {
-            alert(`Пользователь ${newLoginValue} не добавлен. Повторите попытку`);
-          });
+          ChatsController.addUserToChat(newLoginValue)
+            .then(() => {
+              alert(`Пользователь ${newLoginValue} добавлен`);
+            })
+            .catch(() => {
+              alert(
+                `Пользователь ${newLoginValue} не добавлен. Повторите попытку`,
+              );
+            });
           this.setProps({ isStateAddUser: false, isMenu: false });
         }
       },
@@ -44,11 +48,15 @@ export class MessagesHeader extends Block {
         e.preventDefault();
         const { deleteLogin } = this.refs;
         const deleteLoginValue = (deleteLogin as Input).value();
-        ChatsController.deleteUserToChat(deleteLoginValue).then(() => {
-          alert(`Пользователь ${deleteLoginValue} удален`);
-        }).catch(() => {
-          alert(`Пользователь ${deleteLoginValue} не удален. Повторите попытку`);
-        });;
+        ChatsController.deleteUserToChat(deleteLoginValue)
+          .then(() => {
+            alert(`Пользователь ${deleteLoginValue} удален`);
+          })
+          .catch(() => {
+            alert(
+              `Пользователь ${deleteLoginValue} не удален. Повторите попытку`,
+            );
+          });
         this.setProps({ isStateDeleteUser: false, isMenu: false });
       },
     });
