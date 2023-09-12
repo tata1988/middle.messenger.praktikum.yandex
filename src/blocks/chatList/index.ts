@@ -9,7 +9,6 @@ import { ChatItem } from "./chatItem";
 
 interface IChatsListProps {
   chats: IChatInfo[];
-  // isLoaded: boolean;
 }
 
 export class ChatsListBase extends Block {
@@ -51,8 +50,6 @@ export class ChatsListBase extends Block {
   }
 
   render() {
-    console.log("ChatsList", this.props);
-
     return this.compile(template, this.props);
   }
 }
