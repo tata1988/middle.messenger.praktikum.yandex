@@ -63,7 +63,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     case Routes.Register:
       isProtectedRoute = false;
       break;
-    default:
   }
 
   try {
