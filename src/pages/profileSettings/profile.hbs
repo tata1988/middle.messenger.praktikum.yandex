@@ -1,8 +1,17 @@
-<main class="profile">
-  <div class="profile__wrapper">
-    <form class="profile__form form">
-      {{{AvatarChange}}}
-      {{#if isData}}
+<div class="profile-page">
+  <div class="profile-page__link">
+    {{#Button type='button' className="btn__circle btn__back" onClick=goBack}}
+      <img class="btn__img btn__img_left" src={{arrow}} alt="button">
+    {{/Button}}
+  </div>
+  <main class="profile">
+    <div class="profile__wrapper">
+
+        
+    {{#if edit}} 
+      <form class="profile__form form">
+        {{{AvatarChange}}}
+        {{#if isData}}
           <fieldset class="form__wrapper">
             <div class="row row_margin">
               {{{ Label for="email" value="Почта" className="label__profile"}}}
@@ -51,7 +60,7 @@
             </div>
             {{{ Error message=title.tel className="error" ref='error_phone'}}}
           </fieldset>
-      {{else}}
+        {{else}}
           <fieldset class="form__wrapper">
             <div class="row row_margin">
               {{{ Label for="oldPassword" value="Старый пароль" className="label__profile"}}}
@@ -77,22 +86,25 @@
             {{{ Line className="line line_gray"}}}
             {{{ Error message=title.password className="error" ref='error_new_password_repeat'}}}
           </fieldset>
-      {{/if}}
-
-      {{#if edit}}
+        {{/if}}
+    
           {{#if btnState}}
             {{{Button type='submit' label="Сохранить" className="btn" onClick=onClickData}}}
             {{else}}
             {{{Button type='submit' label="Сохранить" className="btn" onClick=onClickPassword}}}
           {{/if}}
+      </form>
+
       {{else}}
-    </form>
+        {{{ProfileFieldsList}}}
         {{{Button type='button' label="Изменить данные" className="link link_left" onClick=changeData}}}
         {{{Line className="line line_gray"}}}
         {{{Button type='button' label="Изменить пароль" className="link link_left" onClick=changePassword}}}
         {{{Line className="line line_gray"}}}
         {{{Button type='button' label="Выйти" className="link link_left" onClick=link}}}
       {{/if}}
-   
-  </div>
-</main>
+    
+    </div>
+  </main>
+</div>
+

@@ -4,14 +4,13 @@ import { validation } from "../../../utils/validation";
 import cross from "../../../img/cross.svg";
 import menuImg from "../../../img/btn.svg";
 import template from "./messagesHeader.hbs";
+import ChatsController from "../../../controllers/ChatsController";
 
 export class MessagesHeader extends Block {
   constructor() {
     super({
       image: cross,
       menuImg,
-      avatar: "",
-      name: "Вадим",
       isMenu: false,
       isStateAddUser: false,
       isStateDeleteUser: false,
@@ -33,13 +32,31 @@ export class MessagesHeader extends Block {
         if (!validation(newLogin, newLoginValue)) {
           alert("Пожалуйста, правильно заполните поле");
         } else {
-          console.log({ login: newLoginValue });
+          ChatsController.addUserToChat(newLoginValue)
+            .then(() => {
+              alert(`Пользователь ${newLoginValue} добавлен`);
+            })
+            .catch(() => {
+              alert(
+                `Пользователь ${newLoginValue} не добавлен. Повторите попытку`,
+              );
+            });
           this.setProps({ isStateAddUser: false, isMenu: false });
         }
       },
       deleteUser: (e: Event) => {
         e.preventDefault();
-        console.log("Пользователь удален");
+        const { deleteLogin } = this.refs;
+        const deleteLoginValue = (deleteLogin as Input).value();
+        ChatsController.deleteUserToChat(deleteLoginValue)
+          .then(() => {
+            alert(`Пользователь ${deleteLoginValue} удален`);
+          })
+          .catch(() => {
+            alert(
+              `Пользователь ${deleteLoginValue} не удален. Повторите попытку`,
+            );
+          });
         this.setProps({ isStateDeleteUser: false, isMenu: false });
       },
     });

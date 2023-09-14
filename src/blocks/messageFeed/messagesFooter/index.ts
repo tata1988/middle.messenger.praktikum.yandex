@@ -3,6 +3,8 @@ import Block from "../../../utils/Block";
 import template from "./messagesFooter.hbs";
 import clip from "../../../img/clip.svg";
 import arrow from "../../../img/right-arrow.svg";
+import MessagesController from "../../../controllers/MessagesController";
+import store from "../../../utils/Store";
 
 export class MessagesFooter extends Block {
   constructor() {
@@ -17,7 +19,9 @@ export class MessagesFooter extends Block {
         if (!messageValue) {
           alert("Пожалуйста, введите значение");
         } else {
-          console.log({ message: messageValue });
+          const { selectedChat } = store.getState();
+
+          MessagesController.sendMessage(selectedChat, messageValue);
         }
       },
     });

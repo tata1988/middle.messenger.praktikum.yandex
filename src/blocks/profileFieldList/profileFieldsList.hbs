@@ -1,0 +1,15 @@
+<div class="profile__form form">
+    <div class="form__avatar avatar">
+        <div class="avatar__wrapper">
+        <img class="avatar__img" src={{avatar}} alt="иконка">
+    </div>
+    <span class="avatar__name">{{name}}</span>
+    </div>
+    <div class="form__wrapper">
+        {{#each fields}}
+            {{{ProfileField name=this.name value=this.value }}}
+        {{/each}}
+    </div>
+</div>
+
+

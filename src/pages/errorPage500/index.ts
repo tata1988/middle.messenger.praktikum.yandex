@@ -1,6 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./error500.hbs";
-import { render } from "../../utils/render";
+import Router from "../../utils/Router";
 
 export class ErrorPage500 extends Block {
   constructor() {
@@ -8,7 +8,7 @@ export class ErrorPage500 extends Block {
       type: "button",
       class: "className",
       onClick: () => {
-        render("chat");
+        Router.go("/messenger");
       },
     });
   }

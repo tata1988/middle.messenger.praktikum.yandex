@@ -1,6 +1,8 @@
+import { ISigninData } from "../../api/AuthAPI";
 import { Input } from "../../components/input";
+import AuthController from "../../controllers/AuthController";
 import Block from "../../utils/Block";
-import { render } from "../../utils/render";
+import Router from "../../utils/Router";
 import { validation } from "../../utils/validation";
 import template from "./auth.hbs";
 
@@ -17,7 +19,7 @@ export class Auth extends Block {
         const { login } = this.refs;
         const loginValue = (this.refs.login as Input).value();
         if (validation(login, loginValue)) {
-          console.log({ login: loginValue });
+          this.refs.error.getContent()!.style.display = "none";
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }
@@ -28,7 +30,7 @@ export class Auth extends Block {
         const { password } = this.refs;
         const passwordValue = (this.refs.password as Input).value();
         if (validation(password, passwordValue)) {
-          console.log({ password: passwordValue });
+          this.refs.error.getContent()!.style.display = "none";
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }
@@ -45,18 +47,19 @@ export class Auth extends Block {
           validation(login, loginValue) &&
           validation(password, passwordValue)
         ) {
-          console.log({
+          const data = {
             login: loginValue,
             password: passwordValue,
-          });
-          render("chat");
+          };
+
+          AuthController.signin(data as ISigninData);
         } else {
           this.refs.error.getContent()!.style.display = "block";
         }
       },
 
       link: () => {
-        render("registration");
+        Router.go("/sign-up");
       },
     });
   }

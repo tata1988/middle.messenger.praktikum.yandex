@@ -23,12 +23,15 @@
     transform: rotate(-45deg);
 }
 
+.btn__img_left {
+    transform: rotate(-180deg);
+}
+
 .btn__header {
     position: relative;
     width: 3px;
     height: 15px;
     margin-right: 10px;
-
 }
 
 .btn__clip {
@@ -52,3 +55,36 @@
     border-radius: 50%;
     border: 1px solid $color_blue;
 }
+
+.btn__back {
+    margin: auto;
+    background-color: $color_blue;
+}
+
+.btn__chat {
+    color: $grey2;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 23px;
+
+    &:hover {
+    color: $color_black;
+    
+    }
+}
+
+.btn__send-chat {
+    color: $grey2;
+    padding: 0 10px;
+    font-size: 10px;
+    line-height: 32px;
+    background-color: $color_grey;
+    width: 25%;
+    height: 32px;
+    border-radius: 5px;
+
+    &:hover {
+        color: $color_black;
+        }
+}
+

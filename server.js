@@ -1,9 +1,19 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+import fallback from "express-history-api-fallback";
 import express from "express";
 
-const app = express();
-const PORT = 3000;
+const __filename = fileURLToPath(import.meta.url);
 
-app.use(express.static("./dist"));
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const root = `${__dirname}/dist`;
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static(root));
+app.use(fallback("index.html", { root }));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);

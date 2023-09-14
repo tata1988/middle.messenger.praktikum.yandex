@@ -1,38 +1,37 @@
+import { IChatInfo } from "../../api/ChatsAPI";
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
-import { render } from "../../utils/render";
+import { withStore } from "../../utils/Store";
 import template from "./chatList.hbs";
+import Router from "../../utils/Router";
+import ChatsController from "../../controllers/ChatsController";
+import { ChatItem } from "./chatItem";
 
-interface IChatItemProps {
-  avatar: string;
-  title: string;
-  message: string;
-  time: string;
-  count: string;
-  active?: boolean;
+interface IChatsListProps {
+  chats: IChatInfo[];
 }
 
-export class ChatList extends Block {
-  constructor(props: IChatItemProps[]) {
+export class ChatsListBase extends Block {
+  constructor(props: IChatsListProps) {
     super({
       ...props,
-      chats: [
-        {
-          avatar: "",
-          title: "Вадим",
-          message: "В 2008 году художник Jon Rafman начал собирать...",
-          time: "11:33",
-          count: "3",
-        },
-        {
-          avatar: "",
-          title: "Вадим",
-          message: "В 2008 году художник Jon Rafman начал собирать...",
-          time: "12:45",
-          count: "3",
-          active: true,
-        },
-      ],
+      isAddChat: false,
+      showInputAddChat: () => {
+        this.setProps({ isAddChat: true });
+      },
+
+      addChat: (e: Event) => {
+        e.preventDefault();
+        const { addChat } = this.refs;
+        const addChatValue = (addChat as Input).value();
+        if (!addChatValue) {
+          alert("Пожалуйста, введите запрос");
+        } else {
+          this.setProps({ isAddChat: false });
+          ChatsController.create(addChatValue);
+        }
+      },
+
       search: (e: Event) => {
         e.preventDefault();
         const { search } = this.refs;
@@ -44,9 +43,8 @@ export class ChatList extends Block {
           console.log({ search: searchValue });
         }
       },
-
       link: () => {
-        render("profile");
+        Router.go("/settings");
       },
     });
   }
@@ -55,3 +53,10 @@ export class ChatList extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const withChats = withStore((state) => ({
+  chats: [...(state.chats || [])],
+}));
+
+export const ChatsList = withChats(ChatsListBase);
+withChats(ChatItem);

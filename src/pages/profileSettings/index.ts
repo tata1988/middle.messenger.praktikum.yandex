@@ -1,12 +1,17 @@
 import { Input } from "../../components/input";
 import Block from "../../utils/Block";
-import { render } from "../../utils/render";
 import { validation } from "../../utils/validation";
 import template from "./profile.hbs";
+import arrow from "../../img/right-arrow.svg";
+import store, { withStore } from "../../utils/Store";
+import AuthController from "../../controllers/AuthController";
+import UserController from "../../controllers/UserController";
+import Router from "../../utils/Router";
 
-export class Profile extends Block {
-  constructor() {
+export class ProfileSettings extends Block {
+  constructor(props: any) {
     super({
+      ...props,
       pattern: {
         login: "login",
         password: "password",
@@ -27,9 +32,27 @@ export class Profile extends Block {
       edit: false,
       isData: true,
       btnState: true,
-
+      arrow,
+      goBack: () => {
+        Router.back();
+      },
       changeData: () => {
         this.setProps({ edit: true, isData: true });
+        const { login } = this.refs;
+        const { email } = this.refs;
+        const firstName = this.refs.first_name;
+        const secondName = this.refs.second_name;
+        const displayName = this.refs.display_name;
+        const { phone } = this.refs;
+
+        const storeUser = store.getState().user;
+
+        (login as Input).setValue(storeUser.login);
+        (email as Input).setValue(storeUser.email);
+        (firstName as Input).setValue(storeUser.first_name);
+        (secondName as Input).setValue(storeUser.second_name);
+        (displayName as Input).setValue(storeUser.display_name);
+        (phone as Input).setValue(storeUser.phone);
       },
       changePassword: () => {
         this.setProps({ edit: true, isData: false, btnState: false });
@@ -135,6 +158,11 @@ export class Profile extends Block {
         const displayName = this.refs.display_name;
         const { phone } = this.refs;
 
+        const storeUser = store.getState().user;
+
+        (login as Input).setValue(storeUser.login);
+        (email as Input).setValue(storeUser.email);
+
         const loginValue = (login as Input).value();
         const emailValue = (email as Input).value();
         const firstNameValue = (firstName as Input).value();
@@ -150,13 +178,15 @@ export class Profile extends Block {
           validation(secondName, secondNameValue) &&
           validation(phone, phoneValue)
         ) {
-          console.log({
+          const data = {
             login: loginValue,
             email: emailValue,
-            firstName: firstNameValue,
-            secondName: secondNameValue,
+            display_name: displayNameValue,
+            first_name: firstNameValue,
+            second_name: secondNameValue,
             phone: phoneValue,
-          });
+          };
+          UserController.changeProfile(data);
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
@@ -178,16 +208,18 @@ export class Profile extends Block {
           validation(newPasswordRepeat, newPasswordRepeatValue) &&
           newPasswordValue === newPasswordRepeatValue
         ) {
-          console.log({
-            password: newPasswordValue,
-          });
+          const password = {
+            oldPassword: oldPasswordValue,
+            newPassword: newPasswordValue,
+          };
+          UserController.changePassword(password);
           this.setProps({ edit: false, isData: true });
         } else {
           alert("Пожалуйста, правильно заполните все поля");
         }
       },
       link: () => {
-        render("chat");
+        AuthController.logout();
       },
     });
   }
@@ -196,3 +228,7 @@ export class Profile extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const ProfileSettingsPage = withUser(ProfileSettings);

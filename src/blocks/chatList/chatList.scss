@@ -5,4 +5,11 @@
     width: 310px;
     height: 100vh;
     background-color: $bg_chatlist;
+
+    &__btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
+
