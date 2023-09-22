@@ -20,7 +20,8 @@
     "liny:fix": "eslint --fix --ext .ts, .",
     "lint:tsc": "npx tsc --noEmit",
     "watch-tsc": "tsc --watch --noEmit",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
