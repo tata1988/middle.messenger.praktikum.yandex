@@ -10,6 +10,7 @@
     }
   },
   "scripts": {
+    "compile": "tsc -p .",
     "dev": "vite",
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build",
@@ -39,11 +40,13 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
     "esm-loader": "^0.1.0",
+    "esm-loader-css": "^1.0.5",
     "esm-loader-typescript": "^1.0.5",
     "esmock": "^2.5.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "mocha": "^10.2.0",
+    "node-esm-loader": "^0.2.5",
     "prettier": "^3.0.2",
     "sass": "^1.64.1",
     "sinon": "^16.0.0",

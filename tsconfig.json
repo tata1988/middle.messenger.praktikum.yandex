@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2016",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "ES6",
     "lib": [
       "ESNext",
       "DOM"
     ],
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -20,15 +20,10 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "allowImportingTsExtensions": true,
   },
   "ts-node": {
     "files": true,
-    "compilerOptions": {
-      "module": "es2020",
-      "target": "es2020",
-      "moduleResolution": "nodenext",
-      
-    }
   },
   "include": ["src"]
 }

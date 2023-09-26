@@ -3,7 +3,6 @@ import { expect, use } from 'chai';
 import sinonChai from 'sinon-chai';
 import HTTPTransport from './HttpTransport.ts';
 
-
 describe('HttpTransport', () => {
   use(sinonChai);
   const sandbox = createSandbox();
