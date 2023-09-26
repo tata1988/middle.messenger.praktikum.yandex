@@ -1,4 +1,5 @@
-import Block from "./Block";
+import Block from "./Block.js";
+
 
 export interface BlockConstructable<P = any> {
   new (props: P): Block;

@@ -1,7 +1,9 @@
-import { JSDOM } from "jsdom";
+import { JSDOM } from 'jsdom';
 
-const jsdom = new JSDOM("<body></body>", { url: "https://example.org/" });
+const { window } = new JSDOM('<div id="app"></div>', {
+  url: 'http://localhost:3000'
+});
 
-global.window = jsdom.window;
-global.document = jsdom.window.document;
-global.FormData = jsdom.window.FormData;
+global.window = window;
+global.document = window.document;
+global.DocumentFragment = window.DocumentFragment;
