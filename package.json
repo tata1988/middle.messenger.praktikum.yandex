@@ -18,7 +18,7 @@
     "preview": "vite preview",
     "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint \"src/**/*.scss\"",
-    "liny:fix": "eslint --fix --ext .ts, .",
+    "lint:fix": "eslint . --fix",
     "lint:tsc": "npx tsc --noEmit",
     "watch-tsc": "tsc --watch --noEmit",
     "test": "mocha",
