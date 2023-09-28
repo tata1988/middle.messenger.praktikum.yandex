@@ -24,6 +24,8 @@ import { ChatsList } from "./blocks/chatList";
 import { ProfileField } from "./blocks/profileFieldList/profileField";
 import { ProfileFieldsList } from "./blocks/profileFieldList";
 import { ProfileSettingsPage } from "./pages/profileSettings";
+import { ErrorPage404 } from "./pages/errorPage404";
+import { ErrorPage500 } from "./pages/errorPage500";
 
 registerComponent("Button", Button);
 registerComponent("ButtonSubmit", Button);
@@ -48,13 +50,17 @@ enum Routes {
   Register = "/sign-up",
   Profile = "/settings",
   Messenger = "/messenger",
+  Error404 = "/error404",
+  Error500 = "/error500",
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
   Router.use(Routes.Index, Auth)
     .use(Routes.Register, Registration)
     .use(Routes.Messenger, Chat)
-    .use(Routes.Profile, ProfileSettingsPage);
+    .use(Routes.Profile, ProfileSettingsPage)
+    .use(Routes.Error404, ErrorPage404)
+    .use(Routes.Error500, ErrorPage500);
 
   let isProtectedRoute = true;
 
