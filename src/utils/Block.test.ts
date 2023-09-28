@@ -20,7 +20,7 @@ describe("Block", async () => {
     },
   })) as { default: typeof BlockType };
 
-  class ComponentMock extends Block { }
+  class ComponentMock extends Block {}
 
   it("should fire init event on initialization", () => {
     new ComponentMock({});
