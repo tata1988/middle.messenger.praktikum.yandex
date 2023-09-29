@@ -2,11 +2,6 @@
   "esm": true,
   "ts-node": {
     "files": true,
-    "compilerOptions": {
-      "module": "es2020",
-      "target": "es2020",
-      "moduleResolution": "nodenext"
-    }
   },
   "compilerOptions": {
     "target": "ES2016",
@@ -35,4 +30,3 @@
     "src"
   ]
 }
-
