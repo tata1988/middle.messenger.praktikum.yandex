@@ -1,7 +1,7 @@
 {
   "esm": true,
   "ts-node": {
-    "files": true,
+    "files": true
   },
   "compilerOptions": {
     "target": "ES2016",
