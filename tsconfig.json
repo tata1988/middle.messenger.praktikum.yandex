@@ -1,7 +1,12 @@
 {
+  "esm": true,
   "ts-node": {
-    "transpileOnly": true,
     "files": true,
+    "compilerOptions": {
+      "module": "es2020",
+      "target": "es2020",
+      "moduleResolution": "nodenext"
+    }
   },
   "compilerOptions": {
     "target": "ES2016",
@@ -11,7 +16,7 @@
       "ESNext",
       "DOM"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
