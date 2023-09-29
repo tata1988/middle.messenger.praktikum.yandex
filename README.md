@@ -6,14 +6,16 @@
 
  В проекте используется шаблонизатор handlebarsjs.
  Подключен плагин vite-plugin-handlebars-precompile.
+ Тесты написаны с помощью Mocha, Chai, Sinon, esmock
 
 ## Ссылка на Netlify
 
 https://steady-creponne-b87a9f.netlify.app
 
-## Команды для запуска проекта и сборка продакшн версии
+## Команды для запуска проекта и сборки продакшн версии, тестов
 
 - `npm run dev` — запуск версии для разработчика,
 - `npm run prebuild` — проверка типов для production-сборки,
 - `npm run build` — сборка стабильной версии,
 - `npm run start` — сборка production-сборки и запуск сервера на порту 3000
+- `npm run test` — запуск тестов
