@@ -28,6 +28,7 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "import/no-named-as-default": "off",
     "import/extensions": "off",
@@ -160,3 +161,4 @@
     }
   }
 }
+

@@ -6,6 +6,14 @@ import { expect } from "chai";
 
 import HTTPTransport from "./HttpTransport.ts";
 
+declare global {
+  namespace NodeJS {
+    export interface MyGlobal extends Global {
+      XMLHttpRequest: SinonFakeXMLHttpRequestStatic;
+    }
+  }
+}
+
 describe("HTTPTransport", () => {
   let xhr: SinonFakeXMLHttpRequestStatic;
   let instance: HTTPTransport;
@@ -14,8 +22,7 @@ describe("HTTPTransport", () => {
   beforeEach(() => {
     xhr = sinon.useFakeXMLHttpRequest();
 
-    // @ts-ignore
-    global.XMLHttpRequest = xhr;
+    (global as unknown as NodeJS.MyGlobal).XMLHttpRequest = xhr;
 
     xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
       requests.push(request);
