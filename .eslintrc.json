@@ -28,6 +28,10 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/no-named-as-default": "off",
+    "import/extensions": "off",
     "default-case": "off",
     "default-param-last": "off",
     "no-continue": "off",
@@ -123,16 +127,7 @@
     //   devDependencies: ["/*.test.ts", "/*.test.tsx", "**/setupTests.ts"]
     // }],
     "import/no-extraneous-dependencies": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
+    "no-new": "off"
   },
   "settings": {
     "import/extensions": [

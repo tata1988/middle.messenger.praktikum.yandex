@@ -1,8 +1,12 @@
 {
+  "esm": true,
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2016",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "ES6",
     "lib": [
       "ESNext",
       "DOM"
@@ -19,7 +23,8 @@
     "skipLibCheck": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "allowImportingTsExtensions": true
   },
   "include": [
     "src"

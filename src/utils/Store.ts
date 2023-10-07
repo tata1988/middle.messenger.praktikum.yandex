@@ -1,9 +1,9 @@
 import isEqual, { set } from "./helpers";
-import Block from "./Block";
+import Block from "./Block.ts";
 import { IUser } from "../api/AuthAPI";
 import { IChatInfo } from "../api/ChatsAPI";
 import { IMessage } from "../controllers/MessagesController";
-import { EventBus } from "./EventBas";
+import { EventBus } from "./EventBus";
 import { IUserSearch } from "../api/UserAPI";
 
 export enum StoreEvents {

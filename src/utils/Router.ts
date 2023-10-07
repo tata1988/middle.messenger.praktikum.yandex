@@ -1,6 +1,6 @@
-import Block from "./Block";
+import Block from "./Block.ts";
 
-interface BlockConstructable<P = any> {
+export interface BlockConstructable<P extends Record<string, any> = any> {
   new (props: P): Block;
 }
 
@@ -23,7 +23,7 @@ function render(query: string, block: Block) {
 }
 
 class Route {
-  private _block: Block | null = null;
+  private block: Block | null;
 
   constructor(
     private pathname: string,
@@ -31,11 +31,11 @@ class Route {
     private readonly query: string,
   ) {
     this.pathname = pathname;
-    this._block = null;
+    this.block = null;
   }
 
   leave() {
-    this._block = null;
+    this.block = null;
   }
 
   match(pathname: string) {
@@ -43,16 +43,16 @@ class Route {
   }
 
   render() {
-    if (!this._block) {
-      this._block = new this._blockClass({});
+    if (!this.block) {
+      this.block = new this._blockClass({});
 
-      render(this.query, this._block);
+      render(this.query, this.block);
     }
   }
 }
 
-class Router {
-  private static _instance: Router;
+export class Router {
+  private static __instance?: Router;
 
   private routes: Route[] = [];
 
@@ -61,13 +61,13 @@ class Router {
   private history = window.history;
 
   constructor(private readonly rootQuery: string) {
-    if (Router._instance) {
-      return Router._instance;
+    if (Router.__instance) {
+      return Router.__instance;
     }
 
     this.routes = [];
 
-    Router._instance = this;
+    Router.__instance = this;
   }
 
   public use(pathname: string, block: BlockConstructable) {
@@ -75,6 +75,20 @@ class Router {
     this.routes.push(route);
 
     return this;
+  }
+
+  public go(pathname: string) {
+    this.history.pushState({}, "", pathname);
+
+    this._onRoute(pathname);
+  }
+
+  public back() {
+    this.history.back();
+  }
+
+  public forward() {
+    this.history.forward();
   }
 
   public start() {
@@ -103,18 +117,10 @@ class Router {
     route.render();
   }
 
-  public go(pathname: string) {
-    this.history.pushState({}, "", pathname);
+  public reset() {
+    delete Router.__instance;
 
-    this._onRoute(pathname);
-  }
-
-  public back() {
-    this.history.back();
-  }
-
-  public forward() {
-    this.history.forward();
+    new Router(this.rootQuery);
   }
 
   private getRoute(pathname: string) {
